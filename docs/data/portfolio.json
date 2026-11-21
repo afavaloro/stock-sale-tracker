@@ -136,6 +136,14 @@
      "pct": 0.0
     },
     {
+     "ticker": "CAT",
+     "date": "2026-11-20",
+     "buy": 510.45,
+     "now": 510.45,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
      "ticker": "CCL",
      "date": "2026-11-20",
      "buy": 26.59,
@@ -184,6 +192,14 @@
      "pct": 0.0
     },
     {
+     "ticker": "CRH",
+     "date": "2026-11-20",
+     "buy": 88.05,
+     "now": 88.05,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
      "ticker": "CRM",
      "date": "2026-11-20",
      "buy": 180.62,
@@ -228,22 +244,6 @@
      "date": "2026-11-20",
      "buy": 41.54,
      "now": 41.54,
-     "value": 5000.0,
-     "pct": 0.0
-    },
-    {
-     "ticker": "EME",
-     "date": "2026-11-20",
-     "buy": 603.32,
-     "now": 603.32,
-     "value": 5000.0,
-     "pct": 0.0
-    },
-    {
-     "ticker": "EXE",
-     "date": "2026-11-20",
-     "buy": 81.27,
-     "now": 81.27,
      "value": 5000.0,
      "pct": 0.0
     }
@@ -318,24 +318,6 @@
   },
   {
    "date": "2026-11-20",
-   "ticker": "EXE",
-   "name": "Expand Energy",
-   "strategy": "rules",
-   "action": "buy",
-   "price": 81.27,
-   "amount": 5000.0
-  },
-  {
-   "date": "2026-11-20",
-   "ticker": "EME",
-   "name": "Emcor",
-   "strategy": "rules",
-   "action": "buy",
-   "price": 603.32,
-   "amount": 5000.0
-  },
-  {
-   "date": "2026-11-20",
    "ticker": "DVN",
    "name": "Devon Energy",
    "strategy": "rules",
@@ -390,6 +372,15 @@
   },
   {
    "date": "2026-11-20",
+   "ticker": "CRH",
+   "name": "CRH plc",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 88.05,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
    "ticker": "CPRT",
    "name": "Copart",
    "strategy": "rules",
@@ -440,6 +431,15 @@
    "strategy": "rules",
    "action": "buy",
    "price": 26.59,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "CAT",
+   "name": "Caterpillar Inc.",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 510.45,
    "amount": 5000.0
   },
   {
