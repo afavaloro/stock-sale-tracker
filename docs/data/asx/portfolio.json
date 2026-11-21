@@ -1,0 +1,466 @@
+{
+ "summary": {
+  "as_of": "2026-11-20",
+  "start_date": "2026-11-20",
+  "fixed": {
+   "start": 100000.0,
+   "value": 100000.0,
+   "cash": 92500.0,
+   "return_pct": 0.0,
+   "bench": {
+    "STW.AX": {
+     "value": 100000.0,
+     "return_pct": 0.0
+    },
+    "SFY.AX": {
+     "value": 100000.0,
+     "return_pct": 0.0
+    },
+    "ISO.AX": {
+     "value": 100000.0,
+     "return_pct": 0.0
+    }
+   },
+   "positions": [
+    {
+     "ticker": "360.AX",
+     "date": "2026-11-20",
+     "buy": 20.6,
+     "now": 20.6,
+     "value": 2500.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "HVN.AX",
+     "date": "2026-11-20",
+     "buy": 4.28,
+     "now": 4.28,
+     "value": 2500.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "ALK.AX",
+     "date": "2026-11-20",
+     "buy": 1.52,
+     "now": 1.52,
+     "value": 2500.0,
+     "pct": 0.0
+    }
+   ],
+   "buys": 3,
+   "closed_count": 0,
+   "win_rate": null
+  },
+  "rules": {
+   "start": 100000.0,
+   "value": 100000.0,
+   "cash": 0.0,
+   "return_pct": 0.0,
+   "bench": {
+    "STW.AX": {
+     "value": 100000.0,
+     "return_pct": 0.0
+    },
+    "SFY.AX": {
+     "value": 100000.0,
+     "return_pct": 0.0
+    },
+    "ISO.AX": {
+     "value": 100000.0,
+     "return_pct": 0.0
+    }
+   },
+   "positions": [
+    {
+     "ticker": "GQG.AX",
+     "date": "2026-11-20",
+     "buy": 0.55,
+     "now": 0.55,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "CYL.AX",
+     "date": "2026-11-20",
+     "buy": 3.68,
+     "now": 3.68,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "AAI.AX",
+     "date": "2026-11-20",
+     "buy": 52.3,
+     "now": 52.3,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "APE.AX",
+     "date": "2026-11-20",
+     "buy": 14.4,
+     "now": 14.4,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "360.AX",
+     "date": "2026-11-20",
+     "buy": 20.6,
+     "now": 20.6,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "ARB.AX",
+     "date": "2026-11-20",
+     "buy": 17.17,
+     "now": 17.17,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "MIN.AX",
+     "date": "2026-11-20",
+     "buy": 38.69,
+     "now": 38.69,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "GGP.AX",
+     "date": "2026-11-20",
+     "buy": 8.58,
+     "now": 8.58,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "FMG.AX",
+     "date": "2026-11-20",
+     "buy": 13.44,
+     "now": 13.44,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "REG.AX",
+     "date": "2026-11-20",
+     "buy": 4.62,
+     "now": 4.62,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "WGX.AX",
+     "date": "2026-11-20",
+     "buy": 4.86,
+     "now": 4.86,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "HVN.AX",
+     "date": "2026-11-20",
+     "buy": 4.28,
+     "now": 4.28,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "RRL.AX",
+     "date": "2026-11-20",
+     "buy": 5.77,
+     "now": 5.77,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "RSG.AX",
+     "date": "2026-11-20",
+     "buy": 1.01,
+     "now": 1.01,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "GMD.AX",
+     "date": "2026-11-20",
+     "buy": 5.84,
+     "now": 5.84,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "WHC.AX",
+     "date": "2026-11-20",
+     "buy": 6.68,
+     "now": 6.68,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "A2M.AX",
+     "date": "2026-11-20",
+     "buy": 6.47,
+     "now": 6.47,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "VNT.AX",
+     "date": "2026-11-20",
+     "buy": 4.6,
+     "now": 4.6,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "FLT.AX",
+     "date": "2026-11-20",
+     "buy": 11.1,
+     "now": 11.1,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "OBM.AX",
+     "date": "2026-11-20",
+     "buy": 1.18,
+     "now": 1.18,
+     "value": 5000.0,
+     "pct": 0.0
+    }
+   ],
+   "buys": 20,
+   "closed_count": 0,
+   "win_rate": null
+  }
+ },
+ "history": [
+  {
+   "date": "2026-11-20",
+   "fixed_value": 100000.0,
+   "fixed_bench": {
+    "STW.AX": 100000.0,
+    "SFY.AX": 100000.0,
+    "ISO.AX": 100000.0
+   },
+   "rules_value": 100000.0,
+   "rules_bench": {
+    "STW.AX": 100000.0,
+    "SFY.AX": 100000.0,
+    "ISO.AX": 100000.0
+   }
+  }
+ ],
+ "trades": [
+  {
+   "date": "2026-11-20",
+   "ticker": "ALK.AX",
+   "name": "Alkane Resources",
+   "strategy": "fixed",
+   "action": "buy",
+   "price": 1.52,
+   "amount": 2500.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "HVN.AX",
+   "name": "Harvey Norman",
+   "strategy": "fixed",
+   "action": "buy",
+   "price": 4.28,
+   "amount": 2500.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "360.AX",
+   "name": "Life360",
+   "strategy": "fixed",
+   "action": "buy",
+   "price": 20.6,
+   "amount": 2500.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "OBM.AX",
+   "name": "Ora Banda Mining",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 1.18,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "FLT.AX",
+   "name": "Flight Centre Travel Group",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 11.1,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "VNT.AX",
+   "name": "Ventia Services Group",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 4.6,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "A2M.AX",
+   "name": "a2 Milk Company",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 6.47,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "WHC.AX",
+   "name": "Whitehaven Coal",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 6.68,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "GMD.AX",
+   "name": "Genesis Minerals",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 5.84,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "RSG.AX",
+   "name": "Resolute Mining",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 1.01,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "RRL.AX",
+   "name": "Regis Resources",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 5.77,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "HVN.AX",
+   "name": "Harvey Norman",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 4.28,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "WGX.AX",
+   "name": "Westgold Resources",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 4.86,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "REG.AX",
+   "name": "Regis Healthcare",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 4.62,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "FMG.AX",
+   "name": "Fortescue",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 13.44,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "GGP.AX",
+   "name": "Greatland Resources",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 8.58,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "MIN.AX",
+   "name": "Mineral Resources",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 38.69,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "ARB.AX",
+   "name": "ARB Corporation",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 17.17,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "360.AX",
+   "name": "Life360",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 20.6,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "APE.AX",
+   "name": "Eagers Automotive",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 14.4,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "AAI.AX",
+   "name": "Alcoa",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 52.3,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "CYL.AX",
+   "name": "Catalyst Metals",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 3.68,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "GQG.AX",
+   "name": "GQG Partners",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 0.55,
+   "amount": 5000.0
+  }
+ ]
+}

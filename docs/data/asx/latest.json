@@ -1,0 +1,1290 @@
+{
+ "as_of": "2026-11-20",
+ "market": "asx",
+ "market_name": "ASX 200",
+ "currency": "A$",
+ "generated": "2026-11-21T08:11+00:00",
+ "universe_size": 194,
+ "rules": {
+  "min_drop_pct": 20.0,
+  "sma_days": 200,
+  "pe_discount_pct": 15.0,
+  "cooldown_days": 90,
+  "start_balance": 100000.0,
+  "a_start_balance": 100000.0,
+  "a_position_pct": 2.5,
+  "a_crash_drop_pct": 20.0,
+  "a_crash_buys_per_week": 10,
+  "a_take_profit_pct": 25.0,
+  "a_stop_loss_pct": 20.0,
+  "a_max_hold_days": 730,
+  "a_max_buys_per_week": 5,
+  "a_bounce_pct": 5.0,
+  "a_bounce_days": 20,
+  "collapse_pct": 60.0,
+  "recovery_sma_days": 50,
+  "recovery_min_revenue_growth_pct": -10.0,
+  "recovery_max_debt_to_equity_pct": 200.0,
+  "position_pct": 5.0,
+  "take_profit_pct": 25.0,
+  "max_hold_days": 730
+ },
+ "counts": {
+  "drop": 99,
+  "below_sma": 109,
+  "cheap": 61,
+  "quality": 137
+ },
+ "a_picks": 3,
+ "on_sale": [
+  {
+   "ticker": "GQG.AX",
+   "name": "GQG Partners",
+   "sector": "Financials",
+   "price": 0.55,
+   "high52": 1.75,
+   "drop_pct": 68.6,
+   "sma200": 1.31,
+   "pe": 2.3,
+   "sector_pe": 18.8,
+   "fcf": 404581760.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false,
+    "recovery": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "CYL.AX",
+   "name": "Catalyst Metals",
+   "sector": "Materials",
+   "price": 3.68,
+   "high52": 9.64,
+   "drop_pct": 61.8,
+   "sma200": 5.97,
+   "pe": 5.8,
+   "sector_pe": 14.5,
+   "fcf": 14133625.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true,
+    "recovery": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "AAI.AX",
+   "name": "Alcoa",
+   "sector": "Materials",
+   "price": 52.3,
+   "high52": 116.46,
+   "drop_pct": 55.1,
+   "sma200": 77.5,
+   "pe": 6.3,
+   "sector_pe": 14.5,
+   "fcf": 918625024.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "APE.AX",
+   "name": "Eagers Automotive",
+   "sector": "Consumer Discretionary",
+   "price": 14.4,
+   "high52": 29.45,
+   "drop_pct": 51.1,
+   "sma200": 21.15,
+   "pe": 16.7,
+   "sector_pe": 21.4,
+   "fcf": 98315376.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "360.AX",
+   "name": "Life360",
+   "sector": "Information Technology",
+   "price": 20.6,
+   "high52": 41.67,
+   "drop_pct": 50.6,
+   "sma200": 21.63,
+   "pe": 22.9,
+   "sector_pe": 54.0,
+   "fcf": 80820752.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": true
+  },
+  {
+   "ticker": "ARB.AX",
+   "name": "ARB Corporation",
+   "sector": "Consumer Discretionary",
+   "price": 17.17,
+   "high52": 33.06,
+   "drop_pct": 48.1,
+   "sma200": 19.0,
+   "pe": 15.5,
+   "sector_pe": 21.4,
+   "fcf": 64307376.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "MIN.AX",
+   "name": "Mineral Resources",
+   "sector": "Materials",
+   "price": 38.69,
+   "high52": 73.35,
+   "drop_pct": 47.3,
+   "sma200": 57.67,
+   "pe": 7.2,
+   "sector_pe": 14.5,
+   "fcf": 540750016.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "GGP.AX",
+   "name": "Greatland Resources",
+   "sector": "Materials",
+   "price": 8.58,
+   "high52": 15.23,
+   "drop_pct": 43.7,
+   "sma200": 11.92,
+   "pe": 6.8,
+   "sector_pe": 14.5,
+   "fcf": 503452000.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "FMG.AX",
+   "name": "Fortescue",
+   "sector": "Materials",
+   "price": 13.44,
+   "high52": 22.39,
+   "drop_pct": 40.0,
+   "sma200": 18.2,
+   "pe": 9.8,
+   "sector_pe": 14.5,
+   "fcf": 3169250048.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "REG.AX",
+   "name": "Regis Healthcare",
+   "sector": "Health Care",
+   "price": 4.62,
+   "high52": 7.69,
+   "drop_pct": 39.9,
+   "sma200": 5.75,
+   "pe": 25.7,
+   "sector_pe": 32.6,
+   "fcf": 348566496.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "WGX.AX",
+   "name": "Westgold Resources",
+   "sector": "Materials",
+   "price": 4.86,
+   "high52": 7.91,
+   "drop_pct": 38.5,
+   "sma200": 5.57,
+   "pe": 10.3,
+   "sector_pe": 14.5,
+   "fcf": 560522112.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "HVN.AX",
+   "name": "Harvey Norman",
+   "sector": "Consumer Discretionary",
+   "price": 4.28,
+   "high52": 6.95,
+   "drop_pct": 38.4,
+   "sma200": 4.54,
+   "pe": 10.2,
+   "sector_pe": 21.4,
+   "fcf": 544032768.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": true
+  },
+  {
+   "ticker": "RRL.AX",
+   "name": "Regis Resources",
+   "sector": "Materials",
+   "price": 5.77,
+   "high52": 9.35,
+   "drop_pct": 38.3,
+   "sma200": 6.95,
+   "pe": 6.1,
+   "sector_pe": 14.5,
+   "fcf": 709559488.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "RSG.AX",
+   "name": "Resolute Mining",
+   "sector": "Materials",
+   "price": 1.01,
+   "high52": 1.64,
+   "drop_pct": 38.1,
+   "sma200": 1.23,
+   "pe": 7.2,
+   "sector_pe": 14.5,
+   "fcf": 213120992.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "GMD.AX",
+   "name": "Genesis Minerals",
+   "sector": "Materials",
+   "price": 5.84,
+   "high52": 8.62,
+   "drop_pct": 32.2,
+   "sma200": 6.59,
+   "pe": 11.0,
+   "sector_pe": 14.5,
+   "fcf": 436627744.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "WHC.AX",
+   "name": "Whitehaven Coal",
+   "sector": "Energy",
+   "price": 6.68,
+   "high52": 9.77,
+   "drop_pct": 31.6,
+   "sma200": 8.02,
+   "pe": 14.2,
+   "sector_pe": 20.1,
+   "fcf": 1647000064.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "A2M.AX",
+   "name": "a2 Milk Company",
+   "sector": "Consumer Staples",
+   "price": 6.47,
+   "high52": 9.39,
+   "drop_pct": 31.1,
+   "sma200": 7.07,
+   "pe": 25.9,
+   "sector_pe": 31.1,
+   "fcf": 339833504.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "VNT.AX",
+   "name": "Ventia Services Group",
+   "sector": "Industrials",
+   "price": 4.6,
+   "high52": 6.62,
+   "drop_pct": 30.5,
+   "sma200": 5.7,
+   "pe": 14.4,
+   "sector_pe": 23.0,
+   "fcf": 228215504.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "FLT.AX",
+   "name": "Flight Centre Travel Group",
+   "sector": "Consumer Discretionary",
+   "price": 11.1,
+   "high52": 15.83,
+   "drop_pct": 29.9,
+   "sma200": 11.35,
+   "pe": 15.9,
+   "sector_pe": 21.4,
+   "fcf": 130659128.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "OBM.AX",
+   "name": "Ora Banda Mining",
+   "sector": "Materials",
+   "price": 1.18,
+   "high52": 1.67,
+   "drop_pct": 29.3,
+   "sma200": 1.33,
+   "pe": 10.8,
+   "sector_pe": 14.5,
+   "fcf": 111050128.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "NWH.AX",
+   "name": "NRW Holdings",
+   "sector": "Industrials",
+   "price": 6.07,
+   "high52": 8.05,
+   "drop_pct": 24.6,
+   "sma200": 6.72,
+   "pe": 18.4,
+   "sector_pe": 23.0,
+   "fcf": 211033744.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "ALK.AX",
+   "name": "Alkane Resources",
+   "sector": "Materials",
+   "price": 1.52,
+   "high52": 2.0,
+   "drop_pct": 23.8,
+   "sma200": 1.61,
+   "pe": 8.4,
+   "sector_pe": 14.5,
+   "fcf": 240377248.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": true
+  },
+  {
+   "ticker": "NEM.AX",
+   "name": "Newmont",
+   "sector": "Materials",
+   "price": 144.71,
+   "high52": 187.61,
+   "drop_pct": 22.9,
+   "sma200": 158.08,
+   "pe": 11.6,
+   "sector_pe": 14.5,
+   "fcf": 9154124800.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "RDX.AX",
+   "name": "Redox",
+   "sector": "Industrials",
+   "price": 3.11,
+   "high52": 3.99,
+   "drop_pct": 22.1,
+   "sma200": 3.37,
+   "pe": 18.3,
+   "sector_pe": 23.0,
+   "fcf": 63550376.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  },
+  {
+   "ticker": "DRR.AX",
+   "name": "Deterra Royalties",
+   "sector": "Materials",
+   "price": 3.6,
+   "high52": 4.59,
+   "drop_pct": 21.6,
+   "sma200": 4.12,
+   "pe": 11.6,
+   "sector_pe": 14.5,
+   "fcf": 258692992.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "new_today": true,
+   "last_signal": null,
+   "a_bought_today": false
+  }
+ ],
+ "near_misses": [
+  {
+   "ticker": "ZIP.AX",
+   "name": "Zip",
+   "sector": "Financials",
+   "price": 1.68,
+   "high52": 10.35,
+   "drop_pct": 83.7,
+   "sma200": 2.53,
+   "pe": 3.7,
+   "sector_pe": 18.8,
+   "fcf": -36697624.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": false
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false,
+    "recovery": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "TUA.AX",
+   "name": "Tuas",
+   "sector": "Communication Services",
+   "price": 1.39,
+   "high52": 7.64,
+   "drop_pct": 81.8,
+   "sma200": 3.37,
+   "pe": 27.8,
+   "sector_pe": 30.2,
+   "fcf": 51997124.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": true,
+    "recovery": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "PLS.AX",
+   "name": "PLS Group",
+   "sector": "Materials",
+   "price": 2.62,
+   "high52": 6.68,
+   "drop_pct": 60.8,
+   "sma200": 4.7,
+   "pe": 16.4,
+   "sector_pe": 14.5,
+   "fcf": 800153600.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false,
+    "recovery": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "PXA.AX",
+   "name": "Pexa Group",
+   "sector": "Real Estate",
+   "price": 6.76,
+   "high52": 15.92,
+   "drop_pct": 57.5,
+   "sma200": 10.0,
+   "pe": 61.5,
+   "sector_pe": 10.3,
+   "fcf": 77388496.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "SNZ.AX",
+   "name": "Summerset Group Holdings",
+   "sector": "Health Care",
+   "price": 4.74,
+   "high52": 10.97,
+   "drop_pct": 56.8,
+   "sma200": 6.76,
+   "pe": 4.4,
+   "sector_pe": 32.6,
+   "fcf": -277291840.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": false
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "IGO.AX",
+   "name": "IGO",
+   "sector": "Materials",
+   "price": 4.5,
+   "high52": 9.97,
+   "drop_pct": 54.9,
+   "sma200": 7.4,
+   "pe": 23.7,
+   "sector_pe": 14.5,
+   "fcf": 187500000.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "CSC.AX",
+   "name": "Capstone Copper",
+   "sector": "Materials",
+   "price": 8.84,
+   "high52": 17.54,
+   "drop_pct": 49.6,
+   "sma200": 13.36,
+   "pe": 14.5,
+   "sector_pe": 14.5,
+   "fcf": 255879376.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "ZIM.AX",
+   "name": "Zimplats Holdings",
+   "sector": "Materials",
+   "price": 12.52,
+   "high52": 24.52,
+   "drop_pct": 48.9,
+   "sma200": 15.84,
+   "pe": 3.3,
+   "sector_pe": 14.5,
+   "fcf": -4707750.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": false
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "PRN.AX",
+   "name": "Perenti",
+   "sector": "Materials",
+   "price": 1.66,
+   "high52": 2.94,
+   "drop_pct": 43.5,
+   "sma200": 2.12,
+   "pe": 18.4,
+   "sector_pe": 14.5,
+   "fcf": 51930000.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "EVN.AX",
+   "name": "Evolution Mining",
+   "sector": "Materials",
+   "price": 10.36,
+   "high52": 17.22,
+   "drop_pct": 39.8,
+   "sma200": 12.93,
+   "pe": 14.2,
+   "sector_pe": 14.5,
+   "fcf": 1164743040.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "YAL.AX",
+   "name": "Yancoal Australia",
+   "sector": "Materials",
+   "price": 5.3,
+   "high52": 8.6,
+   "drop_pct": 38.4,
+   "sma200": 6.26,
+   "pe": 24.1,
+   "sector_pe": 14.5,
+   "fcf": 459869824.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "RMS.AX",
+   "name": "Ramelius Resources",
+   "sector": "Materials",
+   "price": 3.14,
+   "high52": 4.96,
+   "drop_pct": 36.7,
+   "sma200": 3.6,
+   "pe": 44.9,
+   "sector_pe": 14.5,
+   "fcf": 654598976.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "NWL.AX",
+   "name": "Netwealth Group",
+   "sector": "Financials",
+   "price": 17.87,
+   "high52": 28.04,
+   "drop_pct": 36.3,
+   "sma200": 21.23,
+   "pe": 71.5,
+   "sector_pe": 18.8,
+   "fcf": 100967376.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "LNW.AX",
+   "name": "Light & Wonder",
+   "sector": "Consumer Discretionary",
+   "price": 116.85,
+   "high52": 182.5,
+   "drop_pct": 36.0,
+   "sma200": 120.47,
+   "pe": 21.4,
+   "sector_pe": 21.4,
+   "fcf": 695625024.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "BPT.AX",
+   "name": "Beach Energy",
+   "sector": "Energy",
+   "price": 0.83,
+   "high52": 1.29,
+   "drop_pct": 35.6,
+   "sma200": 0.98,
+   "pe": 6.9,
+   "sector_pe": 20.1,
+   "fcf": -154062496.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": false
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "CMM.AX",
+   "name": "Capricorn Metals",
+   "sector": "Materials",
+   "price": 11.48,
+   "high52": 17.72,
+   "drop_pct": 35.2,
+   "sma200": 13.53,
+   "pe": 18.2,
+   "sector_pe": 14.5,
+   "fcf": 52260000.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "SGM.AX",
+   "name": "Sims Metal",
+   "sector": "Materials",
+   "price": 19.4,
+   "high52": 29.74,
+   "drop_pct": 34.8,
+   "sma200": 22.97,
+   "pe": 15.5,
+   "sector_pe": 14.5,
+   "fcf": 184137504.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "IMD.AX",
+   "name": "IMDEX",
+   "sector": "Materials",
+   "price": 2.99,
+   "high52": 4.41,
+   "drop_pct": 32.1,
+   "sma200": 3.74,
+   "pe": 19.9,
+   "sector_pe": 14.5,
+   "fcf": 69343872.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "SFR.AX",
+   "name": "Sandfire Resources",
+   "sector": "Materials",
+   "price": 16.27,
+   "high52": 23.78,
+   "drop_pct": 31.6,
+   "sma200": 19.21,
+   "pe": 14.4,
+   "sector_pe": 14.5,
+   "fcf": 411615008.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "RIO.AX",
+   "name": "Rio Tinto",
+   "sector": "Materials",
+   "price": 135.05,
+   "high52": 191.26,
+   "drop_pct": 29.4,
+   "sma200": 165.24,
+   "pe": 12.4,
+   "sector_pe": 14.5,
+   "fcf": 3595500032.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "NST.AX",
+   "name": "Northern Star Resources",
+   "sector": "Materials",
+   "price": 21.95,
+   "high52": 31.07,
+   "drop_pct": 29.3,
+   "sma200": 22.55,
+   "pe": 18.9,
+   "sector_pe": 14.5,
+   "fcf": 385012512.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "EMR.AX",
+   "name": "Emerald Resources",
+   "sector": "Materials",
+   "price": 5.82,
+   "high52": 8.0,
+   "drop_pct": 27.2,
+   "sma200": 6.19,
+   "pe": 14.9,
+   "sector_pe": 14.5,
+   "fcf": 262975008.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "WOR.AX",
+   "name": "Worley",
+   "sector": "Energy",
+   "price": 9.52,
+   "high52": 13.03,
+   "drop_pct": 26.9,
+   "sma200": 10.8,
+   "pe": 20.3,
+   "sector_pe": 20.1,
+   "fcf": 474375008.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "PNI.AX",
+   "name": "Pinnacle Investment Management",
+   "sector": "Financials",
+   "price": 13.93,
+   "high52": 18.91,
+   "drop_pct": 26.3,
+   "sma200": 15.42,
+   "pe": 17.9,
+   "sector_pe": 18.8,
+   "fcf": 26396000.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  },
+  {
+   "ticker": "DNL.AX",
+   "name": "Dyno Nobel",
+   "sector": "Materials",
+   "price": 3.07,
+   "high52": 4.16,
+   "drop_pct": 26.2,
+   "sma200": 3.6,
+   "pe": 23.6,
+   "sector_pe": 14.5,
+   "fcf": 416962496.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false
+  }
+ ],
+ "benchmarks": {
+  "STW.AX": {
+   "name": "ASX 200",
+   "price": 77.04,
+   "drop_pct": 6.1
+  },
+  "SFY.AX": {
+   "name": "ASX 50",
+   "price": 75.97,
+   "drop_pct": 5.3
+  },
+  "ISO.AX": {
+   "name": "Small Ords",
+   "price": 4.44,
+   "drop_pct": 24.4
+  }
+ }
+}
