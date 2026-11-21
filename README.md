@@ -19,7 +19,7 @@ Any one stock is bought at most once every 90 days. You can change every number 
 
 ## The two simulated strategies
 
-- **A · Choosy:** $100,000 in cash, and it only ever spends that plus money from its sales (so profits are reinvested). Each buy is $2,500, at most 5 new buys a week, biggest discounts first. On top of the four checks, a stock must have **stopped falling** (at least 5% above its lowest close of the past 20 trading days). A stock that has **collapsed** (60%+ below its high) must also pass a **recovery check**: price back above its 50-day average, sales not shrinking more than 10% a year, a positive operating margin, a current ratio of at least 1, and debt no more than 2× equity. A holding is sold at +25%, at −20%, or after 2 years.
+- **A · Choosy:** $100,000 in cash, and it only ever spends that plus money from its sales (so profits are reinvested). Each buy is 2.5% of A's current value ($2,500 at the start, growing as the account grows), at most 5 new buys a week, or 10 a week while the S&P 500 itself is 20%+ below its high. Biggest discounts first. On top of the four checks, a stock must have **stopped falling** (at least 5% above its lowest close of the past 20 trading days). A stock that has **collapsed** (60%+ below its high) must also pass a **recovery check**: price back above its 50-day average, sales not shrinking more than 10% a year, a positive operating margin, a current ratio of at least 1, and debt no more than 2× equity. A holding is sold at +25%, at −20%, or after 2 years.
 - **B · Buys every sale:** $100,000 in cash. Each buy is $5,000, on every stock that goes on sale while cash lasts. A holding is sold when it's up 25% or after 2 years.
 
 Both are compared with putting $100,000 into each index on day one.

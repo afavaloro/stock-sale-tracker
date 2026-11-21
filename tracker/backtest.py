@@ -27,6 +27,8 @@ def run(prices, names: dict) -> dict:
     a_ok, drop = signals.a_checks_vectorized(prices[stocks])
     a_sig = sig & a_ok
     cols = list(sig.columns)
+    spy = prices["SPY"]
+    spy_drop = (1 - spy / spy.rolling(252, min_periods=200).max()).fillna(0)
     # Start once there is a full year of history to measure 52-week highs against
     days = prices.index[252:]
     bench0 = {b: float(prices.loc[days[0], b]) for b in C.BENCHMARKS}
@@ -41,7 +43,8 @@ def run(prices, names: dict) -> dict:
         a_idx = sorted(a_v[i].nonzero()[0], key=lambda j: -drop_v[i, j])   # deepest drop first
         day = d.date().isoformat()
         portfolio.process_day(state, day, {t: v for t, v in row.items() if v == v},
-                              todays, [cols[j] for j in a_idx], names)
+                              todays, [cols[j] for j in a_idx], names,
+                              market_drop=float(spy_drop.loc[d]))
         n_new = sum(1 for t, v in state["last_signal"].items() if v == day)
         signal_count[day[:4]] = signal_count.get(day[:4], 0) + n_new
     trades = state["trades"]

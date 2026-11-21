@@ -249,7 +249,7 @@ function renderPortfolio(el, P, title) {
   if (S.fixed.start == null) { el.innerHTML = (title ? `<div class="note">${title}</div>` : "") + `<div class="card empty">Updating to the new rules.<br><span class="small muted">The bot is re-running with the new Strategy A. Check back in about 15 minutes.</span></div>`; return; }
   const fx = S.fixed, ru = S.rules;
   let h = title ? `<div class="note">${title}</div>` : "";
-  h += bookBlock(fx, "fixed", `A · ${money(fx.start)}, ${money(R.a_position ?? 2500)} per pick · sell +${R.a_take_profit_pct ?? 25}% / −${R.a_stop_loss_pct ?? 20}% / ${Math.round((R.a_max_hold_days ?? 730) / 365)} yrs`);
+  h += bookBlock(fx, "fixed", `A · ${money(fx.start)}, ${R.a_position_pct ?? 2.5}% of account per pick · sell +${R.a_take_profit_pct ?? 25}% / −${R.a_stop_loss_pct ?? 20}% / ${Math.round((R.a_max_hold_days ?? 730) / 365)} yrs`);
   h += holdings(fx, "Strategy A");
   h += bookBlock(ru, "rules", `B · ${money(ru.start)}, buys every sale · sell +${R.take_profit_pct ?? 25}% / ${Math.round((R.max_hold_days ?? 730) / 365)} yrs`);
   h += holdings(ru, "Strategy B");
@@ -295,7 +295,7 @@ function renderRules(R) {
     <li><b>A healthy business:</b> profitable (positive earnings) with positive free cash flow, to avoid "falling knives."</li></ol>
     <p class="small muted" style="margin-bottom:0">A stock can be bought at most once every ${R.cooldown_days} days, even if it stays on sale.</p></div>
     <h2>The two simulated strategies</h2><div class="card">
-    <p style="margin-top:0"><b>A · Choosy:</b> start with ${money(R.a_start_balance)} cash and only ever spend that plus money from sales (so profits get reinvested). Each buy is ${money(R.a_position)}, at most ${R.a_max_buys_per_week} new buys a week, biggest discounts first. A stock must pass all four checks <i>and</i>:</p>
+    <p style="margin-top:0"><b>A · Choosy:</b> start with ${money(R.a_start_balance)} cash and only ever spend that plus money from sales (so profits get reinvested). Each buy is ${R.a_position_pct}% of A's current value (so buys grow as the account grows), at most ${R.a_max_buys_per_week} new buys a week, or ${R.a_crash_buys_per_week} a week while the S&amp;P 500 is ${R.a_crash_drop_pct}%+ below its high. Biggest discounts first. A stock must pass all four checks <i>and</i>:</p>
     <ol class="rules"><li><b>Has stopped falling:</b> at least ${R.a_bounce_pct}% above its lowest close of the past ${R.a_bounce_days} trading days.</li>
     <li><b>If it has collapsed</b> (${R.collapse_pct}%+ below its high), it must pass a recovery check: price back above its ${R.recovery_sma_days}-day average, sales not shrinking more than ${Math.abs(R.recovery_min_revenue_growth_pct)}% a year, a positive operating margin, enough short-term assets to cover a year of bills, and debt no more than ${R.recovery_max_debt_to_equity_pct / 100}× equity.</li></ol>
     <p>Sell when a holding is up ${R.a_take_profit_pct}%, down ${R.a_stop_loss_pct}%, or after ${R.a_max_hold_days} days.</p>

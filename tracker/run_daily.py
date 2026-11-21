@@ -53,7 +53,8 @@ def build(universe, prices, fundamentals_fn, state_path: Path, out_dir: Path):
     a_candidates = [r["ticker"] for r in on_sale if r["a_pick"]]   # already deepest-drop first
     trades = portfolio.process_day(state, as_of, today_prices,
                                    [] if already else [r["ticker"] for r in on_sale],
-                                   [] if already else a_candidates, names)
+                                   [] if already else a_candidates, names,
+                                   market_drop=float(bench.loc["SPY", "drop"]) if "SPY" in bench.index else 0.0)
     a_buys = {t["ticker"] for t in trades if t["action"] == "buy" and t["strategy"] == "fixed"}
     state_path.write_text(json.dumps(state))
 
@@ -70,7 +71,8 @@ def build(universe, prices, fundamentals_fn, state_path: Path, out_dir: Path):
             "min_drop_pct": C.MIN_DROP_FROM_HIGH * 100, "sma_days": C.SMA_DAYS,
             "pe_discount_pct": C.PE_DISCOUNT_VS_SECTOR * 100, "cooldown_days": C.COOLDOWN_DAYS,
             "start_balance": C.START_BALANCE,
-            "a_start_balance": C.A_START_BALANCE, "a_position": C.A_POSITION,
+            "a_start_balance": C.A_START_BALANCE, "a_position_pct": C.A_POSITION_PCT * 100,
+            "a_crash_drop_pct": C.A_CRASH_DROP * 100, "a_crash_buys_per_week": C.A_CRASH_BUYS_PER_WEEK,
             "a_take_profit_pct": C.A_TAKE_PROFIT * 100, "a_stop_loss_pct": C.A_STOP_LOSS * 100,
             "a_max_hold_days": C.A_MAX_HOLD_DAYS, "a_max_buys_per_week": C.A_MAX_BUYS_PER_WEEK,
             "a_bounce_pct": C.A_BOUNCE_FROM_LOW * 100, "a_bounce_days": C.A_BOUNCE_DAYS,

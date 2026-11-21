@@ -3,9 +3,10 @@
 Both strategies start with cash, buy with it, and put the money from every sale (profit
 or loss) back into cash. Neither ever gets new money from outside.
 
-Strategy A ("fixed"): A_START_BALANCE, A_POSITION per buy. Only buys stocks that also
+Strategy A ("fixed"): A_START_BALANCE, A_POSITION_PCT of its current value per buy. Only buys stocks that also
   pass A's extra checks (bounced off the low, recovery check for collapsed stocks),
-  at most A_MAX_BUYS_PER_WEEK a week, deepest discounts first.
+  at most A_MAX_BUYS_PER_WEEK a week (A_CRASH_BUYS_PER_WEEK when the S&P 500 is
+  A_CRASH_DROP or more below its high), deepest discounts first.
   Sells at +A_TAKE_PROFIT, -A_STOP_LOSS, or after A_MAX_HOLD_DAYS.
 Strategy B ("rules"): START_BALANCE, POSITION_PCT of it per buy, buys every on-sale
   signal while cash lasts. Sells at +TAKE_PROFIT or after MAX_HOLD_DAYS.
@@ -70,11 +71,12 @@ def _buy(book, strategy, t, p, size, day, names, today):
 
 def process_day(state: dict, day: str, prices: dict, signals: list[str],
                 a_candidates: list[str] | None = None,
-                names: dict | None = None) -> list[dict]:
+                names: dict | None = None, market_drop: float = 0.0) -> list[dict]:
     """Advance the simulation by one trading day. Returns the trades made today.
 
     signals: every stock on sale today (B buys these).
     a_candidates: the on-sale stocks that also pass A's extra checks, best first.
+    market_drop: how far SPY is below its 52-week high (0.25 = 25%).
     """
     names = names or {}
     a_candidates = a_candidates or []
@@ -122,14 +124,16 @@ def process_day(state: dict, day: str, prices: dict, signals: list[str],
     wk = _week(day)
     if A["week"] != wk:
         A["week"], A["week_buys"] = wk, 0
+    limit = C.A_CRASH_BUYS_PER_WEEK if market_drop >= C.A_CRASH_DROP else C.A_MAX_BUYS_PER_WEEK
+    a_value = A["cash"] + sum(pos["shares"] * (px(t) or pos["price"]) for t, pos in A["positions"].items())
     for t in a_candidates:
-        if A["week_buys"] >= C.A_MAX_BUYS_PER_WEEK:
+        if A["week_buys"] >= limit:
             break
         p = px(t)
         last = A["last_buy"].get(t)
         if p is None or t in A["positions"] or (last and (_d(day) - _d(last)).days < C.COOLDOWN_DAYS):
             continue
-        size = min(C.A_POSITION, A["cash"])
+        size = min(a_value * C.A_POSITION_PCT, A["cash"])
         if size < C.A_MIN_POSITION:
             break
         _buy(A, "fixed", t, p, size, day, names, today)

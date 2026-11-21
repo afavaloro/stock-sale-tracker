@@ -18,12 +18,15 @@ BENCHMARKS = {
 # --- Strategy A: choosy, $100k budget, profits recycled ----------------------
 # A only ever spends its starting cash plus money from sales (profits included).
 A_START_BALANCE = 100_000.0
-A_POSITION = 2_500.0           # each buy is $2,500 (up to ~40 holdings)
+A_POSITION_PCT = 0.025         # each buy is 2.5% of A's current value (cash + holdings),
+                               #   so buys grow as the account grows ($2,500 at the start)
 A_MIN_POSITION = 1_000.0       # skip a buy if less cash than this is left
 A_TAKE_PROFIT = 0.25           # sell when a holding is up 25%
 A_STOP_LOSS = 0.20             # ...or down 20%
 A_MAX_HOLD_DAYS = 730          # ...or after 2 years, whichever comes first
 A_MAX_BUYS_PER_WEEK = 5        # at most 5 new buys a week, deepest discounts first
+A_CRASH_DROP = 0.20            # when the S&P 500 (SPY) itself is 20%+ off its high...
+A_CRASH_BUYS_PER_WEEK = 10     # ...allow up to 10 buys a week instead
 
 # Extra checks a stock must pass (on top of the four above) before A buys it
 A_BOUNCE_DAYS = 20             # "stopped falling": price at least 5% above

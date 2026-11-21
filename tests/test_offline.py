@@ -65,9 +65,9 @@ def check_books(state):
     weeks = {}
     for t in a:
         if t["action"] == "buy":
-            assert abs(t["amount"] - C.A_POSITION) < 0.01 or t["amount"] >= C.A_MIN_POSITION
+            assert t["amount"] >= C.A_MIN_POSITION - 0.01
             wk = portfolio._week(t["date"]); weeks[wk] = weeks.get(wk, 0) + 1
-            assert weeks[wk] <= C.A_MAX_BUYS_PER_WEEK, "weekly limit broken"
+            assert weeks[wk] <= C.A_CRASH_BUYS_PER_WEEK, "weekly limit broken"
         elif t["reason"] == "stop loss":
             assert t["pnl_pct"] <= -C.A_STOP_LOSS * 100 + 0.01
         elif t["reason"] == "take profit":
@@ -98,6 +98,17 @@ assert not signals.recovery_check(10, 9, {**good, "operating_margin": -.01})
 assert not signals.recovery_check(10, 9, {**good, "debt_to_equity": 350})
 assert not signals.recovery_check(10, 9, {**good, "revenue_growth": None})
 assert signals.recovery_check(10, 9, {**good, "current_ratio": None, "debt_to_equity": None}), "banks"
+
+# buy size grows with the account; crash mode raises the weekly limit
+st = portfolio.new_state("2026-01-05", {b: 100.0 for b in C.BENCHMARKS})
+st["fixed"]["cash"] = 200_000.0
+px0 = {b: 100.0 for b in C.BENCHMARKS} | {f"X{i}": 10.0 for i in range(12)}
+tr = portfolio.process_day(st, "2026-01-05", px0, [], [f"X{i}" for i in range(12)])
+assert sum(t["action"] == "buy" for t in tr) == C.A_MAX_BUYS_PER_WEEK
+assert abs(tr[0]["amount"] - 200_000 * C.A_POSITION_PCT) < 0.01, tr[0]["amount"]
+st = portfolio.new_state("2026-01-05", {b: 100.0 for b in C.BENCHMARKS})
+tr = portfolio.process_day(st, "2026-01-05", px0, [], [f"X{i}" for i in range(12)], market_drop=0.25)
+assert sum(t["action"] == "buy" for t in tr) == C.A_CRASH_BUYS_PER_WEEK
 
 bt = backtest.run(prices, dict(zip(uni.ticker, uni.name)))
 s = bt["summary"]
