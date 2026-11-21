@@ -94,7 +94,8 @@ a { color: var(--accent); }
 </head>
 <body>
 <header>
-  <h1>S&amp;P 500 Sale Tracker</h1>
+  <div class="row" style="align-items:center"><h1 id="title">Sale Tracker</h1>
+    <div class="seg" id="mkt" style="margin:0"><button data-m="us">US</button><button data-m="asx">ASX</button></div></div>
   <div class="sub" id="asof">Loading…</div>
   <nav role="tablist">
     <button role="tab" data-tab="sale" aria-selected="true">On sale</button>
@@ -114,11 +115,22 @@ a { color: var(--accent); }
 <script>
 const $ = (s, el = document) => el.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const money = (v, d = 0) => v == null ? "—" : "$" + Number(v).toLocaleString("en-US", {minimumFractionDigits: d, maximumFractionDigits: d});
+const MARKETS = {
+  us:  {dir: "data/", name: "S&P 500", cur: "$", scan: "Daily scan", bt: "Backtest",
+        bench: [["SPY", "S&P 500"], ["QQQ", "Nasdaq-100"], ["DIA", "Dow"]]},
+  asx: {dir: "data/asx/", name: "ASX 200", cur: "A$", scan: "Daily scan (ASX)", bt: "Backtest (ASX)",
+        bench: [["STW.AX", "ASX 200"], ["SFY.AX", "ASX 50"], ["ISO.AX", "Small Ords"]]},
+};
+let MKT = "us";
+try { if (MARKETS[localStorage.getItem("market")]) MKT = localStorage.getItem("market"); } catch (e) {}
+let M = MARKETS[MKT];
+const COLORS = ["--s2", "--s3", "--s4"];
+let BENCH = M.bench.map(([t, n], i) => [t, n, COLORS[i]]);
+const sym = t => t.replace(/\.AX$/, "");
+const money = (v, d = 0) => v == null ? "—" : (v < 0 ? "−" : "") + M.cur + Math.abs(Number(v)).toLocaleString("en-US", {minimumFractionDigits: d, maximumFractionDigits: d});
 const pct = (v, d = 1) => v == null ? "—" : (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(d) + "%";
 const cls = v => v > 0 ? "up" : v < 0 ? "down" : "";
 const fmtDate = s => s ? new Date(s + "T12:00:00").toLocaleDateString("en-US", {month: "short", day: "numeric", year: "numeric"}) : "—";
-const BENCH = [["SPY", "S&P 500", "--s2"], ["QQQ", "Nasdaq-100", "--s3"], ["DIA", "Dow", "--s4"]];
 const CHECKS = [["drop", "20%+ off high"], ["below_sma", "Below 200-day avg"], ["cheap", "P/E below sector"], ["quality", "Profitable + cash flow"]];
 const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 let DATA = {};
@@ -203,7 +215,7 @@ function stockCard(r, opts = {}) {
   const R = DATA.latest?.rules || {}, a = r.a_checks || {};
   const aChips = r.a_checks ? `<div class="chips"><span class="small muted" style="align-self:center">Strategy A:</span>${chip(a.bounce, `Bounced ${R.a_bounce_pct ?? 5}%+ off ${R.a_bounce_days ?? 20}-day low`)}${"recovery" in a ? chip(a.recovery, "Business can recover") : ""}</div>` : "";
   return `<div class="card">
-    <div class="row"><div style="min-width:0"><span class="tk">${esc(r.ticker)}</span>${r.new_today ? '<span class="badge">NEW</span>' : ""}${r.a_pick ? `<span class="badge a">${r.a_bought_today ? "A BOUGHT" : "A PICK"}</span>` : ""}<div class="nm">${esc(r.name)} · ${esc(r.sector)}</div></div>
+    <div class="row"><div style="min-width:0"><span class="tk">${esc(sym(r.ticker))}</span>${r.new_today ? '<span class="badge">NEW</span>' : ""}${r.a_pick ? `<span class="badge a">${r.a_bought_today ? "A BOUGHT" : "A PICK"}</span>` : ""}<div class="nm">${esc(r.name)} · ${esc(r.sector)}</div></div>
       <div style="text-align:right"><div class="px">${money(r.price, 2)}</div><div class="small down num">${pct(-r.drop_pct)} from high</div></div></div>
     <div class="small muted num" style="margin-top:6px">52-wk high ${money(r.high52, 2)} · 200-day avg ${money(r.sma200, 2)} · P/E ${r.pe ?? "—"} vs sector ${r.sector_pe ?? "—"}</div>
     ${opts.chips ? `<div class="chips">${chips}</div>` : ""}${opts.a ? aChips : ""}</div>`;
@@ -213,7 +225,7 @@ function renderSale(L) {
   let h = `<div class="stats" style="grid-template-columns:repeat(3,1fr)">${BENCH.map(([t, n]) => `<div class="stat"><div class="l">${n}</div><div class="v" style="font-size:16px">${money(b[t]?.price, 2)}</div><div style="font-size:11.5px" class=" ${cls(-(b[t]?.drop_pct || 0))} num">${b[t]?.drop_pct ? pct(-b[t].drop_pct) + " off high" : "At its high"}</div></div>`).join("")}</div>`;
   h += `<h2>On sale today · ${L.on_sale.length}${L.a_picks != null ? ` · ${L.a_picks} pass A's extra checks` : ""}</h2>`;
   h += L.on_sale.length ? L.on_sale.map(r => stockCard(r, {a: true})).join("")
-    : `<div class="card empty">No S&amp;P 500 stock passes all four checks today.<br><span class="small muted">That's normal. The rules are strict on purpose.</span></div>`;
+    : `<div class="card empty">No ${esc(M.name)} stock passes all four checks today.<br><span class="small muted">That's normal. The rules are strict on purpose.</span></div>`;
   h += `<h2>Almost on sale · 3 of 4 checks</h2>`;
   h += L.near_misses.length ? L.near_misses.map(r => stockCard(r, {chips: true})).join("") : `<div class="card empty small">None today.</div>`;
   const c = L.counts || {};
@@ -223,7 +235,7 @@ function renderSale(L) {
 
 // ---------- Portfolios ----------
 function compareTable(s, startLabel) {
-  const rows = [["Sale strategy", s.value, s.return_pct, "--s1"], ...BENCH.map(([t, n, c]) => [`${n} (${t})`, s.bench[t].value, s.bench[t].return_pct, c])];
+  const rows = [["Sale strategy", s.value, s.return_pct, "--s1"], ...BENCH.map(([t, n, c]) => [`${n} (${sym(t)})`, s.bench[t]?.value, s.bench[t]?.return_pct, c])];
   return `<table class="vs"><tr><th>${startLabel}</th><th>Value</th><th>Return</th></tr>${rows.map(([n, v, p, c]) => `<tr><td><i class="sw" style="background:var(${c})"></i>${esc(n)}</td><td>${money(v)}</td><td class="${cls(p)}">${pct(p, 2)}</td></tr>`).join("")}</table>`;
 }
 function seriesFrom(hist, kind, start) {
@@ -231,7 +243,7 @@ function seriesFrom(hist, kind, start) {
   const r = vals => vals.map(v => v == null ? null : (v / start - 1) * 100);
   return {dates, series: [
     {name: "Sale strategy", short: "Sales", color: "--s1", main: true, values: r(hist.map(h => h[kind + "_value"])), dollars: hist.map(h => h[kind + "_value"])},
-    ...BENCH.map(([t, n, c]) => ({name: `${t} buy & hold`, short: t, color: c, values: r(hist.map(h => h[kind + "_bench"]?.[t])), dollars: hist.map(h => h[kind + "_bench"]?.[t])}))]};
+    ...BENCH.map(([t, n, c]) => ({name: `${sym(t)} buy & hold`, short: sym(t), color: c, values: r(hist.map(h => h[kind + "_bench"]?.[t])), dollars: hist.map(h => h[kind + "_bench"]?.[t])}))]};
 }
 function bookBlock(b, kind, title) {
   let h = `<h2>${title}</h2>`;
@@ -241,7 +253,7 @@ function bookBlock(b, kind, title) {
 }
 function holdings(b, label) {
   if (!b.positions.length) return "";
-  return `<details><summary>${label} holdings · ${b.positions.length}</summary><div class="card" style="margin-top:8px">${b.positions.slice(0, 100).map(p => `<div class="trade"><div><b>${esc(p.ticker)}</b> <span class="small muted">bought ${fmtDate(p.date)} at ${money(p.buy, 2)}</span></div><div class="num ${cls(p.pct)}">${pct(p.pct)}</div><div class="small muted">now ${money(p.now, 2)}</div><div class="small muted num">${money(p.value)}</div></div>`).join("")}</div></details>`;
+  return `<details><summary>${label} holdings · ${b.positions.length}</summary><div class="card" style="margin-top:8px">${b.positions.slice(0, 100).map(p => `<div class="trade"><div><b>${esc(sym(p.ticker))}</b> <span class="small muted">bought ${fmtDate(p.date)} at ${money(p.buy, 2)}</span></div><div class="num ${cls(p.pct)}">${pct(p.pct)}</div><div class="small muted">now ${money(p.now, 2)}</div><div class="small muted num">${money(p.value)}</div></div>`).join("")}</div></details>`;
 }
 function renderPortfolio(el, P, title) {
   const S = P.summary, R = DATA.latest?.rules || {};
@@ -267,7 +279,7 @@ function renderTrades() {
   const list = T.filter(t => t.strategy === tradeFilter);
   let h = `<div class="seg"><button aria-pressed="${tradeFilter === "rules"}" data-f="rules">Strategy B</button><button aria-pressed="${tradeFilter === "fixed"}" data-f="fixed">Strategy A</button></div>`;
   h += list.length ? `<div class="card">${list.map(t => `<div class="trade">
-      <div><b class="${t.action === "buy" ? "" : cls(t.pnl)}">${t.action === "buy" ? "Bought" : "Sold"}</b> <b>${esc(t.ticker)}</b> <span class="small muted">${esc(t.name)}</span></div>
+      <div><b class="${t.action === "buy" ? "" : cls(t.pnl)}">${t.action === "buy" ? "Bought" : "Sold"}</b> <b>${esc(sym(t.ticker))}</b> <span class="small muted">${esc(t.name)}</span></div>
       <div class="num">${money(t.amount)}</div>
       <div class="small muted">${fmtDate(t.date)} at ${money(t.price, 2)}${t.reason ? ` · ${esc(t.reason)}, held ${t.held_days} days` : ""}</div>
       <div class="small num ${cls(t.pnl)}">${t.pnl != null ? pct(t.pnl_pct) : ""}</div></div>`).join("")}</div>`
@@ -279,7 +291,7 @@ function renderTrades() {
 // ---------- Backtest ----------
 function renderBacktest() {
   const B = DATA.backtest, el = $("#bt");
-  if (!B) { el.innerHTML = `<div class="card empty">The backtest hasn't been run yet.<br><span class="small muted">On GitHub, open Actions → "Backtest" → Run workflow. It takes about 10 minutes.</span></div>`; return; }
+  if (!B) { el.innerHTML = `<div class="card empty">The backtest hasn't been run yet.<br><span class="small muted">On GitHub, open Actions → "${M.bt}" → Run workflow. It takes about 10 minutes.</span></div>`; return; }
   const by = Object.entries(B.by_year || {});
   const years = by.length ? `<table class="vs"><tr><th>Year</th><th>On-sale signals</th><th>A bought</th><th>B bought</th></tr>${by.map(([y, n]) => `<tr><td>${y}</td><td>${n.signals}</td><td>${n.A}</td><td>${n.B}</td></tr>`).join("")}</table>` : "";
   renderPortfolio(el, B, `<b>${B.years}-year backtest</b> (${fmtDate(B.summary.start_date)} – ${fmtDate(B.summary.as_of)}). ${esc(B.note)} Past results don't guarantee future returns.`);
@@ -291,11 +303,11 @@ function renderRules(R) {
   $("#rules").innerHTML = `<h2>When is a stock "on sale"?</h2><div class="card"><p style="margin-top:0">A stock must pass <b>all four</b> checks at once:</p><ol class="rules">
     <li><b>Down at least ${R.min_drop_pct}%</b> from its 52-week high.</li>
     <li><b>Below its ${R.sma_days}-day average price</b>, so the drop isn't just a one-day blip.</li>
-    <li><b>Cheap compared with its peers:</b> P/E at least ${R.pe_discount_pct}% below the median P/E of its S&amp;P 500 sector.</li>
+    <li><b>Cheap compared with its peers:</b> P/E at least ${R.pe_discount_pct}% below the median P/E of its ${esc(M.name)} sector.</li>
     <li><b>A healthy business:</b> profitable (positive earnings) with positive free cash flow, to avoid "falling knives."</li></ol>
     <p class="small muted" style="margin-bottom:0">A stock can be bought at most once every ${R.cooldown_days} days, even if it stays on sale.</p></div>
     <h2>The two simulated strategies</h2><div class="card">
-    <p style="margin-top:0"><b>A · Choosy:</b> start with ${money(R.a_start_balance)} cash and only ever spend that plus money from sales (so profits get reinvested). Each buy is ${R.a_position_pct}% of A's current value (so buys grow as the account grows), at most ${R.a_max_buys_per_week} new buys a week, or ${R.a_crash_buys_per_week} a week while the S&amp;P 500 is ${R.a_crash_drop_pct}%+ below its high. Biggest discounts first. A stock must pass all four checks <i>and</i>:</p>
+    <p style="margin-top:0"><b>A · Choosy:</b> start with ${money(R.a_start_balance)} cash and only ever spend that plus money from sales (so profits get reinvested). Each buy is ${R.a_position_pct}% of A's current value (so buys grow as the account grows), at most ${R.a_max_buys_per_week} new buys a week, or ${R.a_crash_buys_per_week} a week while the ${esc(M.name)} is ${R.a_crash_drop_pct}%+ below its high. Biggest discounts first. A stock must pass all four checks <i>and</i>:</p>
     <ol class="rules"><li><b>Has stopped falling:</b> at least ${R.a_bounce_pct}% above its lowest close of the past ${R.a_bounce_days} trading days.</li>
     <li><b>If it has collapsed</b> (${R.collapse_pct}%+ below its high), it must pass a recovery check: price back above its ${R.recovery_sma_days}-day average, sales not shrinking more than ${Math.abs(R.recovery_min_revenue_growth_pct)}% a year, a positive operating margin, enough short-term assets to cover a year of bills, and debt no more than ${R.recovery_max_debt_to_equity_pct / 100}× equity.</li></ol>
     <p>Sell when a holding is up ${R.a_take_profit_pct}%, down ${R.a_stop_loss_pct}%, or after ${R.a_max_hold_days} days.</p>
@@ -308,24 +320,36 @@ function renderRules(R) {
 
 // ---------- Load ----------
 async function getJSON(name) {
-  try { const r = await fetch(`data/${name}.json?t=${Date.now()}`, {cache: "no-store"}); return r.ok ? await r.json() : null; } catch (e) { return null; }
+  try { const r = await fetch(`${M.dir}${name}.json?t=${Date.now()}`, {cache: "no-store"}); return r.ok ? await r.json() : null; } catch (e) { return null; }
 }
-(async () => {
+async function load() {
+  M = MARKETS[MKT]; BENCH = M.bench.map(([t, n], i) => [t, n, COLORS[i]]);
+  document.querySelectorAll("#mkt button").forEach(b => b.setAttribute("aria-pressed", b.dataset.m === MKT));
+  $("#title").textContent = `${M.name} Sale Tracker`;
+  charts.length = 0;
+  ["sale", "pf", "trades", "bt", "rules"].forEach(id => $("#" + id).innerHTML = `<div class="card empty small">Loading…</div>`);
   const [latest, portfolio, backtest] = await Promise.all([getJSON("latest"), getJSON("portfolio"), getJSON("backtest")]);
   DATA = {latest, portfolio, backtest};
+  const tab = (location.hash || "").slice(1);
   if (!latest) {
     $("#asof").textContent = "Waiting for the first scan";
-    $("#sale").innerHTML = `<div class="card empty">No scan has run yet.<br><span class="small muted">On GitHub, open Actions → "Daily scan" → Run workflow. Results show up here about 15 minutes later.</span></div>`;
+    const wait = `<div class="card empty">No ${esc(M.name)} scan has run yet.<br><span class="small muted">On GitHub, open Actions → "${M.scan}" → Run workflow. Results show up here about 15 minutes later.</span></div>`;
+    ["sale", "pf", "trades", "rules"].forEach(id => $("#" + id).innerHTML = wait);
     renderBacktest();
-    return;
+  } else {
+    $("#asof").textContent = `Market close ${fmtDate(latest.as_of)} · ${latest.universe_size} stocks scanned`;
+    renderSale(latest); renderRules(latest.rules); renderTrades(); renderBacktest();
+    if (portfolio) renderPortfolio($("#pf"), portfolio); else $("#pf").innerHTML = `<div class="card empty">No portfolio yet.</div>`;
   }
-  $("#asof").textContent = `Market close ${fmtDate(latest.as_of)} · ${latest.universe_size} stocks scanned`;
-  renderSale(latest); renderRules(latest.rules); renderTrades(); renderBacktest();
-  if (portfolio) renderPortfolio($("#pf"), portfolio); else $("#pf").innerHTML = `<div class="card empty">No portfolio yet.</div>`;
-  const tab = (location.hash || "").slice(1);
   show(["sale", "pf", "trades", "bt", "rules"].includes(tab) ? tab : "sale");
-  window.addEventListener("hashchange", () => { const t = location.hash.slice(1); if (document.getElementById(t)) show(t); });
-})();
+}
+document.querySelectorAll("#mkt button").forEach(b => b.onclick = () => {
+  if (b.dataset.m === MKT) return;
+  MKT = b.dataset.m; try { localStorage.setItem("market", MKT); } catch (e) {}
+  load();
+});
+window.addEventListener("hashchange", () => { const t = location.hash.slice(1); if (document.getElementById(t)) show(t); });
+load();
 </script>
 </body>
 </html>

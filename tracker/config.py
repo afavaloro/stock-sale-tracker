@@ -8,12 +8,22 @@ REQUIRE_POSITIVE_FCF = True    # 4. profitable (EPS > 0) and positive free cash 
 
 COOLDOWN_DAYS = 90             # buy any one stock at most once per 90 days
 
-# --- Benchmarks (ETFs that track the key indexes) ----------------------------
-BENCHMARKS = {
-    "SPY": "S&P 500",
-    "QQQ": "Nasdaq-100",
-    "DIA": "Dow Jones",
+# --- Markets ----------------------------------------------------------------------
+# Each market has its own stock list, benchmark funds (ETFs, so dividends are included)
+# and output folder. The first benchmark is the market's main index: it's what Strategy
+# A watches for crash mode. All rules and dollar amounts are the same in every market,
+# in that market's currency.
+MARKETS = {
+    "us": {
+        "name": "S&P 500", "currency": "US$", "dir": "",
+        "benchmarks": {"SPY": "S&P 500", "QQQ": "Nasdaq-100", "DIA": "Dow Jones"},
+    },
+    "asx": {
+        "name": "ASX 200", "currency": "A$", "dir": "asx",
+        "benchmarks": {"STW.AX": "ASX 200", "SFY.AX": "ASX 50", "ISO.AX": "Small Ords"},
+    },
 }
+BENCHMARKS = MARKETS["us"]["benchmarks"]   # kept for older code paths
 
 # --- Strategy A: choosy, $100k budget, profits recycled ----------------------
 # A only ever spends its starting cash plus money from sales (profits included).

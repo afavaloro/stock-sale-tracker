@@ -31,7 +31,7 @@ def _week(day: str) -> str:
 
 def _book(start: float, bench_prices: dict) -> dict:
     return {"start": start, "cash": start, "positions": {},
-            "bench_shares": {b: start / bench_prices[b] for b in C.BENCHMARKS}}
+            "bench_shares": {b: start / p for b, p in bench_prices.items()}}
 
 
 def new_state(start_day: str, bench_prices: dict) -> dict:
@@ -74,9 +74,9 @@ def process_day(state: dict, day: str, prices: dict, signals: list[str],
                 names: dict | None = None, market_drop: float = 0.0) -> list[dict]:
     """Advance the simulation by one trading day. Returns the trades made today.
 
-    signals: every stock on sale today (B buys these).
+    signals: every stock on sale today, biggest discount first (B buys in this order).
     a_candidates: the on-sale stocks that also pass A's extra checks, best first.
-    market_drop: how far SPY is below its 52-week high (0.25 = 25%).
+    market_drop: how far the market's main index fund is below its 52-week high (0.25 = 25%).
     """
     names = names or {}
     a_candidates = a_candidates or []
@@ -109,8 +109,9 @@ def process_day(state: dict, day: str, prices: dict, signals: list[str],
         if reason:
             _sell(A, "fixed", t, pos, p, day, reason, held, names, today)
 
-    # 2. Strategy B buys every new signal (respecting the cooldown) while cash lasts
-    for t in sorted(signals):
+    # 2. Strategy B buys every new signal (respecting the cooldown) while cash lasts,
+    #    biggest discounts first
+    for t in signals:
         p = px(t)
         last = state["last_signal"].get(t)
         if p is None or (last and (_d(day) - _d(last)).days < C.COOLDOWN_DAYS):

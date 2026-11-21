@@ -13,6 +13,7 @@ import requests
 SP500_CSV = ("https://raw.githubusercontent.com/datasets/"
              "s-and-p-500-companies/main/data/constituents.csv")
 SP500_WIKI = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
+ASX200_WIKI = "https://en.wikipedia.org/wiki/S%26P/ASX_200"
 HEADERS = {"User-Agent": "Mozilla/5.0 (stock-sale-tracker)"}
 
 
@@ -35,6 +36,24 @@ def get_sp500() -> pd.DataFrame:
                                 "GICS Sector": "sector"})
     df["ticker"] = df["ticker"].map(yahoo_symbol)
     return df[["ticker", "name", "sector"]].drop_duplicates("ticker").reset_index(drop=True)
+
+
+def get_asx200() -> pd.DataFrame:
+    """ASX 200 members from Wikipedia. Returns columns: ticker (Yahoo style, e.g. BHP.AX), name, sector."""
+    r = requests.get(ASX200_WIKI, headers=HEADERS, timeout=30)
+    r.raise_for_status()
+    tables = pd.read_html(io.StringIO(r.text))
+    df = next(t for t in tables if {"Code", "Company", "Sector"} <= set(map(str, t.columns)))
+    df = df.rename(columns={"Code": "ticker", "Company": "name", "Sector": "sector"})
+    df["ticker"] = df["ticker"].astype(str).str.strip().str.upper() + ".AX"
+    df["sector"] = df["sector"].replace({"Healthcare": "Health Care"})
+    if len(df) < 150:
+        raise RuntimeError(f"ASX 200 list looks wrong: only {len(df)} rows")
+    return df[["ticker", "name", "sector"]].drop_duplicates("ticker").reset_index(drop=True)
+
+
+def get_universe(market: str) -> pd.DataFrame:
+    return get_asx200() if market == "asx" else get_sp500()
 
 
 def get_prices(tickers: list[str], period: str = "2y") -> pd.DataFrame:

@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: data-update
+  group: data-update-us
   cancel-in-progress: false
 
 jobs:

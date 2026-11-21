@@ -1,9 +1,12 @@
-"""Daily job: scan the S&P 500, update both simulated portfolios, write the app's data.
+"""Daily job: scan a market (S&P 500 or ASX 200), update both simulated portfolios,
+write the app's data.
 
-Run with:  python -m tracker.run_daily
+Run with:  python -m tracker.run_daily            (S&P 500)
+           python -m tracker.run_daily --market asx
 """
 from __future__ import annotations
 
+import argparse
 import json
 import os
 from datetime import datetime, timezone
@@ -13,12 +16,19 @@ from . import config as C
 from . import data, portfolio, signals
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "docs" / "data"
-CACHE = ROOT / "cache"
 
 
-def build(universe, prices, fundamentals_fn, state_path: Path, out_dir: Path):
+def paths(market: str):
+    d = C.MARKETS[market]["dir"]
+    out, cache = ROOT / "docs" / "data", ROOT / "cache"
+    return (out / d, cache / d) if d else (out, cache)
+
+
+def build(universe, prices, fundamentals_fn, state_path: Path, out_dir: Path, market: str = "us"):
     """Core of the daily run. Data comes in as arguments so it can be tested offline."""
+    M = C.MARKETS[market]
+    BENCH = M["benchmarks"]
+    main_bench = next(iter(BENCH))
     out_dir.mkdir(parents=True, exist_ok=True)
     tickers = list(universe["ticker"])
     # Skip stocks with no price on the latest day, so nothing is judged on a stale price
@@ -37,24 +47,21 @@ def build(universe, prices, fundamentals_fn, state_path: Path, out_dir: Path):
     near = sorted([r for r in results if r["score"] == 3], key=lambda r: -r["drop_pct"])
     names = dict(zip(universe["ticker"], universe["name"]))
 
-    bench = signals.price_metrics(prices[[b for b in C.BENCHMARKS if b in prices.columns]])
+    bench = signals.price_metrics(prices[[b for b in BENCH if b in prices.columns]])
 
     # Portfolio
     last = prices.iloc[-1]
     today_prices = {t: float(v) for t, v in last.items() if v == v}
-    if state_path.exists():
-        state = json.loads(state_path.read_text())
-    else:
-        state = portfolio.new_state(as_of, {b: today_prices[b] for b in C.BENCHMARKS})
-    if state.get("version") != 2:          # older format: start the simulation over
-        state = portfolio.new_state(as_of, {b: today_prices[b] for b in C.BENCHMARKS})
+    state = json.loads(state_path.read_text()) if state_path.exists() else {}
+    if state.get("version") != 2:          # new, or older format: start the simulation
+        state = portfolio.new_state(as_of, {b: today_prices[b] for b in BENCH})
     already = bool(state["history"]) and state["history"][-1]["date"] == as_of
     prev_signal_dates = dict(state["last_signal"])
     a_candidates = [r["ticker"] for r in on_sale if r["a_pick"]]   # already deepest-drop first
     trades = portfolio.process_day(state, as_of, today_prices,
                                    [] if already else [r["ticker"] for r in on_sale],
                                    [] if already else a_candidates, names,
-                                   market_drop=float(bench.loc["SPY", "drop"]) if "SPY" in bench.index else 0.0)
+                                   market_drop=float(bench.loc[main_bench, "drop"]) if main_bench in bench.index else 0.0)
     a_buys = {t["ticker"] for t in trades if t["action"] == "buy" and t["strategy"] == "fixed"}
     state_path.write_text(json.dumps(state))
 
@@ -65,6 +72,7 @@ def build(universe, prices, fundamentals_fn, state_path: Path, out_dir: Path):
 
     latest = {
         "as_of": as_of,
+        "market": market, "market_name": M["name"], "currency": M["currency"],
         "generated": datetime.now(timezone.utc).isoformat(timespec="minutes"),
         "universe_size": len(results),
         "rules": {
@@ -90,7 +98,7 @@ def build(universe, prices, fundamentals_fn, state_path: Path, out_dir: Path):
         "benchmarks": {b: {"name": n, "price": round(today_prices.get(b, 0), 2),
                            "drop_pct": round(float(bench.loc[b, "drop"]) * 100, 1)
                            if b in bench.index else None}
-                       for b, n in C.BENCHMARKS.items()},
+                       for b, n in BENCH.items()},
     }
     (out_dir / "latest.json").write_text(json.dumps(latest, indent=1))
     pf = {"summary": portfolio.summary(state), "history": portfolio.public_history(state),
@@ -100,26 +108,31 @@ def build(universe, prices, fundamentals_fn, state_path: Path, out_dir: Path):
 
 
 def main():
-    CACHE.mkdir(exist_ok=True)
-    universe = data.get_sp500()
-    print(f"universe: {len(universe)} stocks")
-    prices = data.get_prices(list(universe["ticker"]) + list(C.BENCHMARKS), period="2y")
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--market", choices=list(C.MARKETS), default="us")
+    market = ap.parse_args().market
+    M = C.MARKETS[market]
+    OUT, CACHE = paths(market)
+    CACHE.mkdir(parents=True, exist_ok=True)
+    universe = data.get_universe(market)
+    print(f"{M['name']} universe: {len(universe)} stocks")
+    prices = data.get_prices(list(universe["ticker"]) + list(M["benchmarks"]), period="2y")
     print(f"prices: {prices.shape[1]} tickers through {prices.index[-1].date()}")
 
     def fundamentals_fn(tickers, force):
         return data.get_fundamentals(tickers, CACHE / "fundamentals.json",
                                      C.FUNDAMENTALS_MAX_AGE_DAYS, force)
 
-    latest, trades = build(universe, prices, fundamentals_fn, CACHE / "portfolio_state.json", OUT)
+    latest, trades = build(universe, prices, fundamentals_fn, CACHE / "portfolio_state.json", OUT, market)
     print(f"on sale: {len(latest['on_sale'])}, near misses: {len(latest['near_misses'])}, "
           f"trades today: {len(trades)}")
 
     new = [r for r in latest["on_sale"] if r["new_today"]]
     if new:
-        lines = [f"{r['ticker']} {r['name']}: ${r['price']} ({r['drop_pct']}% off high, P/E {r['pe']})"
+        lines = [f"{r['ticker']} {r['name']}: {M['currency']}{r['price']} ({r['drop_pct']}% off high, P/E {r['pe']})"
                  + (" · bought by A" if r["a_bought_today"] else "") for r in new[:10]]
         data.notify(os.environ.get("NTFY_TOPIC"),
-                    f"{len(new)} S&P 500 stock{'s' if len(new) > 1 else ''} on sale",
+                    f"{len(new)} {M['name']} stock{'s' if len(new) > 1 else ''} on sale",
                     "\n".join(lines), os.environ.get("APP_URL"))
 
 

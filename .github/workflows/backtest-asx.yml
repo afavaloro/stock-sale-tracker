@@ -1,0 +1,37 @@
+name: Backtest (ASX)
+
+on:
+  workflow_dispatch: {}
+  push:                    # re-run automatically when the bot's code changes
+    branches: [main]
+    paths: ["tracker/**"]
+  schedule:
+    - cron: "30 15 * * 6"  # refresh every Saturday morning (Pacific)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-update-asx
+  cancel-in-progress: false
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python -m tracker.backtest --market asx
+      - name: Save results
+        run: |
+          git config user.name "sale-tracker-bot"
+          git config user.email "sale-tracker-bot@users.noreply.github.com"
+          git add docs/data
+          git diff --cached --quiet || git commit -m "Backtest ASX $(date -u +%F)"
+          git pull --rebase --autostash
+          git push

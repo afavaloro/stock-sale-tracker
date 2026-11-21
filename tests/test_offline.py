@@ -99,6 +99,12 @@ assert not signals.recovery_check(10, 9, {**good, "debt_to_equity": 350})
 assert not signals.recovery_check(10, 9, {**good, "revenue_growth": None})
 assert signals.recovery_check(10, 9, {**good, "current_ratio": None, "debt_to_equity": None}), "banks"
 
+# B buys in the order given (biggest discount first), not alphabetically
+st = portfolio.new_state("2026-01-05", {b: 100.0 for b in C.BENCHMARKS})
+st["rules"]["cash"] = C.START_BALANCE * C.POSITION_PCT        # room for one buy
+tr = portfolio.process_day(st, "2026-01-05", {b: 100.0 for b in C.BENCHMARKS} | {"ZZZ": 5.0, "AAA": 5.0}, ["ZZZ", "AAA"])
+assert [t["ticker"] for t in tr if t["strategy"] == "rules"] == ["ZZZ"], tr
+
 # buy size grows with the account; crash mode raises the weekly limit
 st = portfolio.new_state("2026-01-05", {b: 100.0 for b in C.BENCHMARKS})
 st["fixed"]["cash"] = 200_000.0
@@ -122,6 +128,21 @@ for t in bt["recent_trades"]:
     if t.get("reason") == "take profit" and t["strategy"] == "rules":
         assert t["pnl_pct"] >= C.TAKE_PROFIT * 100 - 0.01
 (tmp / "out" / "backtest.json").write_text(json.dumps(bt))
+
+# Same pipeline for the ASX: same prices, ASX tickers and benchmark funds
+asx_b = list(C.MARKETS["asx"]["benchmarks"])
+ren = {t: t + ".AX" for t in uni.ticker} | dict(zip(["SPY", "QQQ", "DIA"], asx_b))
+p_asx = prices.rename(columns=ren)
+u_asx = uni.assign(ticker=uni.ticker + ".AX")
+f_asx = {t + ".AX": v for t, v in fund.items()}
+la, ta = run_daily.build(u_asx, p_asx, lambda t, f: f_asx, tmp / "asx_state.json", tmp / "out" / "asx", "asx")
+assert la["market"] == "asx" and set(la["benchmarks"]) == set(asx_b)
+assert la["on_sale"] and all(r["ticker"].endswith(".AX") for r in la["on_sale"])
+check_books(json.loads((tmp / "asx_state.json").read_text()))
+bta = backtest.run(p_asx, dict(zip(u_asx.ticker, u_asx.name)), "asx")
+assert bta["summary"]["fixed"]["return_pct"] == bt["summary"]["fixed"]["return_pct"], "ASX run should match US on same prices"
+(tmp / "out" / "asx" / "backtest.json").write_text(json.dumps(bta))
+print("ASX:", len(la["on_sale"]), "on sale,", la["a_picks"], "A picks; backtest A", bta["summary"]["fixed"]["return_pct"])
 out = Path(__file__).resolve().parent.parent / "sample_data"
 shutil.rmtree(out, ignore_errors=True); shutil.copytree(tmp / "out", out)
 print("ALL CHECKS PASSED ->", out)
