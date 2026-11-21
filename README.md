@@ -29,6 +29,10 @@ All four checks must pass at the same time:
 
 Any one stock is bought at most once every 90 days. You can change every number in [`tracker/config.py`](tracker/config.py).
 
+## How the On sale list is ranked
+
+By **estimated chance of profit**. The weekly backtest looks at every time a stock went on sale (on price) over the past 10 years and checks whether buying it would have made money with Strategy A's sell rules. A simple model (`tracker/model.py`) learns which price patterns made that more likely: how far it fell, how far below its 200-day average, how much it has bounced, its 50-day trend, how jumpy it is, and how far the whole market has fallen. It's tested on the most recent 3 years it never saw, and the app shows that result under "How reliable is this?". It only sets the order; the four checks still decide what's on sale, and the strategies buy by their own rules.
+
 ## The two simulated strategies
 
 - **A · Choosy:** $100,000 in cash, and it only ever spends that plus money from its sales (so profits are reinvested). Each buy is 2.5% of A's current value ($2,500 at the start, growing as the account grows), at most 5 new buys a week, or 10 a week while the S&P 500 itself is 20%+ below its high. Biggest discounts first. On top of the four checks, a stock must have **stopped falling** (at least 5% above its lowest close of the past 20 trading days). A stock that has **collapsed** (60%+ below its high) must also pass a **recovery check**: price back above its 50-day average, sales not shrinking more than 10% a year, a positive operating margin, a current ratio of at least 1, and debt no more than 2× equity. A holding is sold at +25%, at −20%, or after 2 years.

@@ -129,6 +129,27 @@ for t in bt["recent_trades"]:
         assert t["pnl_pct"] >= C.TAKE_PROFIT * 100 - 0.01
 (tmp / "out" / "backtest.json").write_text(json.dumps(bt))
 
+# Chance-of-profit model: train on the synthetic history, then rank today's list
+from tracker import model
+stocks = list(uni.ticker)
+m = model.train(prices, signals.price_checks_vectorized(prices[stocks]), prices["SPY"])
+assert m and m["events"] >= 200 and len(m["coef"]) == len(model.FEATURES), m and m["events"]
+assert m["test"] is None or 0 <= m["test"]["auc"] <= 1
+p_ = model.predict(m, np.zeros((3, len(model.FEATURES))))
+assert ((p_ > 0) & (p_ < 1)).all()
+# the outcome rule: +25% first = profit, -20% first = loss, neither after 2 years = sign of return
+assert model._outcome(np.array([1.0, 1.3, 0.5]), 1.0) == 1
+assert model._outcome(np.array([1.0, 0.75, 2.0]), 1.0) == 0
+assert model._outcome(np.ones(model.HOLD_TRADING_DAYS) * 1.05, 1.0) == 1
+assert model._outcome(np.array([1.05]), 1.0) is None
+(tmp / "out" / "model.json").write_text(json.dumps(m))
+ranked, _ = run_daily.build(uni, prices, lambda t, f: fund, tmp / "state.json", tmp / "out")
+wc = [r["win_chance"] for r in ranked["on_sale"]]
+assert all(w is not None and 0 <= w <= 100 for w in wc) and wc == sorted(wc, reverse=True), wc
+assert ranked["ranking"]["by"] == "chance of profit"
+assert {r["ticker"] for r in ranked["on_sale"]} == {r["ticker"] for r in latest["on_sale"]}
+print("model:", m["events"], "events, base", m["base_rate_pct"], "%, test", m["test"], "| ranked", wc)
+
 # Same pipeline for the ASX: same prices, ASX tickers and benchmark funds
 asx_b = list(C.MARKETS["asx"]["benchmarks"])
 ren = {t: t + ".AX" for t in uni.ticker} | dict(zip(["SPY", "QQQ", "DIA"], asx_b))

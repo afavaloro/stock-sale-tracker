@@ -22,6 +22,7 @@ def price_metrics(prices: pd.DataFrame) -> pd.DataFrame:
                      "drop": 1 - price / high, "sma200": sma,
                      "low20": float(s.iloc[-C.A_BOUNCE_DAYS:].min()),
                      "sma50": float(s.iloc[-C.RECOVERY_SMA_DAYS:].mean()),
+                     "volatility": float(s.pct_change().iloc[-63:].std() * 252 ** 0.5),
                      "as_of": s.index[-1].date().isoformat()})
     return pd.DataFrame(rows).set_index("ticker")
 

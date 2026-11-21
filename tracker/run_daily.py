@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from . import config as C
-from . import data, portfolio, signals
+from . import data, model, portfolio, signals
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -45,9 +45,20 @@ def build(universe, prices, fundamentals_fn, state_path: Path, out_dir: Path, ma
     results = signals.evaluate(metrics, universe, fundamentals)
     on_sale = sorted([r for r in results if r["score"] == 4], key=lambda r: -r["drop_pct"])
     near = sorted([r for r in results if r["score"] == 3], key=lambda r: -r["drop_pct"])
+    a_candidates = [r["ticker"] for r in on_sale if r["a_pick"]]   # A buys deepest drop first
     names = dict(zip(universe["ticker"], universe["name"]))
 
     bench = signals.price_metrics(prices[[b for b in BENCH if b in prices.columns]])
+    market_drop = float(bench.loc[main_bench, "drop"]) if main_bench in bench.index else 0.0
+
+    # Rank by estimated chance of profit, if the backtest has trained a model
+    model_path = out_dir / "model.json"
+    pm = json.loads(model_path.read_text()) if model_path.exists() else None
+    if pm:
+        for r in on_sale + near:
+            x = model.live_features(metrics.loc[r["ticker"]].to_dict(), market_drop)
+            r["win_chance"] = round(float(model.predict(pm, x)[0]) * 100) if all(v == v for v in x) else None
+        on_sale.sort(key=lambda r: (-(r.get("win_chance") or 0), -r["drop_pct"]))
 
     # Portfolio
     last = prices.iloc[-1]
@@ -57,11 +68,10 @@ def build(universe, prices, fundamentals_fn, state_path: Path, out_dir: Path, ma
         state = portfolio.new_state(as_of, {b: today_prices[b] for b in BENCH})
     already = bool(state["history"]) and state["history"][-1]["date"] == as_of
     prev_signal_dates = dict(state["last_signal"])
-    a_candidates = [r["ticker"] for r in on_sale if r["a_pick"]]   # already deepest-drop first
     trades = portfolio.process_day(state, as_of, today_prices,
                                    [] if already else [r["ticker"] for r in on_sale],
                                    [] if already else a_candidates, names,
-                                   market_drop=float(bench.loc[main_bench, "drop"]) if main_bench in bench.index else 0.0)
+                                   market_drop=market_drop)
     a_buys = {t["ticker"] for t in trades if t["action"] == "buy" and t["strategy"] == "fixed"}
     state_path.write_text(json.dumps(state))
 
@@ -93,6 +103,10 @@ def build(universe, prices, fundamentals_fn, state_path: Path, out_dir: Path, ma
         "counts": {k: sum(1 for r in results if r["checks"][k]) for k in
                    ("drop", "below_sma", "cheap", "quality")},
         "a_picks": len(a_candidates),
+        "ranking": ({"by": "chance of profit", "base_rate_pct": pm["base_rate_pct"], "test": pm["test"],
+                     "rules": pm["rules"], "events": pm["events"], "trained_to": pm["trained_to"],
+                     "labels": pm["labels"], "features": pm["features"], "coef": pm["coef"]}
+                    if pm else {"by": "drop from high"}),
         "on_sale": on_sale,
         "near_misses": near[:C.NEAR_MISS_LIMIT],
         "benchmarks": {b: {"name": n, "price": round(today_prices.get(b, 0), 2),

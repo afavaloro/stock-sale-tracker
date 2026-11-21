@@ -17,7 +17,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from . import config as C
-from . import data, portfolio, signals
+from . import data, model, portfolio, signals
 
 from .run_daily import paths
 
@@ -81,6 +81,15 @@ def main():
     prices = data.get_prices(list(universe["ticker"]) + list(M["benchmarks"]),
                              period=f"{C.BACKTEST_YEARS + 1}y")
     result = run(prices, dict(zip(universe["ticker"], universe["name"])), market)
+
+    # Chance-of-profit model for ranking the On sale list (see tracker/model.py)
+    stocks = [c for c in prices.columns if c not in M["benchmarks"]]
+    m = model.train(prices, signals.price_checks_vectorized(prices[stocks]),
+                    prices[next(iter(M["benchmarks"]))])
+    OUT.mkdir(parents=True, exist_ok=True)
+    if m:
+        (OUT / "model.json").write_text(json.dumps(m, indent=1))
+        print("model:", m["events"], "events, base rate", m["base_rate_pct"], "% · test", m["test"])
     # Keep the app light: list at most 100 open holdings per strategy
     for k in ("fixed", "rules"):
         result["summary"][k]["positions"] = result["summary"][k]["positions"][:100]

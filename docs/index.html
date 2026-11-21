@@ -216,7 +216,7 @@ function stockCard(r, opts = {}) {
   const aChips = r.a_checks ? `<div class="chips"><span class="small muted" style="align-self:center">Strategy A:</span>${chip(a.bounce, `Bounced ${R.a_bounce_pct ?? 5}%+ off ${R.a_bounce_days ?? 20}-day low`)}${"recovery" in a ? chip(a.recovery, "Business can recover") : ""}</div>` : "";
   return `<div class="card">
     <div class="row"><div style="min-width:0"><span class="tk">${esc(sym(r.ticker))}</span>${r.new_today ? '<span class="badge">NEW</span>' : ""}${r.a_pick ? `<span class="badge a">${r.a_bought_today ? "A BOUGHT" : "A PICK"}</span>` : ""}<div class="nm">${esc(r.name)} · ${esc(r.sector)}</div></div>
-      <div style="text-align:right"><div class="px">${money(r.price, 2)}</div><div class="small down num">${pct(-r.drop_pct)} from high</div></div></div>
+      <div style="text-align:right"><div class="px">${money(r.price, 2)}</div><div class="small down num">${pct(-r.drop_pct)} from high</div>${r.win_chance != null ? `<div class="small num" style="font-weight:600;color:${r.win_chance >= (DATA.latest?.ranking?.base_rate_pct ?? 50) ? "var(--up)" : "var(--ink-2)"}">${r.win_chance}% chance of profit</div>` : ""}</div></div>
     <div class="small muted num" style="margin-top:6px">52-wk high ${money(r.high52, 2)} · 200-day avg ${money(r.sma200, 2)} · P/E ${r.pe ?? "—"} vs sector ${r.sector_pe ?? "—"}</div>
     ${opts.chips ? `<div class="chips">${chips}</div>` : ""}${opts.a ? aChips : ""}</div>`;
 }
@@ -224,6 +224,11 @@ function renderSale(L) {
   const b = L.benchmarks || {};
   let h = `<div class="stats" style="grid-template-columns:repeat(3,1fr)">${BENCH.map(([t, n]) => `<div class="stat"><div class="l">${n}</div><div class="v" style="font-size:16px">${money(b[t]?.price, 2)}</div><div style="font-size:11.5px" class=" ${cls(-(b[t]?.drop_pct || 0))} num">${b[t]?.drop_pct ? pct(-b[t].drop_pct) + " off high" : "At its high"}</div></div>`).join("")}</div>`;
   h += `<h2>On sale today · ${L.on_sale.length}${L.a_picks != null ? ` · ${L.a_picks} pass A's extra checks` : ""}</h2>`;
+  const K = L.ranking || {};
+  if (K.by === "chance of profit") {
+    const t = K.test;
+    h += `<div class="note">Sorted by <b>estimated chance of profit</b>: how often stocks in a similar price pattern made money under Strategy A's sell rules (${esc(K.rules)}), based on ${Number(K.events).toLocaleString()} past sales. On average ${K.base_rate_pct}% did.${t ? ` <details><summary>How reliable is this?</summary><p class="small" style="margin:6px 0 0">Tested on ${t.events} sales from ${fmtDate(t.from)} to ${fmtDate(t.to)} that the model never saw: the top third it picked made money ${t.top_third_pct}% of the time, the bottom third ${t.bottom_third_pct}% (average ${t.base_rate_pct}%). Uses price patterns only, since past company financials aren't available. A guide, not a guarantee.</p></details>` : ""}</div>`;
+  } else if (L.on_sale.length) h += `<div class="note small">Sorted by biggest drop from the 52-week high. The chance-of-profit ranking appears after the next backtest.</div>`;
   h += L.on_sale.length ? L.on_sale.map(r => stockCard(r, {a: true})).join("")
     : `<div class="card empty">No ${esc(M.name)} stock passes all four checks today.<br><span class="small muted">That's normal. The rules are strict on purpose.</span></div>`;
   h += `<h2>Almost on sale · 3 of 4 checks</h2>`;
@@ -312,6 +317,12 @@ function renderRules(R) {
     <li><b>If it has collapsed</b> (${R.collapse_pct}%+ below its high), it must pass a recovery check: price back above its ${R.recovery_sma_days}-day average, sales not shrinking more than ${Math.abs(R.recovery_min_revenue_growth_pct)}% a year, a positive operating margin, enough short-term assets to cover a year of bills, and debt no more than ${R.recovery_max_debt_to_equity_pct / 100}× equity.</li></ol>
     <p>Sell when a holding is up ${R.a_take_profit_pct}%, down ${R.a_stop_loss_pct}%, or after ${R.a_max_hold_days} days.</p>
     <p style="margin-bottom:0"><b>B · Buys every sale:</b> start with ${money(R.start_balance)} cash. Buy every stock that goes on sale, ${R.position_pct}% of the starting balance each, while cash lasts. Sell when a holding is up ${R.take_profit_pct}% or after ${R.max_hold_days} days. Compared with ${money(R.start_balance)} put into each index on day one.</p></div>
+    <h2>How the On sale list is ranked</h2><div class="card small">${(() => { const K = DATA.latest?.ranking || {};
+      if (K.by !== "chance of profit") return `<p style="margin:0">By biggest drop from the 52-week high, until the backtest has trained the chance-of-profit model.</p>`;
+      const rows = K.features.map((f, i) => [K.labels[f], K.coef[i]]).sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]));
+      return `<p style="margin-top:0">By <b>estimated chance of profit</b>. The weekly backtest looks at every time a stock went on sale (on price) in the past ${DATA.backtest?.years ?? 10} years and checks whether buying it would have made money with Strategy A's sell rules (${esc(K.rules)}). A simple model learns which price patterns made profit more or less likely:</p>
+      <table class="vs">${rows.map(([n, c]) => `<tr><td>${esc(n)}</td><td class="${Math.abs(c) > 0.05 ? cls(c) : "muted"}">${c > 0.05 ? "Higher → more likely" : c < -0.05 ? "Higher → less likely" : "Little effect"}</td></tr>`).join("")}</table>
+      <p style="margin-bottom:0">It can't see company financials from the past, so it only judges price patterns. The four checks still decide what's on sale; this only sets the order.</p>`; })()}</div>
     <h2>Good to know</h2><div class="card small">
     <p style="margin-top:0">Prices come from Yahoo Finance and include dividends. The scan runs every weekday after the market closes. Simulated trades use that day's closing price, with no fees or taxes. Cash in either strategy earns no interest. Both strategies are compared with putting their starting balance into each index on day one.</p>
     <p style="margin-bottom:0">This is a learning tool, not financial advice. A cheap stock can keep getting cheaper.</p></div>
