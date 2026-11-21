@@ -5,6 +5,9 @@ on:
     # 22:20 UTC on weekdays = 2:20 PM Pacific / 5:20 PM Eastern (after the close)
     - cron: "20 22 * * 1-5"
   workflow_dispatch: {}
+  push:                    # re-run automatically when the bot's code changes
+    branches: [main]
+    paths: ["tracker/**"]
 
 permissions:
   contents: write

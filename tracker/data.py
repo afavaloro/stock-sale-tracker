@@ -65,6 +65,10 @@ def _fetch_one_fundamental(ticker: str) -> dict:
     return {
         "eps": info.get("trailingEps"),
         "fcf": info.get("freeCashflow"),
+        "revenue_growth": info.get("revenueGrowth"),
+        "operating_margin": info.get("operatingMargins"),
+        "current_ratio": info.get("currentRatio"),
+        "debt_to_equity": info.get("debtToEquity"),
         "name": info.get("shortName"),
         "fetched": date.today().isoformat(),
     }

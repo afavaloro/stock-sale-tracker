@@ -22,9 +22,12 @@ for b, drift in [("SPY", .0004), ("QQQ", .0005), ("DIA", .0003)]:
     cols[b] = 400 * np.exp(np.cumsum(rng.normal(drift, .01, DAYS)))
 prices = pd.DataFrame(cols, index=idx)
 fund = {t: {"eps": float(rng.uniform(-1, 4)), "fcf": float(rng.uniform(-1e8, 5e9)),
+            "revenue_growth": float(rng.uniform(-.2, .2)), "operating_margin": float(rng.uniform(-.05, .3)),
+            "current_ratio": float(rng.uniform(.6, 2.5)), "debt_to_equity": float(rng.uniform(20, 300)),
             "fetched": "2026-11-20"} for t in uni.ticker}
 for t in uni.ticker[::5]:              # crashed stocks: profitable and cheap
-    fund[t] = {"eps": float(prices[t].iloc[-1] / 6), "fcf": 1e9, "fetched": "2026-11-20"}
+    fund[t] = {"eps": float(prices[t].iloc[-1] / 6), "fcf": 1e9, "revenue_growth": .05,
+               "operating_margin": .15, "current_ratio": 1.5, "debt_to_equity": 80, "fetched": "2026-11-20"}
 
 tmp = Path(tempfile.mkdtemp())
 # Simulate 30 consecutive daily runs, then re-run the last day (must not double-buy)
@@ -36,30 +39,76 @@ assert trades2 == [] or all(t["action"] != "buy" for t in trades2), "re-run boug
 
 state = json.loads((tmp / "state.json").read_text())
 assert len(state["history"]) == 30, len(state["history"])
-# cooldown: no ticker bought twice within 90 days by the fixed strategy
+# cooldown: no ticker bought twice within 90 days by either strategy (30 days simulated)
 buys = {}
 for t in state["trades"]:
-    if t["strategy"] == "fixed":
-        assert t["ticker"] not in buys, "cooldown broken"
-        buys[t["ticker"]] = t["date"]
-# accounting: rules cash + positions == value
-h = state["history"][-1]; lp = state["last_price"]
-val = state["rules"]["cash"] + sum(p["shares"] * lp[t] for t, p in state["rules"]["positions"].items())
-assert abs(val - h["rules_value"]) < 0.05
-assert abs(h["fixed_invested"] - C.FIXED_AMOUNT * len(state["fixed"]["lots"])) < 0.01
+    if t["action"] == "buy":
+        key = t["strategy"] + ":" + t["ticker"]
+        assert key not in buys, "cooldown broken"
+        buys[key] = t["date"]
+
+
+def check_books(state):
+    """Cash + holdings == value, cash never negative, A never spends more than it has."""
+    h = state["history"][-1]; lp = state["last_price"]
+    for k, start in (("rules", C.START_BALANCE), ("fixed", C.A_START_BALANCE)):
+        book = state[k]
+        val = book["cash"] + sum(p["shares"] * lp[t] for t, p in book["positions"].items())
+        assert abs(val - h[f"{k}_value"]) < 0.05, k
+        assert book["cash"] >= -0.01, k
+        # money in = start + all sale proceeds; money out = all buys
+        tr = [t for t in state["trades"] if t["strategy"] == k]
+        spent = sum(t["amount"] for t in tr if t["action"] == "buy")
+        got = sum(t["amount"] for t in tr if t["action"] == "sell")
+        assert spent <= start + got + 0.05, f"{k} spent more than its cash"
+    a = [t for t in state["trades"] if t["strategy"] == "fixed"]
+    weeks = {}
+    for t in a:
+        if t["action"] == "buy":
+            assert abs(t["amount"] - C.A_POSITION) < 0.01 or t["amount"] >= C.A_MIN_POSITION
+            wk = portfolio._week(t["date"]); weeks[wk] = weeks.get(wk, 0) + 1
+            assert weeks[wk] <= C.A_MAX_BUYS_PER_WEEK, "weekly limit broken"
+        elif t["reason"] == "stop loss":
+            assert t["pnl_pct"] <= -C.A_STOP_LOSS * 100 + 0.01
+        elif t["reason"] == "take profit":
+            assert t["pnl_pct"] >= C.A_TAKE_PROFIT * 100 - 0.01
+
+
+check_books(state)
 for r in latest["on_sale"]:
     assert all(r["checks"].values())
-print("on sale:", [r["ticker"] for r in latest["on_sale"]], "near:", len(latest["near_misses"]))
-print("fixed lots:", len(state["fixed"]["lots"]), "rules positions:", len(state["rules"]["positions"]))
+    if r["a_pick"]:
+        assert r["a_checks"]["bounce"]
+        if r["drop_pct"] >= C.COLLAPSE_DROP * 100:
+            assert r["a_checks"]["recovery"]
+# A's live buys must all be A picks
+picks = {r["ticker"] for r in latest["on_sale"] if r["a_pick"]}
+assert all(t["ticker"] in picks for t in trades if t["strategy"] == "fixed" and t["action"] == "buy")
+print("on sale:", [r["ticker"] for r in latest["on_sale"]], "A picks:", sorted(picks), "near:", len(latest["near_misses"]))
+print("A holdings:", len(state["fixed"]["positions"]), "B holdings:", len(state["rules"]["positions"]))
 print(json.dumps(portfolio.summary(state)["fixed"]["bench"]))
+
+# recovery check on its own
+from tracker import signals
+good = {"revenue_growth": .02, "operating_margin": .1, "current_ratio": 1.2, "debt_to_equity": 90}
+assert signals.recovery_check(10, 9, good)
+assert not signals.recovery_check(10, 11, good), "must be back above 50-day average"
+assert not signals.recovery_check(10, 9, {**good, "revenue_growth": -.3})
+assert not signals.recovery_check(10, 9, {**good, "operating_margin": -.01})
+assert not signals.recovery_check(10, 9, {**good, "debt_to_equity": 350})
+assert not signals.recovery_check(10, 9, {**good, "revenue_growth": None})
+assert signals.recovery_check(10, 9, {**good, "current_ratio": None, "debt_to_equity": None}), "banks"
 
 bt = backtest.run(prices, dict(zip(uni.ticker, uni.name)))
 s = bt["summary"]
-print("backtest fixed", s["fixed"]["return_pct"], "signals", s["fixed"]["signals"],
-      "| rules", s["rules"]["return_pct"], "closed", s["rules"]["closed_count"], "win", s["rules"]["win_rate"])
-# take-profit sells must be >= +25%
+print("backtest A", s["fixed"]["return_pct"], "buys", s["fixed"]["buys"], "closed", s["fixed"]["closed_count"],
+      "| B", s["rules"]["return_pct"], "buys", s["rules"]["buys"], "closed", s["rules"]["closed_count"],
+      "win", s["rules"]["win_rate"])
+print("by year", bt["by_year"])
+assert s["fixed"]["buys"] > 0 and s["fixed"]["closed_count"] > 0, "A never traded in the backtest"
+assert s["fixed"]["buys"] < s["rules"]["buys"] * 3
 for t in bt["recent_trades"]:
-    if t.get("reason") == "take profit":
+    if t.get("reason") == "take profit" and t["strategy"] == "rules":
         assert t["pnl_pct"] >= C.TAKE_PROFIT * 100 - 0.01
 (tmp / "out" / "backtest.json").write_text(json.dumps(bt))
 out = Path(__file__).resolve().parent.parent / "sample_data"

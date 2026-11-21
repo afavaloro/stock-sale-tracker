@@ -2,6 +2,9 @@ name: Backtest
 
 on:
   workflow_dispatch: {}
+  push:                    # re-run automatically when the bot's code changes
+    branches: [main]
+    paths: ["tracker/**"]
   schedule:
     - cron: "0 15 * * 6"   # refresh every Saturday morning
 

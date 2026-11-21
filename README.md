@@ -19,8 +19,10 @@ Any one stock is bought at most once every 90 days. You can change every number 
 
 ## The two simulated strategies
 
-- **A · Fixed dollars:** $1,000 into every stock that goes on sale. The same $1,000 also goes into SPY, QQQ and DIA on the same day, for comparison.
-- **B · Starting balance:** $100,000 in cash. Each buy is $5,000. A holding is sold when it's up 25% or after 2 years. It's compared with $100,000 put into each index on day one.
+- **A · Choosy:** $100,000 in cash, and it only ever spends that plus money from its sales (so profits are reinvested). Each buy is $2,500, at most 5 new buys a week, biggest discounts first. On top of the four checks, a stock must have **stopped falling** (at least 5% above its lowest close of the past 20 trading days). A stock that has **collapsed** (60%+ below its high) must also pass a **recovery check**: price back above its 50-day average, sales not shrinking more than 10% a year, a positive operating margin, a current ratio of at least 1, and debt no more than 2× equity. A holding is sold at +25%, at −20%, or after 2 years.
+- **B · Buys every sale:** $100,000 in cash. Each buy is $5,000, on every stock that goes on sale while cash lasts. A holding is sold when it's up 25% or after 2 years.
+
+Both are compared with putting $100,000 into each index on day one.
 
 ## One-time setup (about 10 minutes, all doable on a phone)
 
@@ -41,9 +43,10 @@ You'll then get an alert whenever a stock newly goes on sale.
 ## Good to know
 
 - **Data source:** Yahoo Finance, through the free `yfinance` library. Prices are adjusted for splits and dividends, so the comparisons include dividends. Yahoo occasionally rate-limits; if a run fails, run it again from the Actions tab.
-- **The backtest is less strict than the live bot.** Free data has no history of company financials, so the backtest uses only checks 1 and 2. It also uses today's S&P 500 members, which makes past results look somewhat better than they really were.
+- **The backtest is less strict than the live bot.** Free data has no history of company financials, so the backtest uses only checks 1 and 2, plus Strategy A's price-based checks (the bounce, and the 50-day average part of the recovery check). It also uses today's S&P 500 members, which makes past results look somewhat better than they really were.
 - **GitHub pauses scheduled jobs in repositories with no activity for 60 days.** The bot's daily commits normally count as activity. If the scans ever stop, open **Actions** and re-enable the workflow.
 - **To start the simulation over,** delete `cache/portfolio_state.json` and run the daily scan.
+- **Changing the bot's code re-runs it.** Any change under `tracker/` (including `config.py`) automatically re-runs the daily scan and the backtest, so the app reflects the new rules about 15 minutes later.
 
 ## Files
 

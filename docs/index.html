@@ -61,6 +61,7 @@ h2:first-child { margin-top: 4px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 .chip { font-size: 12px; padding: 3px 8px; border-radius: 999px; background: var(--chip-no); color: var(--ink-2); }
 .chip.ok { background: var(--chip-ok); color: var(--up); }
+.badge.a { background: var(--s3); }
 .badge { font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 6px; background: var(--accent); color: #fff; vertical-align: 2px; margin-left: 6px; }
 .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; }
@@ -197,18 +198,21 @@ window.addEventListener("resize", () => { clearTimeout(window._rz); window._rz =
 
 // ---------- On sale ----------
 function stockCard(r, opts = {}) {
-  const chips = CHECKS.map(([k, label]) => `<span class="chip ${r.checks[k] ? "ok" : ""}">${r.checks[k] ? "✓" : "✗"} ${label}</span>`).join("");
+  const chip = (ok, label) => `<span class="chip ${ok ? "ok" : ""}">${ok ? "✓" : "✗"} ${label}</span>`;
+  const chips = CHECKS.map(([k, label]) => chip(r.checks[k], label)).join("");
+  const R = DATA.latest?.rules || {}, a = r.a_checks || {};
+  const aChips = r.a_checks ? `<div class="chips"><span class="small muted" style="align-self:center">Strategy A:</span>${chip(a.bounce, `Bounced ${R.a_bounce_pct ?? 5}%+ off ${R.a_bounce_days ?? 20}-day low`)}${"recovery" in a ? chip(a.recovery, "Business can recover") : ""}</div>` : "";
   return `<div class="card">
-    <div class="row"><div style="min-width:0"><span class="tk">${esc(r.ticker)}</span>${r.new_today ? '<span class="badge">NEW</span>' : ""}<div class="nm">${esc(r.name)} · ${esc(r.sector)}</div></div>
+    <div class="row"><div style="min-width:0"><span class="tk">${esc(r.ticker)}</span>${r.new_today ? '<span class="badge">NEW</span>' : ""}${r.a_pick ? `<span class="badge a">${r.a_bought_today ? "A BOUGHT" : "A PICK"}</span>` : ""}<div class="nm">${esc(r.name)} · ${esc(r.sector)}</div></div>
       <div style="text-align:right"><div class="px">${money(r.price, 2)}</div><div class="small down num">${pct(-r.drop_pct)} from high</div></div></div>
     <div class="small muted num" style="margin-top:6px">52-wk high ${money(r.high52, 2)} · 200-day avg ${money(r.sma200, 2)} · P/E ${r.pe ?? "—"} vs sector ${r.sector_pe ?? "—"}</div>
-    ${opts.chips ? `<div class="chips">${chips}</div>` : ""}</div>`;
+    ${opts.chips ? `<div class="chips">${chips}</div>` : ""}${opts.a ? aChips : ""}</div>`;
 }
 function renderSale(L) {
   const b = L.benchmarks || {};
   let h = `<div class="stats" style="grid-template-columns:repeat(3,1fr)">${BENCH.map(([t, n]) => `<div class="stat"><div class="l">${n}</div><div class="v" style="font-size:16px">${money(b[t]?.price, 2)}</div><div style="font-size:11.5px" class=" ${cls(-(b[t]?.drop_pct || 0))} num">${b[t]?.drop_pct ? pct(-b[t].drop_pct) + " off high" : "At its high"}</div></div>`).join("")}</div>`;
-  h += `<h2>On sale today · ${L.on_sale.length}</h2>`;
-  h += L.on_sale.length ? L.on_sale.map(r => stockCard(r)).join("")
+  h += `<h2>On sale today · ${L.on_sale.length}${L.a_picks != null ? ` · ${L.a_picks} pass A's extra checks` : ""}</h2>`;
+  h += L.on_sale.length ? L.on_sale.map(r => stockCard(r, {a: true})).join("")
     : `<div class="card empty">No S&amp;P 500 stock passes all four checks today.<br><span class="small muted">That's normal. The rules are strict on purpose.</span></div>`;
   h += `<h2>Almost on sale · 3 of 4 checks</h2>`;
   h += L.near_misses.length ? L.near_misses.map(r => stockCard(r, {chips: true})).join("") : `<div class="card empty small">None today.</div>`;
@@ -222,41 +226,38 @@ function compareTable(s, startLabel) {
   const rows = [["Sale strategy", s.value, s.return_pct, "--s1"], ...BENCH.map(([t, n, c]) => [`${n} (${t})`, s.bench[t].value, s.bench[t].return_pct, c])];
   return `<table class="vs"><tr><th>${startLabel}</th><th>Value</th><th>Return</th></tr>${rows.map(([n, v, p, c]) => `<tr><td><i class="sw" style="background:var(${c})"></i>${esc(n)}</td><td>${money(v)}</td><td class="${cls(p)}">${pct(p, 2)}</td></tr>`).join("")}</table>`;
 }
-function seriesFrom(hist, kind) {
+function seriesFrom(hist, kind, start) {
   const dates = hist.map(h => h.date);
-  if (kind === "fixed") {
-    const inv = hist.map(h => h.fixed_invested);
-    const r = vals => vals.map((v, i) => inv[i] ? (v / inv[i] - 1) * 100 : null);
-    return {dates, series: [
-      {name: "Sale strategy", short: "Sales", color: "--s1", main: true, values: r(hist.map(h => h.fixed_value)), dollars: hist.map(h => h.fixed_value)},
-      ...BENCH.map(([t, n, c]) => ({name: `Same $ in ${t}`, short: t, color: c, values: r(hist.map(h => h.fixed_bench[t])), dollars: hist.map(h => h.fixed_bench[t])}))]};
-  }
-  const start = DATA.latest?.rules?.start_balance || 100000;
-  const r = vals => vals.map(v => (v / start - 1) * 100);
+  const r = vals => vals.map(v => v == null ? null : (v / start - 1) * 100);
   return {dates, series: [
-    {name: "Sale strategy", short: "Sales", color: "--s1", main: true, values: r(hist.map(h => h.rules_value)), dollars: hist.map(h => h.rules_value)},
-    ...BENCH.map(([t, n, c]) => ({name: `${t} buy & hold`, short: t, color: c, values: r(hist.map(h => h.rules_bench[t])), dollars: hist.map(h => h.rules_bench[t])}))]};
+    {name: "Sale strategy", short: "Sales", color: "--s1", main: true, values: r(hist.map(h => h[kind + "_value"])), dollars: hist.map(h => h[kind + "_value"])},
+    ...BENCH.map(([t, n, c]) => ({name: `${t} buy & hold`, short: t, color: c, values: r(hist.map(h => h[kind + "_bench"]?.[t])), dollars: hist.map(h => h[kind + "_bench"]?.[t])}))]};
+}
+function bookBlock(b, kind, title) {
+  let h = `<h2>${title}</h2>`;
+  h += `<div class="stats"><div class="stat"><div class="l">Value now</div><div class="v ${cls(b.return_pct)}">${money(b.value)}</div><div class="small ${cls(b.return_pct)} num">${pct(b.return_pct, 2)}</div></div><div class="stat"><div class="l">Cash · ${b.positions.length} holdings</div><div class="v">${money(b.cash)}</div><div class="small muted">${b.buys ?? 0} bought · ${b.closed_count} sold${b.win_rate != null ? ` · ${b.win_rate}% at a profit` : ""}</div></div></div>`;
+  h += `<div class="card" style="margin-top:10px">${compareTable(b, `${money(b.start)} on day one`)}<div class="${kind}chart" style="margin-top:14px"></div></div>`;
+  return h;
+}
+function holdings(b, label) {
+  if (!b.positions.length) return "";
+  return `<details><summary>${label} holdings · ${b.positions.length}</summary><div class="card" style="margin-top:8px">${b.positions.slice(0, 100).map(p => `<div class="trade"><div><b>${esc(p.ticker)}</b> <span class="small muted">bought ${fmtDate(p.date)} at ${money(p.buy, 2)}</span></div><div class="num ${cls(p.pct)}">${pct(p.pct)}</div><div class="small muted">now ${money(p.now, 2)}</div><div class="small muted num">${money(p.value)}</div></div>`).join("")}</div></details>`;
 }
 function renderPortfolio(el, P, title) {
   const S = P.summary, R = DATA.latest?.rules || {};
   if (!S || !S.fixed) { el.innerHTML = `<div class="card empty">No data yet.</div>`; return; }
+  if (S.fixed.start == null) { el.innerHTML = (title ? `<div class="note">${title}</div>` : "") + `<div class="card empty">Updating to the new rules.<br><span class="small muted">The bot is re-running with the new Strategy A. Check back in about 15 minutes.</span></div>`; return; }
   const fx = S.fixed, ru = S.rules;
   let h = title ? `<div class="note">${title}</div>` : "";
-  h += `<h2>A · ${money(R.fixed_amount || 1000)} every time a stock goes on sale</h2>`;
-  if (fx.signals) {
-    h += `<div class="stats"><div class="stat"><div class="l">Invested · ${fx.signals} buys</div><div class="v">${money(fx.invested)}</div></div><div class="stat"><div class="l">Worth now</div><div class="v ${cls(fx.return_pct)}">${money(fx.value)}</div><div class="small ${cls(fx.return_pct)} num">${pct(fx.return_pct, 2)}</div></div></div>`;
-    h += `<div class="card" style="margin-top:10px">${compareTable(fx, "Same dollars, same days")}<div class="fixedchart" style="margin-top:14px"></div></div>`;
-  } else h += `<div class="card empty small">No buys yet. Strategy A starts investing the first time a stock passes all four checks.</div>`;
-  h += `<h2>B · ${money(ru.start)} start, buy on sale, sell at +${R.take_profit_pct ?? 25}% or after ${Math.round((R.max_hold_days ?? 730) / 365)} yrs</h2>`;
-  h += `<div class="stats"><div class="stat"><div class="l">Value now</div><div class="v ${cls(ru.return_pct)}">${money(ru.value)}</div><div class="small ${cls(ru.return_pct)} num">${pct(ru.return_pct, 2)}</div></div><div class="stat"><div class="l">Cash · ${ru.positions.length} holdings</div><div class="v">${money(ru.cash)}</div><div class="small muted">${ru.closed_count} sold${ru.win_rate != null ? ` · ${ru.win_rate}% at a profit` : ""}</div></div></div>`;
-  h += `<div class="card" style="margin-top:10px">${compareTable(ru, `${money(ru.start)} on ${fmtDate(S.start_date)}`)}<div class="ruleschart" style="margin-top:14px"></div></div>`;
-  if (ru.positions.length) {
-    h += `<h2>Strategy B holdings</h2><div class="card">${ru.positions.slice(0, 60).map(p => `<div class="trade"><div><b>${esc(p.ticker)}</b> <span class="small muted">bought ${fmtDate(p.date)} at ${money(p.buy, 2)}</span></div><div class="num ${cls(p.pct)}">${pct(p.pct)}</div><div class="small muted">now ${money(p.now, 2)}</div><div class="small muted num">${money(p.value)}</div></div>`).join("")}</div>`;
-  }
+  h += bookBlock(fx, "fixed", `A · ${money(fx.start)}, ${money(R.a_position ?? 2500)} per pick · sell +${R.a_take_profit_pct ?? 25}% / −${R.a_stop_loss_pct ?? 20}% / ${Math.round((R.a_max_hold_days ?? 730) / 365)} yrs`);
+  h += holdings(fx, "Strategy A");
+  h += bookBlock(ru, "rules", `B · ${money(ru.start)}, buys every sale · sell +${R.take_profit_pct ?? 25}% / ${Math.round((R.max_hold_days ?? 730) / 365)} yrs`);
+  h += holdings(ru, "Strategy B");
   el.innerHTML = h;
   const hist = P.history || [];
-  if (fx.signals) { const firstBuy = hist.findIndex(x => x.fixed_invested > 0); const f = seriesFrom(hist.slice(Math.max(0, firstBuy)), "fixed"); lineChart($(".fixedchart", el), f.dates, f.series, {label: "Strategy A return vs indexes", dollars: true}); }
-  const r = seriesFrom(hist, "rules"); lineChart($(".ruleschart", el), r.dates, r.series, {label: "Strategy B return vs indexes", dollars: true});
+  [["fixed", fx, "Strategy A"], ["rules", ru, "Strategy B"]].forEach(([k, b, n]) => {
+    const f = seriesFrom(hist, k, b.start); lineChart($(`.${k}chart`, el), f.dates, f.series, {label: `${n} return vs indexes`, dollars: true});
+  });
 }
 
 // ---------- Trades ----------
@@ -279,9 +280,10 @@ function renderTrades() {
 function renderBacktest() {
   const B = DATA.backtest, el = $("#bt");
   if (!B) { el.innerHTML = `<div class="card empty">The backtest hasn't been run yet.<br><span class="small muted">On GitHub, open Actions → "Backtest" → Run workflow. It takes about 10 minutes.</span></div>`; return; }
-  const years = Object.entries(B.signals_by_year || {}).map(([y, n]) => `${y}: ${n}`).join(" · ");
+  const by = Object.entries(B.by_year || {});
+  const years = by.length ? `<table class="vs"><tr><th>Year</th><th>On-sale signals</th><th>A bought</th><th>B bought</th></tr>${by.map(([y, n]) => `<tr><td>${y}</td><td>${n.signals}</td><td>${n.A}</td><td>${n.B}</td></tr>`).join("")}</table>` : "";
   renderPortfolio(el, B, `<b>${B.years}-year backtest</b> (${fmtDate(B.summary.start_date)} – ${fmtDate(B.summary.as_of)}). ${esc(B.note)} Past results don't guarantee future returns.`);
-  el.insertAdjacentHTML("beforeend", `<h2>Signals per year</h2><div class="card small num">${years || "—"}</div>`);
+  if (years) el.insertAdjacentHTML("beforeend", `<h2>Buys per year</h2><div class="card small">${years}</div>`);
 }
 
 // ---------- Rules ----------
@@ -293,10 +295,13 @@ function renderRules(R) {
     <li><b>A healthy business:</b> profitable (positive earnings) with positive free cash flow, to avoid "falling knives."</li></ol>
     <p class="small muted" style="margin-bottom:0">A stock can be bought at most once every ${R.cooldown_days} days, even if it stays on sale.</p></div>
     <h2>The two simulated strategies</h2><div class="card">
-    <p style="margin-top:0"><b>A · Fixed dollars:</b> invest ${money(R.fixed_amount)} each time a stock goes on sale, and compare it with putting the same ${money(R.fixed_amount)} into SPY, QQQ and DIA on the same day.</p>
-    <p style="margin-bottom:0"><b>B · Starting balance:</b> start with ${money(R.start_balance)} cash. Each buy is ${R.position_pct}% of the starting balance while cash lasts. Sell when a holding is up ${R.take_profit_pct}% or after ${R.max_hold_days} days. Compared with ${money(R.start_balance)} put into each index on day one.</p></div>
+    <p style="margin-top:0"><b>A · Choosy:</b> start with ${money(R.a_start_balance)} cash and only ever spend that plus money from sales (so profits get reinvested). Each buy is ${money(R.a_position)}, at most ${R.a_max_buys_per_week} new buys a week, biggest discounts first. A stock must pass all four checks <i>and</i>:</p>
+    <ol class="rules"><li><b>Has stopped falling:</b> at least ${R.a_bounce_pct}% above its lowest close of the past ${R.a_bounce_days} trading days.</li>
+    <li><b>If it has collapsed</b> (${R.collapse_pct}%+ below its high), it must pass a recovery check: price back above its ${R.recovery_sma_days}-day average, sales not shrinking more than ${Math.abs(R.recovery_min_revenue_growth_pct)}% a year, a positive operating margin, enough short-term assets to cover a year of bills, and debt no more than ${R.recovery_max_debt_to_equity_pct / 100}× equity.</li></ol>
+    <p>Sell when a holding is up ${R.a_take_profit_pct}%, down ${R.a_stop_loss_pct}%, or after ${R.a_max_hold_days} days.</p>
+    <p style="margin-bottom:0"><b>B · Buys every sale:</b> start with ${money(R.start_balance)} cash. Buy every stock that goes on sale, ${R.position_pct}% of the starting balance each, while cash lasts. Sell when a holding is up ${R.take_profit_pct}% or after ${R.max_hold_days} days. Compared with ${money(R.start_balance)} put into each index on day one.</p></div>
     <h2>Good to know</h2><div class="card small">
-    <p style="margin-top:0">Prices come from Yahoo Finance and include dividends. The scan runs every weekday after the market closes. Simulated trades use that day's closing price, with no fees or taxes. Cash in strategy B earns no interest.</p>
+    <p style="margin-top:0">Prices come from Yahoo Finance and include dividends. The scan runs every weekday after the market closes. Simulated trades use that day's closing price, with no fees or taxes. Cash in either strategy earns no interest. Both strategies are compared with putting their starting balance into each index on day one.</p>
     <p style="margin-bottom:0">This is a learning tool, not financial advice. A cheap stock can keep getting cheaper.</p></div>
     <p class="small muted">Change the rules in <code>tracker/config.py</code> on GitHub.</p>`;
 }

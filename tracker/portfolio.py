@@ -1,10 +1,16 @@
 """Simulated investing. The same engine runs the live daily portfolio and the backtest.
 
-Strategy A ("fixed"): every time a stock goes on sale, invest FIXED_AMOUNT in it and,
-  for comparison, the same amount in each benchmark ETF on the same day.
-Strategy B ("rules"): start with START_BALANCE in cash. Buy POSITION_PCT of the starting
-  balance on each signal while cash lasts. Sell at +TAKE_PROFIT or after MAX_HOLD_DAYS.
-  Compared with putting START_BALANCE into each benchmark on the start date.
+Both strategies start with cash, buy with it, and put the money from every sale (profit
+or loss) back into cash. Neither ever gets new money from outside.
+
+Strategy A ("fixed"): A_START_BALANCE, A_POSITION per buy. Only buys stocks that also
+  pass A's extra checks (bounced off the low, recovery check for collapsed stocks),
+  at most A_MAX_BUYS_PER_WEEK a week, deepest discounts first.
+  Sells at +A_TAKE_PROFIT, -A_STOP_LOSS, or after A_MAX_HOLD_DAYS.
+Strategy B ("rules"): START_BALANCE, POSITION_PCT of it per buy, buys every on-sale
+  signal while cash lasts. Sells at +TAKE_PROFIT or after MAX_HOLD_DAYS.
+
+Each is compared with putting its starting balance into each benchmark on day one.
 """
 from __future__ import annotations
 
@@ -17,90 +23,131 @@ def _d(s: str) -> date:
     return date.fromisoformat(s)
 
 
+def _week(day: str) -> str:
+    y, w, _ = _d(day).isocalendar()
+    return f"{y}-W{w:02d}"
+
+
+def _book(start: float, bench_prices: dict) -> dict:
+    return {"start": start, "cash": start, "positions": {},
+            "bench_shares": {b: start / bench_prices[b] for b in C.BENCHMARKS}}
+
+
 def new_state(start_day: str, bench_prices: dict) -> dict:
+    fixed = _book(C.A_START_BALANCE, bench_prices)
+    fixed.update({"last_buy": {}, "week": None, "week_buys": 0})
     return {
+        "version": 2,
         "start_date": start_day,
-        "fixed": {"lots": []},
-        "rules": {
-            "cash": C.START_BALANCE,
-            "positions": {},
-            "bench_shares": {b: C.START_BALANCE / bench_prices[b] for b in C.BENCHMARKS},
-        },
-        "last_signal": {},
+        "fixed": fixed,
+        "rules": _book(C.START_BALANCE, bench_prices),
+        "last_signal": {},          # B's cooldown: last day each ticker went on sale
         "last_price": {},
         "trades": [],
         "history": [],
     }
 
 
+def _sell(book, strategy, t, pos, p, day, reason, held, names, today):
+    gain = p / pos["price"] - 1
+    proceeds = pos["shares"] * p
+    book["cash"] += proceeds
+    del book["positions"][t]
+    today.append({"date": day, "ticker": t, "name": names.get(t, t),
+                  "strategy": strategy, "action": "sell", "reason": reason,
+                  "price": round(p, 2), "amount": round(proceeds, 2),
+                  "pnl": round(proceeds - pos["cost"], 2),
+                  "pnl_pct": round(gain * 100, 1), "held_days": held})
+
+
+def _buy(book, strategy, t, p, size, day, names, today):
+    book["cash"] -= size
+    book["positions"][t] = {"date": day, "price": p, "shares": size / p, "cost": size}
+    today.append({"date": day, "ticker": t, "name": names.get(t, t),
+                  "strategy": strategy, "action": "buy", "price": round(p, 2),
+                  "amount": round(size, 2)})
+
+
 def process_day(state: dict, day: str, prices: dict, signals: list[str],
+                a_candidates: list[str] | None = None,
                 names: dict | None = None) -> list[dict]:
-    """Advance the simulation by one trading day. Returns the trades made today."""
+    """Advance the simulation by one trading day. Returns the trades made today.
+
+    signals: every stock on sale today (B buys these).
+    a_candidates: the on-sale stocks that also pass A's extra checks, best first.
+    """
     names = names or {}
+    a_candidates = a_candidates or []
     lp = state["last_price"]
     for t, p in prices.items():
         if p is not None and p == p and p > 0:
             lp[t] = float(p)
     px = lambda t: lp.get(t)                         # noqa: E731
     today = []
+    A, B = state["fixed"], state["rules"]
 
-    # 1. Strategy B sells
-    rules = state["rules"]
-    for t, pos in list(rules["positions"].items()):
+    # 1. Sells (first, so the cash can be reused today)
+    for t, pos in list(B["positions"].items()):
         p = px(t)
         if p is None:
             continue
-        gain = p / pos["price"] - 1
-        held = (_d(day) - _d(pos["date"])).days
+        gain, held = p / pos["price"] - 1, (_d(day) - _d(pos["date"])).days
         reason = ("take profit" if gain >= C.TAKE_PROFIT else
                   "max hold" if held >= C.MAX_HOLD_DAYS else None)
         if reason:
-            proceeds = pos["shares"] * p
-            rules["cash"] += proceeds
-            del rules["positions"][t]
-            today.append({"date": day, "ticker": t, "name": names.get(t, t),
-                          "strategy": "rules", "action": "sell", "reason": reason,
-                          "price": round(p, 2), "amount": round(proceeds, 2),
-                          "pnl": round(proceeds - pos["cost"], 2),
-                          "pnl_pct": round(gain * 100, 1), "held_days": held})
+            _sell(B, "rules", t, pos, p, day, reason, held, names, today)
+    for t, pos in list(A["positions"].items()):
+        p = px(t)
+        if p is None:
+            continue
+        gain, held = p / pos["price"] - 1, (_d(day) - _d(pos["date"])).days
+        reason = ("take profit" if gain >= C.A_TAKE_PROFIT else
+                  "stop loss" if gain <= -C.A_STOP_LOSS else
+                  "max hold" if held >= C.A_MAX_HOLD_DAYS else None)
+        if reason:
+            _sell(A, "fixed", t, pos, p, day, reason, held, names, today)
 
-    # 2. Buys on new signals (respecting the cooldown)
+    # 2. Strategy B buys every new signal (respecting the cooldown) while cash lasts
     for t in sorted(signals):
         p = px(t)
         last = state["last_signal"].get(t)
         if p is None or (last and (_d(day) - _d(last)).days < C.COOLDOWN_DAYS):
             continue
         state["last_signal"][t] = day
+        size = min(C.START_BALANCE * C.POSITION_PCT, B["cash"])
+        if t not in B["positions"] and size >= C.MIN_POSITION:
+            _buy(B, "rules", t, p, size, day, names, today)
 
-        lot = {"ticker": t, "date": day, "price": p, "shares": C.FIXED_AMOUNT / p,
-               "cost": C.FIXED_AMOUNT,
-               "bench_shares": {b: C.FIXED_AMOUNT / px(b) for b in C.BENCHMARKS}}
-        state["fixed"]["lots"].append(lot)
-        today.append({"date": day, "ticker": t, "name": names.get(t, t),
-                      "strategy": "fixed", "action": "buy", "price": round(p, 2),
-                      "amount": C.FIXED_AMOUNT})
-
-        size = min(C.START_BALANCE * C.POSITION_PCT, rules["cash"])
-        if t not in rules["positions"] and size >= C.MIN_POSITION:
-            rules["cash"] -= size
-            rules["positions"][t] = {"date": day, "price": p, "shares": size / p, "cost": size}
-            today.append({"date": day, "ticker": t, "name": names.get(t, t),
-                          "strategy": "rules", "action": "buy", "price": round(p, 2),
-                          "amount": round(size, 2)})
+    # 3. Strategy A buys its best candidates, up to the weekly limit
+    wk = _week(day)
+    if A["week"] != wk:
+        A["week"], A["week_buys"] = wk, 0
+    for t in a_candidates:
+        if A["week_buys"] >= C.A_MAX_BUYS_PER_WEEK:
+            break
+        p = px(t)
+        last = A["last_buy"].get(t)
+        if p is None or t in A["positions"] or (last and (_d(day) - _d(last)).days < C.COOLDOWN_DAYS):
+            continue
+        size = min(C.A_POSITION, A["cash"])
+        if size < C.A_MIN_POSITION:
+            break
+        _buy(A, "fixed", t, p, size, day, names, today)
+        A["last_buy"][t] = day
+        A["week_buys"] += 1
 
     state["trades"].extend(today)
 
-    # 3. Daily snapshot
-    lots = state["fixed"]["lots"]
+    # 4. Daily snapshot
+    def value(book):
+        return round(book["cash"] + sum(pos["shares"] * (px(t) or pos["price"])
+                                        for t, pos in book["positions"].items()), 2)
     snap = {
         "date": day,
-        "fixed_invested": round(sum(l["cost"] for l in lots), 2),
-        "fixed_value": round(sum(l["shares"] * (px(l["ticker"]) or l["price"]) for l in lots), 2),
-        "fixed_bench": {b: round(sum(l["bench_shares"][b] for l in lots) * px(b), 2)
-                        for b in C.BENCHMARKS},
-        "rules_value": round(rules["cash"] + sum(
-            pos["shares"] * (px(t) or pos["price"]) for t, pos in rules["positions"].items()), 2),
-        "rules_bench": {b: round(s * px(b), 2) for b, s in rules["bench_shares"].items()},
+        "fixed_value": value(A),
+        "fixed_bench": {b: round(s * px(b), 2) for b, s in A["bench_shares"].items()},
+        "rules_value": value(B),
+        "rules_bench": {b: round(s * px(b), 2) for b, s in B["bench_shares"].items()},
     }
     hist = state["history"]
     if hist and hist[-1]["date"] == day:
@@ -110,43 +157,37 @@ def process_day(state: dict, day: str, prices: dict, signals: list[str],
     return today
 
 
+def _book_summary(state: dict, key: str, value: float, bench: dict) -> dict:
+    book, lp = state[key], state["last_price"]
+    start = book["start"]
+    pct = lambda v, base: round((v / base - 1) * 100, 2) if base else 0.0   # noqa: E731
+    positions = [{
+        "ticker": t, "date": p["date"], "buy": round(p["price"], 2),
+        "now": round(lp.get(t, p["price"]), 2), "value": round(p["shares"] * lp.get(t, p["price"]), 2),
+        "pct": pct(lp.get(t, p["price"]), p["price"]),
+    } for t, p in book["positions"].items()]
+    trades = [t for t in state["trades"] if t["strategy"] == key]
+    closed = [t for t in trades if t["action"] == "sell"]
+    return {
+        "start": start, "value": value, "cash": round(book["cash"], 2),
+        "return_pct": pct(value, start),
+        "bench": {b: {"value": v, "return_pct": pct(v, start)} for b, v in bench.items()},
+        "positions": sorted(positions, key=lambda x: x["date"], reverse=True),
+        "buys": sum(1 for t in trades if t["action"] == "buy"),
+        "closed_count": len(closed),
+        "win_rate": round(100 * sum(1 for t in closed if t["pnl"] > 0) / len(closed), 1) if closed else None,
+    }
+
+
 def summary(state: dict) -> dict:
     """Headline numbers for the app."""
     if not state["history"]:
         return {}
     h = state["history"][-1]
-    pct = lambda v, base: round((v / base - 1) * 100, 2) if base else 0.0   # noqa: E731
-    inv = h["fixed_invested"]
-    lp = state["last_price"]
-    open_lots = [{
-        "ticker": l["ticker"], "date": l["date"], "buy": round(l["price"], 2),
-        "now": round(lp.get(l["ticker"], l["price"]), 2),
-        "pct": pct(lp.get(l["ticker"], l["price"]), l["price"]),
-    } for l in state["fixed"]["lots"]]
-    positions = [{
-        "ticker": t, "date": p["date"], "buy": round(p["price"], 2),
-        "now": round(lp.get(t, p["price"]), 2), "value": round(p["shares"] * lp.get(t, p["price"]), 2),
-        "pct": pct(lp.get(t, p["price"]), p["price"]),
-    } for t, p in state["rules"]["positions"].items()]
-    closed = [t for t in state["trades"] if t["strategy"] == "rules" and t["action"] == "sell"]
     return {
         "as_of": h["date"], "start_date": state["start_date"],
-        "fixed": {
-            "invested": inv, "value": h["fixed_value"], "return_pct": pct(h["fixed_value"], inv),
-            "signals": len(state["fixed"]["lots"]),
-            "bench": {b: {"value": v, "return_pct": pct(v, inv)} for b, v in h["fixed_bench"].items()},
-            "lots": sorted(open_lots, key=lambda x: x["date"], reverse=True),
-        },
-        "rules": {
-            "start": C.START_BALANCE, "value": h["rules_value"],
-            "cash": round(state["rules"]["cash"], 2),
-            "return_pct": pct(h["rules_value"], C.START_BALANCE),
-            "bench": {b: {"value": v, "return_pct": pct(v, C.START_BALANCE)}
-                      for b, v in h["rules_bench"].items()},
-            "positions": sorted(positions, key=lambda x: x["date"], reverse=True),
-            "closed_count": len(closed),
-            "win_rate": round(100 * sum(1 for t in closed if t["pnl"] > 0) / len(closed), 1) if closed else None,
-        },
+        "fixed": _book_summary(state, "fixed", h["fixed_value"], h["fixed_bench"]),
+        "rules": _book_summary(state, "rules", h["rules_value"], h["rules_bench"]),
     }
 
 

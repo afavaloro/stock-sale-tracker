@@ -21,7 +21,10 @@ def build(universe, prices, fundamentals_fn, state_path: Path, out_dir: Path):
     """Core of the daily run. Data comes in as arguments so it can be tested offline."""
     out_dir.mkdir(parents=True, exist_ok=True)
     tickers = list(universe["ticker"])
-    metrics = signals.price_metrics(prices[[t for t in tickers if t in prices.columns]])
+    # Skip stocks with no price on the latest day, so nothing is judged on a stale price
+    last_row = prices.iloc[-1]
+    tickers = [t for t in tickers if t in prices.columns and last_row.get(t) == last_row.get(t)]
+    metrics = signals.price_metrics(prices[tickers])
     as_of = prices.index[-1].date().isoformat()
 
     # Only stocks that already passed the price checks need fresh financials today
@@ -43,17 +46,21 @@ def build(universe, prices, fundamentals_fn, state_path: Path, out_dir: Path):
         state = json.loads(state_path.read_text())
     else:
         state = portfolio.new_state(as_of, {b: today_prices[b] for b in C.BENCHMARKS})
+    if state.get("version") != 2:          # older format: start the simulation over
+        state = portfolio.new_state(as_of, {b: today_prices[b] for b in C.BENCHMARKS})
     already = bool(state["history"]) and state["history"][-1]["date"] == as_of
-    before = set(state["last_signal"])
     prev_signal_dates = dict(state["last_signal"])
+    a_candidates = [r["ticker"] for r in on_sale if r["a_pick"]]   # already deepest-drop first
     trades = portfolio.process_day(state, as_of, today_prices,
-                                   [] if already else [r["ticker"] for r in on_sale], names)
-    new_buys = [t["ticker"] for t in trades if t["action"] == "buy" and t["strategy"] == "fixed"]
+                                   [] if already else [r["ticker"] for r in on_sale],
+                                   [] if already else a_candidates, names)
+    a_buys = {t["ticker"] for t in trades if t["action"] == "buy" and t["strategy"] == "fixed"}
     state_path.write_text(json.dumps(state))
 
     for r in on_sale:
-        r["new_today"] = r["ticker"] in new_buys
-        r["last_signal"] = prev_signal_dates.get(r["ticker"]) if r["ticker"] in before else None
+        r["new_today"] = state["last_signal"].get(r["ticker"]) == as_of
+        r["last_signal"] = prev_signal_dates.get(r["ticker"])
+        r["a_bought_today"] = r["ticker"] in a_buys
 
     latest = {
         "as_of": as_of,
@@ -62,12 +69,20 @@ def build(universe, prices, fundamentals_fn, state_path: Path, out_dir: Path):
         "rules": {
             "min_drop_pct": C.MIN_DROP_FROM_HIGH * 100, "sma_days": C.SMA_DAYS,
             "pe_discount_pct": C.PE_DISCOUNT_VS_SECTOR * 100, "cooldown_days": C.COOLDOWN_DAYS,
-            "fixed_amount": C.FIXED_AMOUNT, "start_balance": C.START_BALANCE,
+            "start_balance": C.START_BALANCE,
+            "a_start_balance": C.A_START_BALANCE, "a_position": C.A_POSITION,
+            "a_take_profit_pct": C.A_TAKE_PROFIT * 100, "a_stop_loss_pct": C.A_STOP_LOSS * 100,
+            "a_max_hold_days": C.A_MAX_HOLD_DAYS, "a_max_buys_per_week": C.A_MAX_BUYS_PER_WEEK,
+            "a_bounce_pct": C.A_BOUNCE_FROM_LOW * 100, "a_bounce_days": C.A_BOUNCE_DAYS,
+            "collapse_pct": C.COLLAPSE_DROP * 100, "recovery_sma_days": C.RECOVERY_SMA_DAYS,
+            "recovery_min_revenue_growth_pct": C.RECOVERY_MIN_REVENUE_GROWTH * 100,
+            "recovery_max_debt_to_equity_pct": C.RECOVERY_MAX_DEBT_TO_EQUITY,
             "position_pct": C.POSITION_PCT * 100, "take_profit_pct": C.TAKE_PROFIT * 100,
             "max_hold_days": C.MAX_HOLD_DAYS,
         },
         "counts": {k: sum(1 for r in results if r["checks"][k]) for k in
                    ("drop", "below_sma", "cheap", "quality")},
+        "a_picks": len(a_candidates),
         "on_sale": on_sale,
         "near_misses": near[:C.NEAR_MISS_LIMIT],
         "benchmarks": {b: {"name": n, "price": round(today_prices.get(b, 0), 2),
@@ -100,7 +115,7 @@ def main():
     new = [r for r in latest["on_sale"] if r["new_today"]]
     if new:
         lines = [f"{r['ticker']} {r['name']}: ${r['price']} ({r['drop_pct']}% off high, P/E {r['pe']})"
-                 for r in new[:10]]
+                 + (" · bought by A" if r["a_bought_today"] else "") for r in new[:10]]
         data.notify(os.environ.get("NTFY_TOPIC"),
                     f"{len(new)} S&P 500 stock{'s' if len(new) > 1 else ''} on sale",
                     "\n".join(lines), os.environ.get("APP_URL"))

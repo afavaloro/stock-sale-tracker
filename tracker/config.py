@@ -15,8 +15,28 @@ BENCHMARKS = {
     "DIA": "Dow Jones",
 }
 
-# --- Strategy A: fixed dollars per signal ------------------------------------
-FIXED_AMOUNT = 1_000.0         # invest $1,000 every time a stock goes on sale
+# --- Strategy A: choosy, $100k budget, profits recycled ----------------------
+# A only ever spends its starting cash plus money from sales (profits included).
+A_START_BALANCE = 100_000.0
+A_POSITION = 2_500.0           # each buy is $2,500 (up to ~40 holdings)
+A_MIN_POSITION = 1_000.0       # skip a buy if less cash than this is left
+A_TAKE_PROFIT = 0.25           # sell when a holding is up 25%
+A_STOP_LOSS = 0.20             # ...or down 20%
+A_MAX_HOLD_DAYS = 730          # ...or after 2 years, whichever comes first
+A_MAX_BUYS_PER_WEEK = 5        # at most 5 new buys a week, deepest discounts first
+
+# Extra checks a stock must pass (on top of the four above) before A buys it
+A_BOUNCE_DAYS = 20             # "stopped falling": price at least 5% above
+A_BOUNCE_FROM_LOW = 0.05       #   its lowest close of the past 20 trading days
+
+# Collapsed stocks (60%+ below their high) must also pass a recovery check:
+COLLAPSE_DROP = 0.60
+RECOVERY_SMA_DAYS = 50                 # price back above its 50-day average
+RECOVERY_MIN_REVENUE_GROWTH = -0.10    # sales not shrinking more than 10% a year
+RECOVERY_MIN_OPERATING_MARGIN = 0.0    # core business still makes money
+RECOVERY_MIN_CURRENT_RATIO = 1.0       # can cover its bills for the next year
+RECOVERY_MAX_DEBT_TO_EQUITY = 200.0    # debt at most 2x equity (Yahoo reports this in %)
+# (Current ratio and debt are skipped when Yahoo doesn't report them, e.g. for banks.)
 
 # --- Strategy B: starting balance with buy/sell rules ------------------------
 START_BALANCE = 100_000.0

@@ -20,6 +20,8 @@ def price_metrics(prices: pd.DataFrame) -> pd.DataFrame:
         sma = float(s.iloc[-C.SMA_DAYS:].mean())
         rows.append({"ticker": t, "price": price, "high52": high,
                      "drop": 1 - price / high, "sma200": sma,
+                     "low20": float(s.iloc[-C.A_BOUNCE_DAYS:].min()),
+                     "sma50": float(s.iloc[-C.RECOVERY_SMA_DAYS:].mean()),
                      "as_of": s.index[-1].date().isoformat()})
     return pd.DataFrame(rows).set_index("ticker")
 
@@ -29,6 +31,31 @@ def price_checks_vectorized(prices: pd.DataFrame) -> pd.DataFrame:
     high = prices.rolling(252, min_periods=200).max()
     sma = prices.rolling(C.SMA_DAYS, min_periods=C.SMA_DAYS).mean()
     return (prices <= high * (1 - C.MIN_DROP_FROM_HIGH)) & (prices < sma)
+
+
+def a_checks_vectorized(prices: pd.DataFrame):
+    """Strategy A's extra price checks for every day (used by the backtest).
+    Returns (passes, drop): passes = bounced off its 20-day low, and if collapsed,
+    back above its 50-day average. Historical financials aren't available, so the
+    backtest can't run the financial half of the recovery check."""
+    high = prices.rolling(252, min_periods=200).max()
+    low = prices.rolling(C.A_BOUNCE_DAYS, min_periods=C.A_BOUNCE_DAYS).min()
+    sma50 = prices.rolling(C.RECOVERY_SMA_DAYS, min_periods=C.RECOVERY_SMA_DAYS).mean()
+    drop = 1 - prices / high
+    bounce = prices >= low * (1 + C.A_BOUNCE_FROM_LOW)
+    recovery_ok = (drop < C.COLLAPSE_DROP) | (prices > sma50)
+    return bounce & recovery_ok, drop
+
+
+def recovery_check(price: float, sma50: float, f: dict) -> bool:
+    """For collapsed stocks: is the business in shape to recover?"""
+    rg, om = _num(f.get("revenue_growth")), _num(f.get("operating_margin"))
+    cr, de = _num(f.get("current_ratio")), _num(f.get("debt_to_equity"))
+    return bool(price > sma50
+                and rg is not None and rg >= C.RECOVERY_MIN_REVENUE_GROWTH
+                and om is not None and om > C.RECOVERY_MIN_OPERATING_MARGIN
+                and (cr is None or cr >= C.RECOVERY_MIN_CURRENT_RATIO)
+                and (de is None or de <= C.RECOVERY_MAX_DEBT_TO_EQUITY))
 
 
 def _num(x):
@@ -63,12 +90,18 @@ def evaluate(metrics: pd.DataFrame, universe: pd.DataFrame, fundamentals: dict) 
             "quality": bool((r["eps"] or 0) > 0 and
                             (fcf is not None and fcf > 0 or not C.REQUIRE_POSITIVE_FCF)),
         }
+        collapsed = r["drop"] >= C.COLLAPSE_DROP
+        a_checks = {"bounce": r["price"] >= r["low20"] * (1 + C.A_BOUNCE_FROM_LOW)}
+        if collapsed:
+            a_checks["recovery"] = recovery_check(r["price"], r["sma50"], f)
+        score = sum(checks.values())
         out.append({
             "ticker": t, "name": r["name"], "sector": r["sector"],
             "price": round(r["price"], 2), "high52": round(r["high52"], 2),
             "drop_pct": round(r["drop"] * 100, 1), "sma200": round(r["sma200"], 2),
             "pe": round(pe, 1) if pe else None,
             "sector_pe": round(spe, 1) if spe else None,
-            "fcf": fcf, "checks": checks, "score": sum(checks.values()),
+            "fcf": fcf, "checks": checks, "score": score,
+            "a_checks": a_checks, "a_pick": score == 4 and all(a_checks.values()),
         })
     return out
