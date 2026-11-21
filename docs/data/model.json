@@ -1,0 +1,56 @@
+{
+ "mean": [
+  0.2787546237147351,
+  -0.1108043557992283,
+  0.03665256589584867,
+  -0.06871639475974527,
+  0.38874855387342067,
+  0.07768231146720114
+ ],
+ "std": [
+  0.10233931424570901,
+  0.08515107225764232,
+  0.07076679797287186,
+  0.08851821995580125,
+  0.19012294168083788,
+  0.07365092460881711
+ ],
+ "intercept": 0.4734154019124229,
+ "coef": [
+  -0.09366970919849481,
+  -0.04733952335149206,
+  -0.11656707162251746,
+  0.1122878836803394,
+  0.2078846834378375,
+  0.24901794467055766
+ ],
+ "features": [
+  "drop",
+  "below_sma200",
+  "bounce",
+  "vs_sma50",
+  "volatility",
+  "market_drop"
+ ],
+ "labels": {
+  "drop": "Fall from 52-week high",
+  "below_sma200": "Distance below 200-day average",
+  "bounce": "Bounce off 20-day low",
+  "vs_sma50": "Price vs 50-day average",
+  "volatility": "How jumpy the price is",
+  "market_drop": "Whole market's fall from its high"
+ },
+ "events": 6263,
+ "base_rate_pct": 61.3,
+ "test": {
+  "from": "2023-11-13",
+  "to": "2026-11-12",
+  "events": 1672,
+  "auc": 0.57,
+  "base_rate_pct": 59.7,
+  "top_third_pct": 68.6,
+  "bottom_third_pct": 54.0
+ },
+ "trained_to": "2026-11-12",
+ "rules": "+25% / -20% / 730 days"
+}
