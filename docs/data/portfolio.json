@@ -88,18 +88,34 @@
    },
    "positions": [
     {
-     "ticker": "ADBE",
+     "ticker": "WDC",
      "date": "2026-11-20",
-     "buy": 217.71,
-     "now": 217.71,
+     "buy": 261.11,
+     "now": 261.11,
      "value": 5000.0,
      "pct": 0.0
     },
     {
-     "ticker": "ALGN",
+     "ticker": "FICO",
      "date": "2026-11-20",
-     "buy": 155.17,
-     "now": 155.17,
+     "buy": 694.31,
+     "now": 694.31,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "FIS",
+     "date": "2026-11-20",
+     "buy": 25.83,
+     "now": 25.83,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "PODD",
+     "date": "2026-11-20",
+     "buy": 133.17,
+     "now": 133.17,
      "value": 5000.0,
      "pct": 0.0
     },
@@ -112,18 +128,10 @@
      "pct": 0.0
     },
     {
-     "ticker": "BA",
+     "ticker": "INTU",
      "date": "2026-11-20",
-     "buy": 155.89,
-     "now": 155.89,
-     "value": 5000.0,
-     "pct": 0.0
-    },
-    {
-     "ticker": "BKNG",
-     "date": "2026-11-20",
-     "buy": 144.91,
-     "now": 144.91,
+     "buy": 270.44,
+     "now": 270.44,
      "value": 5000.0,
      "pct": 0.0
     },
@@ -136,90 +144,10 @@
      "pct": 0.0
     },
     {
-     "ticker": "CAT",
+     "ticker": "FSLR",
      "date": "2026-11-20",
-     "buy": 510.45,
-     "now": 510.45,
-     "value": 5000.0,
-     "pct": 0.0
-    },
-    {
-     "ticker": "CCL",
-     "date": "2026-11-20",
-     "buy": 26.59,
-     "now": 26.59,
-     "value": 5000.0,
-     "pct": 0.0
-    },
-    {
-     "ticker": "CHTR",
-     "date": "2026-11-20",
-     "buy": 128.73,
-     "now": 128.73,
-     "value": 5000.0,
-     "pct": 0.0
-    },
-    {
-     "ticker": "CMCSA",
-     "date": "2026-11-20",
-     "buy": 24.9,
-     "now": 24.9,
-     "value": 5000.0,
-     "pct": 0.0
-    },
-    {
-     "ticker": "CMI",
-     "date": "2026-11-20",
-     "buy": 403.61,
-     "now": 403.61,
-     "value": 5000.0,
-     "pct": 0.0
-    },
-    {
-     "ticker": "COO",
-     "date": "2026-11-20",
-     "buy": 58.88,
-     "now": 58.88,
-     "value": 5000.0,
-     "pct": 0.0
-    },
-    {
-     "ticker": "CPRT",
-     "date": "2026-11-20",
-     "buy": 31.09,
-     "now": 31.09,
-     "value": 5000.0,
-     "pct": 0.0
-    },
-    {
-     "ticker": "CRH",
-     "date": "2026-11-20",
-     "buy": 88.05,
-     "now": 88.05,
-     "value": 5000.0,
-     "pct": 0.0
-    },
-    {
-     "ticker": "CRM",
-     "date": "2026-11-20",
-     "buy": 180.62,
-     "now": 180.62,
-     "value": 5000.0,
-     "pct": 0.0
-    },
-    {
-     "ticker": "CVS",
-     "date": "2026-11-20",
-     "buy": 80.84,
-     "now": 80.84,
-     "value": 5000.0,
-     "pct": 0.0
-    },
-    {
-     "ticker": "DECK",
-     "date": "2026-11-20",
-     "buy": 77.94,
-     "now": 77.94,
+     "buy": 137.59,
+     "now": 137.59,
      "value": 5000.0,
      "pct": 0.0
     },
@@ -232,18 +160,90 @@
      "pct": 0.0
     },
     {
-     "ticker": "DVA",
+     "ticker": "LULU",
      "date": "2026-11-20",
-     "buy": 161.03,
-     "now": 161.03,
+     "buy": 102.62,
+     "now": 102.62,
      "value": 5000.0,
      "pct": 0.0
     },
     {
-     "ticker": "DVN",
+     "ticker": "CAT",
      "date": "2026-11-20",
-     "buy": 41.54,
-     "now": 41.54,
+     "buy": 510.45,
+     "now": 510.45,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "NRG",
+     "date": "2026-11-20",
+     "buy": 87.8,
+     "now": 87.8,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "MU",
+     "date": "2026-11-20",
+     "buy": 594.51,
+     "now": 594.51,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "NKE",
+     "date": "2026-11-20",
+     "buy": 32.92,
+     "now": 32.92,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "CHTR",
+     "date": "2026-11-20",
+     "buy": 128.73,
+     "now": 128.73,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "NVDA",
+     "date": "2026-11-20",
+     "buy": 125.53,
+     "now": 125.53,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "HPE",
+     "date": "2026-11-20",
+     "buy": 40.91,
+     "now": 40.91,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "CMI",
+     "date": "2026-11-20",
+     "buy": 403.61,
+     "now": 403.61,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "TWLO",
+     "date": "2026-11-20",
+     "buy": 172.1,
+     "now": 172.1,
+     "value": 5000.0,
+     "pct": 0.0
+    },
+    {
+     "ticker": "LVS",
+     "date": "2026-11-20",
+     "buy": 38.85,
+     "now": 38.85,
      "value": 5000.0,
      "pct": 0.0
     }
@@ -318,83 +318,20 @@
   },
   {
    "date": "2026-11-20",
-   "ticker": "DVN",
-   "name": "Devon Energy",
+   "ticker": "LVS",
+   "name": "Las Vegas Sands",
    "strategy": "rules",
    "action": "buy",
-   "price": 41.54,
+   "price": 38.85,
    "amount": 5000.0
   },
   {
    "date": "2026-11-20",
-   "ticker": "DVA",
-   "name": "DaVita",
+   "ticker": "TWLO",
+   "name": "Twilio",
    "strategy": "rules",
    "action": "buy",
-   "price": 161.03,
-   "amount": 5000.0
-  },
-  {
-   "date": "2026-11-20",
-   "ticker": "DELL",
-   "name": "Dell Technologies",
-   "strategy": "rules",
-   "action": "buy",
-   "price": 278.02,
-   "amount": 5000.0
-  },
-  {
-   "date": "2026-11-20",
-   "ticker": "DECK",
-   "name": "Deckers Brands",
-   "strategy": "rules",
-   "action": "buy",
-   "price": 77.94,
-   "amount": 5000.0
-  },
-  {
-   "date": "2026-11-20",
-   "ticker": "CVS",
-   "name": "CVS Health",
-   "strategy": "rules",
-   "action": "buy",
-   "price": 80.84,
-   "amount": 5000.0
-  },
-  {
-   "date": "2026-11-20",
-   "ticker": "CRM",
-   "name": "Salesforce",
-   "strategy": "rules",
-   "action": "buy",
-   "price": 180.62,
-   "amount": 5000.0
-  },
-  {
-   "date": "2026-11-20",
-   "ticker": "CRH",
-   "name": "CRH plc",
-   "strategy": "rules",
-   "action": "buy",
-   "price": 88.05,
-   "amount": 5000.0
-  },
-  {
-   "date": "2026-11-20",
-   "ticker": "CPRT",
-   "name": "Copart",
-   "strategy": "rules",
-   "action": "buy",
-   "price": 31.09,
-   "amount": 5000.0
-  },
-  {
-   "date": "2026-11-20",
-   "ticker": "COO",
-   "name": "Cooper Companies (The)",
-   "strategy": "rules",
-   "action": "buy",
-   "price": 58.88,
+   "price": 172.1,
    "amount": 5000.0
   },
   {
@@ -408,11 +345,20 @@
   },
   {
    "date": "2026-11-20",
-   "ticker": "CMCSA",
-   "name": "Comcast",
+   "ticker": "HPE",
+   "name": "Hewlett Packard Enterprise",
    "strategy": "rules",
    "action": "buy",
-   "price": 24.9,
+   "price": 40.91,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "NVDA",
+   "name": "Nvidia",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 125.53,
    "amount": 5000.0
   },
   {
@@ -426,11 +372,29 @@
   },
   {
    "date": "2026-11-20",
-   "ticker": "CCL",
-   "name": "Carnival Corporation",
+   "ticker": "NKE",
+   "name": "Nike, Inc.",
    "strategy": "rules",
    "action": "buy",
-   "price": 26.59,
+   "price": 32.92,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "MU",
+   "name": "Micron Technology",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 594.51,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "NRG",
+   "name": "NRG Energy",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 87.8,
    "amount": 5000.0
   },
   {
@@ -444,6 +408,33 @@
   },
   {
    "date": "2026-11-20",
+   "ticker": "LULU",
+   "name": "Lululemon Athletica",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 102.62,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "DELL",
+   "name": "Dell Technologies",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 278.02,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "FSLR",
+   "name": "First Solar",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 137.59,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
    "ticker": "BSX",
    "name": "Boston Scientific",
    "strategy": "rules",
@@ -453,20 +444,11 @@
   },
   {
    "date": "2026-11-20",
-   "ticker": "BKNG",
-   "name": "Booking Holdings",
+   "ticker": "INTU",
+   "name": "Intuit",
    "strategy": "rules",
    "action": "buy",
-   "price": 144.91,
-   "amount": 5000.0
-  },
-  {
-   "date": "2026-11-20",
-   "ticker": "BA",
-   "name": "Boeing",
-   "strategy": "rules",
-   "action": "buy",
-   "price": 155.89,
+   "price": 270.44,
    "amount": 5000.0
   },
   {
@@ -480,20 +462,38 @@
   },
   {
    "date": "2026-11-20",
-   "ticker": "ALGN",
-   "name": "Align Technology",
+   "ticker": "PODD",
+   "name": "Insulet Corporation",
    "strategy": "rules",
    "action": "buy",
-   "price": 155.17,
+   "price": 133.17,
    "amount": 5000.0
   },
   {
    "date": "2026-11-20",
-   "ticker": "ADBE",
-   "name": "Adobe Inc.",
+   "ticker": "FIS",
+   "name": "Fidelity National Information Services",
    "strategy": "rules",
    "action": "buy",
-   "price": 217.71,
+   "price": 25.83,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "FICO",
+   "name": "Fair Isaac",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 694.31,
+   "amount": 5000.0
+  },
+  {
+   "date": "2026-11-20",
+   "ticker": "WDC",
+   "name": "Western Digital",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 261.11,
    "amount": 5000.0
   }
  ]
