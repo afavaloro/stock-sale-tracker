@@ -268,7 +268,7 @@ function renderPortfolio(el, P, title) {
   let h = title ? `<div class="note">${title}</div>` : "";
   h += bookBlock(fx, "fixed", `A · ${money(fx.start)}, ${R.a_position_pct ?? 2.5}% of account per pick · sell +${R.a_take_profit_pct ?? 25}% / −${R.a_stop_loss_pct ?? 20}% / ${Math.round((R.a_max_hold_days ?? 730) / 365)} yrs`);
   h += holdings(fx, "Strategy A");
-  h += bookBlock(ru, "rules", `B · ${money(ru.start)}, buys every sale · sell +${R.take_profit_pct ?? 25}% / ${Math.round((R.max_hold_days ?? 730) / 365)} yrs`);
+  h += bookBlock(ru, "rules", `B · ${money(ru.start)}, buys every sale, biggest discounts first · sell +${R.take_profit_pct ?? 25}% / ${Math.round((R.max_hold_days ?? 730) / 365)} yrs`);
   h += holdings(ru, "Strategy B");
   el.innerHTML = h;
   const hist = P.history || [];
@@ -310,13 +310,13 @@ function renderRules(R) {
     <li><b>Below its ${R.sma_days}-day average price</b>, so the drop isn't just a one-day blip.</li>
     <li><b>Cheap compared with its peers:</b> P/E at least ${R.pe_discount_pct}% below the median P/E of its ${esc(M.name)} sector.</li>
     <li><b>A healthy business:</b> profitable (positive earnings) with positive free cash flow, to avoid "falling knives."</li></ol>
-    <p class="small muted" style="margin-bottom:0">A stock can be bought at most once every ${R.cooldown_days} days, even if it stays on sale.</p></div>
+    <p class="small muted" style="margin-bottom:0">Each strategy buys any one stock at most once every ${R.cooldown_days} days, even if it stays on sale.</p></div>
     <h2>The two simulated strategies</h2><div class="card">
     <p style="margin-top:0"><b>A · Choosy:</b> start with ${money(R.a_start_balance)} cash and only ever spend that plus money from sales (so profits get reinvested). Each buy is ${R.a_position_pct}% of A's current value (so buys grow as the account grows), at most ${R.a_max_buys_per_week} new buys a week, or ${R.a_crash_buys_per_week} a week while the ${esc(M.name)} is ${R.a_crash_drop_pct}%+ below its high. Biggest discounts first. A stock must pass all four checks <i>and</i>:</p>
     <ol class="rules"><li><b>Has stopped falling:</b> at least ${R.a_bounce_pct}% above its lowest close of the past ${R.a_bounce_days} trading days.</li>
-    <li><b>If it has collapsed</b> (${R.collapse_pct}%+ below its high), it must pass a recovery check: price back above its ${R.recovery_sma_days}-day average, sales not shrinking more than ${Math.abs(R.recovery_min_revenue_growth_pct)}% a year, a positive operating margin, enough short-term assets to cover a year of bills, and debt no more than ${R.recovery_max_debt_to_equity_pct / 100}× equity.</li></ol>
+    <li><b>If it has collapsed</b> (${R.collapse_pct}%+ below its high), it must pass a recovery check: price back above its ${R.recovery_sma_days}-day average, sales not shrinking more than ${Math.abs(R.recovery_min_revenue_growth_pct)}% a year, a positive operating margin, enough short-term assets to cover a year of bills, and debt no more than ${R.recovery_max_debt_to_equity_pct / 100}× equity (the last two are skipped when Yahoo doesn't report them, e.g. for banks).</li></ol>
     <p>Sell when a holding is up ${R.a_take_profit_pct}%, down ${R.a_stop_loss_pct}%, or after ${R.a_max_hold_days} days.</p>
-    <p style="margin-bottom:0"><b>B · Buys every sale:</b> start with ${money(R.start_balance)} cash. Buy every stock that goes on sale, ${R.position_pct}% of the starting balance each, while cash lasts. Sell when a holding is up ${R.take_profit_pct}% or after ${R.max_hold_days} days. Compared with ${money(R.start_balance)} put into each index on day one.</p></div>
+    <p style="margin-bottom:0"><b>B · Buys every sale:</b> start with ${money(R.start_balance)} cash. Each day, buy the stocks that go on sale, <b>biggest discounts first</b> (furthest below their 52-week high), ${R.position_pct}% of the starting balance each, until the cash runs out. Money from sales is reused. A stock it can't afford that day still waits ${R.cooldown_days} days before B looks at it again. Sell when a holding is up ${R.take_profit_pct}% or after ${R.max_hold_days} days. Compared with ${money(R.start_balance)} put into each index on day one.</p></div>
     <h2>How the On sale list is ranked</h2><div class="card small">${(() => { const K = DATA.latest?.ranking || {};
       if (K.by !== "chance of profit") return `<p style="margin:0">By biggest drop from the 52-week high, until the backtest has trained the chance-of-profit model.</p>`;
       const rows = K.features.map((f, i) => [K.labels[f], K.coef[i]]).sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]));
