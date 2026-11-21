@@ -3,8 +3,8 @@
  "market": "us",
  "market_name": "S&P 500",
  "currency": "US$",
- "generated": "2026-11-21T08:12+00:00",
- "universe_size": 499,
+ "generated": "2026-11-21T08:23+00:00",
+ "universe_size": 498,
  "rules": {
   "min_drop_pct": 20.0,
   "sma_days": 200,
@@ -30,12 +30,15 @@
   "max_hold_days": 730
  },
  "counts": {
-  "drop": 200,
-  "below_sma": 256,
-  "cheap": 170,
-  "quality": 396
+  "drop": 199,
+  "below_sma": 255,
+  "cheap": 168,
+  "quality": 395
  },
  "a_picks": 10,
+ "ranking": {
+  "by": "drop from high"
+ },
  "on_sale": [
   {
    "ticker": "WDC",
@@ -61,7 +64,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -88,7 +91,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -115,7 +118,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -142,7 +145,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -154,7 +157,7 @@
    "drop_pct": 60.2,
    "sma200": 56.79,
    "pe": 9.9,
-   "sector_pe": 20.3,
+   "sector_pe": 20.7,
    "fcf": 1552000000.0,
    "checks": {
     "drop": true,
@@ -169,7 +172,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -195,7 +198,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -221,7 +224,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -247,7 +250,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -273,7 +276,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -285,7 +288,7 @@
    "drop_pct": 52.5,
    "sma200": 128.0,
    "pe": 8.4,
-   "sector_pe": 20.3,
+   "sector_pe": 20.7,
    "fcf": 1148515840.0,
    "checks": {
     "drop": true,
@@ -299,7 +302,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -325,7 +328,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -351,8 +354,8 @@
    },
    "a_pick": true,
    "new_today": true,
-   "last_signal": null,
-   "a_bought_today": true
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
   },
   {
    "ticker": "MU",
@@ -377,7 +380,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -389,7 +392,7 @@
    "drop_pct": 50.1,
    "sma200": 43.56,
    "pe": 15.8,
-   "sector_pe": 20.3,
+   "sector_pe": 20.7,
    "fcf": 1766875008.0,
    "checks": {
     "drop": true,
@@ -403,7 +406,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -415,7 +418,7 @@
    "drop_pct": 48.1,
    "sma200": 159.71,
    "pe": 12.1,
-   "sector_pe": 16.0,
+   "sector_pe": 15.7,
    "fcf": 3231000064.0,
    "checks": {
     "drop": true,
@@ -429,8 +432,8 @@
    },
    "a_pick": true,
    "new_today": true,
-   "last_signal": null,
-   "a_bought_today": true
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
   },
   {
    "ticker": "NVDA",
@@ -455,7 +458,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -481,7 +484,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -507,7 +510,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -533,7 +536,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -545,7 +548,7 @@
    "drop_pct": 42.6,
    "sma200": 46.94,
    "pe": 15.9,
-   "sector_pe": 20.3,
+   "sector_pe": 20.7,
    "fcf": 2107374976.0,
    "checks": {
     "drop": true,
@@ -559,8 +562,8 @@
    },
    "a_pick": true,
    "new_today": true,
-   "last_signal": null,
-   "a_bought_today": true
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
   },
   {
    "ticker": "LII",
@@ -570,7 +573,7 @@
    "high52": 570.79,
    "drop_pct": 41.4,
    "sma200": 457.34,
-   "pe": 15.5,
+   "pe": 15.1,
    "sector_pe": 24.6,
    "fcf": 366750016.0,
    "checks": {
@@ -585,7 +588,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -611,7 +614,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -622,7 +625,7 @@
    "high52": 248.74,
    "drop_pct": 39.7,
    "sma200": 169.58,
-   "pe": 12.8,
+   "pe": 11.8,
    "sector_pe": 26.3,
    "fcf": 9107125248.0,
    "checks": {
@@ -637,7 +640,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -663,7 +666,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -689,7 +692,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -715,7 +718,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -727,7 +730,7 @@
    "drop_pct": 38.0,
    "sma200": 88.25,
    "pe": 15.3,
-   "sector_pe": 20.3,
+   "sector_pe": 20.7,
    "fcf": 1227246208.0,
    "checks": {
     "drop": true,
@@ -741,7 +744,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -767,7 +770,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -793,7 +796,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -805,7 +808,7 @@
    "drop_pct": 36.2,
    "sma200": 38.93,
    "pe": 12.4,
-   "sector_pe": 20.3,
+   "sector_pe": 20.7,
    "fcf": 889266624.0,
    "checks": {
     "drop": true,
@@ -819,8 +822,8 @@
    },
    "a_pick": true,
    "new_today": true,
-   "last_signal": null,
-   "a_bought_today": true
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
   },
   {
    "ticker": "EME",
@@ -845,7 +848,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -871,7 +874,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -897,8 +900,8 @@
    },
    "a_pick": true,
    "new_today": true,
-   "last_signal": null,
-   "a_bought_today": true
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
   },
   {
    "ticker": "DECK",
@@ -909,7 +912,7 @@
    "drop_pct": 35.6,
    "sma200": 97.77,
    "pe": 10.3,
-   "sector_pe": 20.3,
+   "sector_pe": 20.7,
    "fcf": 815705728.0,
    "checks": {
     "drop": true,
@@ -923,7 +926,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -935,7 +938,7 @@
    "drop_pct": 33.6,
    "sma200": 173.15,
    "pe": 15.7,
-   "sector_pe": 20.3,
+   "sector_pe": 20.7,
    "fcf": 7609124864.0,
    "checks": {
     "drop": true,
@@ -949,7 +952,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -975,7 +978,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -987,7 +990,7 @@
    "drop_pct": 32.5,
    "sma200": 6408.44,
    "pe": 15.1,
-   "sector_pe": 20.3,
+   "sector_pe": 20.7,
    "fcf": 706486656.0,
    "checks": {
     "drop": true,
@@ -1001,7 +1004,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1027,33 +1030,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
-   "a_bought_today": false
-  },
-  {
-   "ticker": "CRH",
-   "name": "CRH plc",
-   "sector": "Materials",
-   "price": 88.05,
-   "high52": 129.38,
-   "drop_pct": 31.9,
-   "sma200": 101.08,
-   "pe": 16.6,
-   "sector_pe": 19.6,
-   "fcf": 2278125056.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1079,7 +1056,7 @@
    },
    "a_pick": true,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1105,7 +1082,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1131,7 +1108,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1142,7 +1119,7 @@
    "high52": 80.69,
    "drop_pct": 30.8,
    "sma200": 63.83,
-   "pe": 14.1,
+   "pe": 13.5,
    "sector_pe": 19.6,
    "fcf": 1778625024.0,
    "checks": {
@@ -1157,7 +1134,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1169,7 +1146,7 @@
    "drop_pct": 30.5,
    "sma200": 257.82,
    "pe": 13.8,
-   "sector_pe": 20.3,
+   "sector_pe": 20.7,
    "fcf": 2346500096.0,
    "checks": {
     "drop": true,
@@ -1183,7 +1160,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1209,7 +1186,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1235,7 +1212,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1261,7 +1238,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1272,7 +1249,7 @@
    "high52": 330.06,
    "drop_pct": 28.8,
    "sma200": 247.06,
-   "pe": 18.5,
+   "pe": 19.8,
    "sector_pe": 26.3,
    "fcf": 4086625024.0,
    "checks": {
@@ -1287,7 +1264,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1299,7 +1276,7 @@
    "drop_pct": 26.9,
    "sma200": 136.53,
    "pe": 15.4,
-   "sector_pe": 20.3,
+   "sector_pe": 20.7,
    "fcf": 1368075008.0,
    "checks": {
     "drop": true,
@@ -1313,7 +1290,7 @@
    },
    "a_pick": true,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1324,7 +1301,7 @@
    "high52": 281.45,
    "drop_pct": 26.8,
    "sma200": 226.76,
-   "pe": 16.1,
+   "pe": 15.2,
    "sector_pe": 19.6,
    "fcf": 429926752.0,
    "checks": {
@@ -1339,7 +1316,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1365,7 +1342,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1391,7 +1368,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1417,7 +1394,7 @@
    },
    "a_pick": true,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1443,7 +1420,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1469,7 +1446,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1495,7 +1472,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1521,7 +1498,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1533,7 +1510,7 @@
    "drop_pct": 20.6,
    "sma200": 24.3,
    "pe": 11.9,
-   "sector_pe": 16.0,
+   "sector_pe": 15.7,
    "fcf": 11961749504.0,
    "checks": {
     "drop": true,
@@ -1547,7 +1524,7 @@
    },
    "a_pick": true,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1573,7 +1550,7 @@
    },
    "a_pick": false,
    "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
@@ -1585,7 +1562,7 @@
    "drop_pct": 20.2,
    "sma200": 25.17,
    "pe": 7.9,
-   "sector_pe": 16.0,
+   "sector_pe": 15.7,
    "fcf": 13077499904.0,
    "checks": {
     "drop": true,
@@ -1599,33 +1576,7 @@
    },
    "a_pick": true,
    "new_today": true,
-   "last_signal": null,
-   "a_bought_today": false
-  },
-  {
-   "ticker": "CCL",
-   "name": "Carnival Corporation",
-   "sector": "Consumer Discretionary",
-   "price": 26.59,
-   "high52": 33.28,
-   "drop_pct": 20.1,
-   "sma200": 26.77,
-   "pe": 11.7,
-   "sector_pe": 20.3,
-   "fcf": 1807624960.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "new_today": true,
-   "last_signal": null,
+   "last_signal": "2026-11-20",
    "a_bought_today": false
   }
  ],
@@ -1639,7 +1590,7 @@
    "drop_pct": 67.0,
    "sma200": 151.82,
    "pe": 17.4,
-   "sector_pe": 16.0,
+   "sector_pe": 15.7,
    "fcf": 811615232.0,
    "checks": {
     "drop": true,
@@ -2035,7 +1986,7 @@
    "drop_pct": 52.5,
    "sma200": 404.55,
    "pe": 23.5,
-   "sector_pe": 16.0,
+   "sector_pe": 15.7,
    "fcf": 3718514688.0,
    "checks": {
     "drop": true,
@@ -2127,7 +2078,7 @@
    "drop_pct": 48.1,
    "sma200": 79.94,
    "pe": 16.4,
-   "sector_pe": 16.0,
+   "sector_pe": 15.7,
    "fcf": 25475807232.0,
    "checks": {
     "drop": true,
