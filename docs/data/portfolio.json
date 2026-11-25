@@ -1,24 +1,24 @@
 {
  "summary": {
-  "as_of": "2026-11-23",
+  "as_of": "2026-11-24",
   "start_date": "2026-11-20",
   "fixed": {
    "start": 100000.0,
-   "value": 100435.86,
+   "value": 99913.87,
    "cash": 74945.52,
-   "return_pct": 0.44,
+   "return_pct": -0.09,
    "bench": {
     "SPY": {
-     "value": 104708.54,
-     "return_pct": 4.71
+     "value": 104199.71,
+     "return_pct": 4.2
     },
     "QQQ": {
-     "value": 106998.11,
-     "return_pct": 7.0
+     "value": 104873.03,
+     "return_pct": 4.87
     },
     "DIA": {
-     "value": 103059.78,
-     "return_pct": 3.06
+     "value": 103878.77,
+     "return_pct": 3.88
     }
    },
    "positions": [
@@ -26,81 +26,81 @@
      "ticker": "APTV",
      "date": "2026-11-23",
      "buy": 37.91,
-     "now": 37.91,
-     "value": 2510.9,
-     "pct": 0.0
+     "now": 37.43,
+     "value": 2479.1,
+     "pct": -1.27
     },
     {
      "ticker": "FSLR",
      "date": "2026-11-23",
      "buy": 146.53,
-     "now": 146.53,
-     "value": 2510.9,
-     "pct": 0.0
+     "now": 148.0,
+     "value": 2536.09,
+     "pct": 1.0
     },
     {
      "ticker": "CAT",
      "date": "2026-11-23",
      "buy": 547.04,
-     "now": 547.04,
-     "value": 2510.9,
-     "pct": 0.0
+     "now": 540.63,
+     "value": 2481.47,
+     "pct": -1.17
     },
     {
      "ticker": "DELL",
      "date": "2026-11-23",
      "buy": 334.91,
-     "now": 334.91,
-     "value": 2510.9,
-     "pct": 0.0
+     "now": 295.28,
+     "value": 2213.78,
+     "pct": -11.83
     },
     {
      "ticker": "MU",
      "date": "2026-11-23",
      "buy": 707.7,
-     "now": 707.7,
-     "value": 2510.9,
-     "pct": 0.0
+     "now": 629.79,
+     "value": 2234.47,
+     "pct": -11.01
     },
     {
      "ticker": "NRG",
      "date": "2026-11-20",
      "buy": 87.8,
-     "now": 97.72,
-     "value": 2782.46,
-     "pct": 11.3
+     "now": 90.9,
+     "value": 2588.27,
+     "pct": 3.53
     },
     {
      "ticker": "CHTR",
      "date": "2026-11-20",
      "buy": 128.73,
-     "now": 127.92,
-     "value": 2484.27,
-     "pct": -0.63
+     "now": 135.87,
+     "value": 2638.66,
+     "pct": 5.55
     },
     {
      "ticker": "LVS",
      "date": "2026-11-20",
      "buy": 38.85,
-     "now": 39.14,
-     "value": 2518.66,
-     "pct": 0.75
+     "now": 39.61,
+     "value": 2548.91,
+     "pct": 1.96
     },
     {
      "ticker": "MGM",
      "date": "2026-11-20",
      "buy": 32.36,
-     "now": 33.69,
-     "value": 2602.75,
-     "pct": 4.11
+     "now": 34.32,
+     "value": 2651.42,
+     "pct": 6.06
     },
     {
      "ticker": "PNR",
      "date": "2026-11-20",
      "buy": 68.63,
-     "now": 69.94,
-     "value": 2547.72,
-     "pct": 1.91
+     "now": 71.27,
+     "value": 2596.17,
+     "pct": 3.85
     }
    ],
    "buys": 10,
@@ -109,186 +109,194 @@
   },
   "rules": {
    "start": 100000.0,
-   "value": 108132.04,
-   "cash": 1574.13,
-   "return_pct": 8.13,
+   "value": 105783.95,
+   "cash": 0.0,
+   "return_pct": 5.78,
    "bench": {
     "SPY": {
-     "value": 104708.54,
-     "return_pct": 4.71
+     "value": 104199.71,
+     "return_pct": 4.2
     },
     "QQQ": {
-     "value": 106998.11,
-     "return_pct": 7.0
+     "value": 104873.03,
+     "return_pct": 4.87
     },
     "DIA": {
-     "value": 103059.78,
-     "return_pct": 3.06
+     "value": 103878.77,
+     "return_pct": 3.88
     }
    },
    "positions": [
     {
+     "ticker": "FLEX",
+     "date": "2026-11-24",
+     "buy": 66.44,
+     "now": 66.44,
+     "value": 1574.13,
+     "pct": 0.0
+    },
+    {
      "ticker": "XYL",
      "date": "2026-11-23",
      "buy": 96.75,
-     "now": 96.75,
-     "value": 5000.0,
-     "pct": 0.0
+     "now": 95.18,
+     "value": 4918.86,
+     "pct": -1.62
     },
     {
      "ticker": "WDC",
      "date": "2026-11-20",
      "buy": 261.11,
-     "now": 297.25,
-     "value": 5692.05,
-     "pct": 13.84
+     "now": 273.95,
+     "value": 5245.87,
+     "pct": 4.92
     },
     {
      "ticker": "FICO",
      "date": "2026-11-20",
      "buy": 694.31,
-     "now": 723.35,
-     "value": 5209.13,
-     "pct": 4.18
+     "now": 703.33,
+     "value": 5064.96,
+     "pct": 1.3
     },
     {
      "ticker": "FIS",
      "date": "2026-11-20",
      "buy": 25.83,
-     "now": 26.73,
-     "value": 5174.22,
-     "pct": 3.48
+     "now": 27.13,
+     "value": 5251.65,
+     "pct": 5.03
     },
     {
      "ticker": "PODD",
      "date": "2026-11-20",
      "buy": 133.17,
-     "now": 133.79,
-     "value": 5023.28,
-     "pct": 0.47
+     "now": 140.63,
+     "value": 5280.09,
+     "pct": 5.6
     },
     {
      "ticker": "APTV",
      "date": "2026-11-20",
      "buy": 35.33,
-     "now": 37.91,
-     "value": 5365.13,
-     "pct": 7.3
+     "now": 37.43,
+     "value": 5297.2,
+     "pct": 5.94
     },
     {
      "ticker": "INTU",
      "date": "2026-11-20",
      "buy": 270.44,
-     "now": 275.46,
-     "value": 5092.81,
-     "pct": 1.86
+     "now": 279.42,
+     "value": 5166.03,
+     "pct": 3.32
     },
     {
      "ticker": "BSX",
      "date": "2026-11-20",
      "buy": 41.98,
-     "now": 42.33,
-     "value": 5041.69,
-     "pct": 0.83
+     "now": 44.14,
+     "value": 5257.27,
+     "pct": 5.15
     },
     {
      "ticker": "FSLR",
      "date": "2026-11-20",
      "buy": 137.59,
-     "now": 146.53,
-     "value": 5324.88,
-     "pct": 6.5
+     "now": 148.0,
+     "value": 5378.3,
+     "pct": 7.57
     },
     {
      "ticker": "DELL",
      "date": "2026-11-20",
      "buy": 278.02,
-     "now": 334.91,
-     "value": 6023.13,
-     "pct": 20.46
+     "now": 295.28,
+     "value": 5310.41,
+     "pct": 6.21
     },
     {
      "ticker": "LULU",
      "date": "2026-11-20",
      "buy": 102.62,
-     "now": 104.63,
-     "value": 5097.93,
-     "pct": 1.96
+     "now": 106.05,
+     "value": 5167.12,
+     "pct": 3.34
     },
     {
      "ticker": "CAT",
      "date": "2026-11-20",
      "buy": 510.45,
-     "now": 547.04,
-     "value": 5358.41,
-     "pct": 7.17
+     "now": 540.63,
+     "value": 5295.62,
+     "pct": 5.91
     },
     {
      "ticker": "NRG",
      "date": "2026-11-20",
      "buy": 87.8,
-     "now": 97.72,
-     "value": 5564.92,
-     "pct": 11.3
+     "now": 90.9,
+     "value": 5176.54,
+     "pct": 3.53
     },
     {
      "ticker": "MU",
      "date": "2026-11-20",
      "buy": 594.51,
-     "now": 707.7,
-     "value": 5951.96,
-     "pct": 19.04
+     "now": 629.79,
+     "value": 5296.71,
+     "pct": 5.93
     },
     {
      "ticker": "NKE",
      "date": "2026-11-20",
      "buy": 32.92,
-     "now": 33.76,
-     "value": 5127.58,
-     "pct": 2.55
+     "now": 35.75,
+     "value": 5429.83,
+     "pct": 8.6
     },
     {
      "ticker": "CHTR",
      "date": "2026-11-20",
      "buy": 128.73,
-     "now": 127.92,
-     "value": 4968.54,
-     "pct": -0.63
+     "now": 135.87,
+     "value": 5277.32,
+     "pct": 5.55
     },
     {
      "ticker": "HPE",
      "date": "2026-11-20",
      "buy": 40.91,
-     "now": 48.02,
-     "value": 5868.98,
-     "pct": 17.38
+     "now": 40.19,
+     "value": 4912.0,
+     "pct": -1.76
     },
     {
      "ticker": "CMI",
      "date": "2026-11-20",
      "buy": 403.61,
-     "now": 426.03,
-     "value": 5277.74,
-     "pct": 5.55
+     "now": 414.83,
+     "value": 5139.0,
+     "pct": 2.78
     },
     {
      "ticker": "TWLO",
      "date": "2026-11-20",
      "buy": 172.1,
-     "now": 184.43,
-     "value": 5358.22,
-     "pct": 7.16
+     "now": 180.61,
+     "value": 5247.24,
+     "pct": 4.94
     },
     {
      "ticker": "LVS",
      "date": "2026-11-20",
      "buy": 38.85,
-     "now": 39.14,
-     "value": 5037.32,
-     "pct": 0.75
+     "now": 39.61,
+     "value": 5097.81,
+     "pct": 1.96
     }
    ],
-   "buys": 21,
+   "buys": 22,
    "closed_count": 1,
    "win_rate": 100.0
   }
@@ -323,9 +331,33 @@
     "QQQ": 106998.11,
     "DIA": 103059.78
    }
+  },
+  {
+   "date": "2026-11-24",
+   "fixed_value": 99913.87,
+   "fixed_bench": {
+    "SPY": 104199.71,
+    "QQQ": 104873.03,
+    "DIA": 103878.77
+   },
+   "rules_value": 105783.95,
+   "rules_bench": {
+    "SPY": 104199.71,
+    "QQQ": 104873.03,
+    "DIA": 103878.77
+   }
   }
  ],
  "trades": [
+  {
+   "date": "2026-11-24",
+   "ticker": "FLEX",
+   "name": "Flex Ltd.",
+   "strategy": "rules",
+   "action": "buy",
+   "price": 66.44,
+   "amount": 1574.13
+  },
   {
    "date": "2026-11-23",
    "ticker": "MU",
