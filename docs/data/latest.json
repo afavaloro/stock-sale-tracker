@@ -3,7 +3,7 @@
  "market": "us",
  "market_name": "S&P 500",
  "currency": "US$",
- "generated": "2026-11-26T04:14+00:00",
+ "generated": "2026-11-27T04:21+00:00",
  "universe_size": 499,
  "rules": {
   "min_drop_pct": 20.0,
@@ -33,9 +33,9 @@
   "drop": 173,
   "below_sma": 207,
   "cheap": 164,
-  "quality": 396
+  "quality": 395
  },
- "a_picks": 32,
+ "a_picks": 31,
  "ranking": {
   "by": "chance of profit",
   "base_rate_pct": 61.3,
@@ -140,8 +140,8 @@
    "high52": 215.88,
    "drop_pct": 50.2,
    "sma200": 126.94,
-   "pe": 8.7,
-   "sector_pe": 20.5,
+   "pe": 8.8,
+   "sector_pe": 20.4,
    "fcf": 1148515840.0,
    "checks": {
     "drop": true,
@@ -194,7 +194,7 @@
    "high52": 179.39,
    "drop_pct": 32.4,
    "sma200": 150.47,
-   "pe": 16.3,
+   "pe": 16.4,
    "sector_pe": 19.9,
    "fcf": 904124992.0,
    "checks": {
@@ -221,8 +221,8 @@
    "high52": 337.97,
    "drop_pct": 28.6,
    "sma200": 257.87,
-   "pe": 14.0,
-   "sector_pe": 20.5,
+   "pe": 14.1,
+   "sector_pe": 20.4,
    "fcf": 2346500096.0,
    "checks": {
     "drop": true,
@@ -275,7 +275,7 @@
    "high52": 1213.18,
    "drop_pct": 50.4,
    "sma200": 776.3,
-   "pe": 8.5,
+   "pe": 8.1,
    "sector_pe": 26.7,
    "fcf": 29140250624.0,
    "checks": {
@@ -295,33 +295,6 @@
    "a_bought_today": false
   },
   {
-   "ticker": "DELL",
-   "name": "Dell Technologies",
-   "sector": "Information Technology",
-   "price": 297.06,
-   "high52": 587.59,
-   "drop_pct": 49.4,
-   "sma200": 350.23,
-   "pe": 17.3,
-   "sector_pe": 26.7,
-   "fcf": 6033375232.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
-   "win_chance": 64,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
    "ticker": "SBAC",
    "name": "SBA Communications",
    "sector": "Real Estate",
@@ -329,7 +302,7 @@
    "high52": 219.43,
    "drop_pct": 20.4,
    "sma200": 187.43,
-   "pe": 18.6,
+   "pe": 18.9,
    "sector_pe": 30.6,
    "fcf": 684667648.0,
    "checks": {
@@ -385,7 +358,7 @@
    "drop_pct": 39.1,
    "sma200": 950.25,
    "pe": 18.8,
-   "sector_pe": 25.5,
+   "sector_pe": 25.9,
    "fcf": 22098874368.0,
    "checks": {
     "drop": true,
@@ -411,8 +384,8 @@
    "high52": 449.68,
    "drop_pct": 33.4,
    "sma200": 323.47,
-   "pe": 15.8,
-   "sector_pe": 25.5,
+   "pe": 16.1,
+   "sector_pe": 25.9,
    "fcf": 193375008.0,
    "checks": {
     "drop": true,
@@ -439,7 +412,7 @@
    "drop_pct": 33.3,
    "sma200": 87.81,
    "pe": 16.4,
-   "sector_pe": 20.5,
+   "sector_pe": 20.4,
    "fcf": 1227246208.0,
    "checks": {
     "drop": true,
@@ -465,8 +438,8 @@
    "high52": 164.16,
    "drop_pct": 21.1,
    "sma200": 136.18,
-   "pe": 16.6,
-   "sector_pe": 20.5,
+   "pe": 16.7,
+   "sector_pe": 20.4,
    "fcf": 1368075008.0,
    "checks": {
     "drop": true,
@@ -547,7 +520,7 @@
    "drop_pct": 33.3,
    "sma200": 774.33,
    "pe": 18.2,
-   "sector_pe": 25.5,
+   "sector_pe": 25.9,
    "fcf": 1285164672.0,
    "checks": {
     "drop": true,
@@ -600,8 +573,8 @@
    "high52": 218.11,
    "drop_pct": 31.5,
    "sma200": 172.78,
-   "pe": 15.9,
-   "sector_pe": 20.5,
+   "pe": 16.2,
+   "sector_pe": 20.4,
    "fcf": 7609124864.0,
    "checks": {
     "drop": true,
@@ -628,7 +601,7 @@
    "drop_pct": 29.3,
    "sma200": 97.3,
    "pe": 11.3,
-   "sector_pe": 20.5,
+   "sector_pe": 20.4,
    "fcf": 815705728.0,
    "checks": {
     "drop": true,
@@ -682,7 +655,7 @@
    "drop_pct": 38.7,
    "sma200": 454.54,
    "pe": 15.8,
-   "sector_pe": 25.5,
+   "sector_pe": 25.9,
    "fcf": 366750016.0,
    "checks": {
     "drop": true,
@@ -708,7 +681,7 @@
    "high52": 239.24,
    "drop_pct": 37.6,
    "sma200": 202.62,
-   "pe": 16.7,
+   "pe": 16.0,
    "sector_pe": 26.7,
    "fcf": 99241377792.0,
    "checks": {
@@ -736,7 +709,7 @@
    "drop_pct": 33.0,
    "sma200": 112.39,
    "pe": 21.4,
-   "sector_pe": 25.5,
+   "sector_pe": 25.9,
    "fcf": 1210375040.0,
    "checks": {
     "drop": true,
@@ -763,7 +736,7 @@
    "drop_pct": 27.0,
    "sma200": 575.6,
    "pe": 17.5,
-   "sector_pe": 25.5,
+   "sector_pe": 25.9,
    "fcf": 3143124992.0,
    "checks": {
     "drop": true,
@@ -951,8 +924,8 @@
    "high52": 8097.25,
    "drop_pct": 25.7,
    "sma200": 6375.75,
-   "pe": 16.2,
-   "sector_pe": 20.5,
+   "pe": 16.6,
+   "sector_pe": 20.4,
    "fcf": 706486656.0,
    "checks": {
     "drop": true,
@@ -978,8 +951,8 @@
    "high52": 137.39,
    "drop_pct": 21.4,
    "sma200": 117.7,
-   "pe": 20.1,
-   "sector_pe": 25.5,
+   "pe": 20.6,
+   "sector_pe": 25.9,
    "fcf": 1735624960.0,
    "checks": {
     "drop": true,
@@ -1005,7 +978,7 @@
    "high52": 433.68,
    "drop_pct": 20.2,
    "sma200": 366.92,
-   "pe": 19.5,
+   "pe": 19.8,
    "sector_pe": 33.9,
    "fcf": 26501249024.0,
    "checks": {
@@ -1059,8 +1032,8 @@
    "high52": 252.15,
    "drop_pct": 34.7,
    "sma200": 210.31,
-   "pe": 16.9,
-   "sector_pe": 25.5,
+   "pe": 17.0,
+   "sector_pe": 25.9,
    "fcf": 4723874816.0,
    "checks": {
     "drop": true,
@@ -1087,7 +1060,7 @@
    "drop_pct": 33.5,
    "sma200": 135.23,
    "pe": 11.7,
-   "sector_pe": 25.5,
+   "sector_pe": 25.9,
    "fcf": 1037500032.0,
    "checks": {
     "drop": true,
@@ -1113,8 +1086,8 @@
    "high52": 50.69,
    "drop_pct": 31.6,
    "sma200": 38.88,
-   "pe": 13.2,
-   "sector_pe": 20.5,
+   "pe": 13.3,
+   "sector_pe": 20.4,
    "fcf": 889266624.0,
    "checks": {
     "drop": true,
@@ -1222,7 +1195,7 @@
    "drop_pct": 41.3,
    "sma200": 46.69,
    "pe": 16.3,
-   "sector_pe": 20.5,
+   "sector_pe": 20.4,
    "fcf": 2107374976.0,
    "checks": {
     "drop": true,
@@ -1302,8 +1275,8 @@
    "high52": 721.11,
    "drop_pct": 41.7,
    "sma200": 585.71,
-   "pe": 17.3,
-   "sector_pe": 25.5,
+   "pe": 17.6,
+   "sector_pe": 25.9,
    "fcf": 2342249984.0,
    "checks": {
     "drop": true,
@@ -1330,7 +1303,7 @@
    "drop_pct": 57.7,
    "sma200": 56.1,
    "pe": 10.5,
-   "sector_pe": 20.5,
+   "sector_pe": 20.4,
    "fcf": 1552000000.0,
    "checks": {
     "drop": true,
@@ -1357,7 +1330,7 @@
    "drop_pct": 48.7,
    "sma200": 798.28,
    "pe": 21.3,
-   "sector_pe": 25.5,
+   "sector_pe": 25.9,
    "fcf": 3973250048.0,
    "checks": {
     "drop": true,
@@ -1581,7 +1554,7 @@
    "high52": 721.14,
    "drop_pct": 56.8,
    "sma200": 446.0,
-   "pe": 25.7,
+   "pe": 24.7,
    "sector_pe": 26.7,
    "fcf": 2520250112.0,
    "checks": {
@@ -1678,7 +1651,7 @@
    "drop_pct": 53.9,
    "sma200": 271.02,
    "pe": 32.4,
-   "sector_pe": 25.5,
+   "sector_pe": 25.9,
    "fcf": 2962249984.0,
    "checks": {
     "drop": true,
@@ -1773,7 +1746,7 @@
    "high52": 69.2,
    "drop_pct": 50.8,
    "sma200": 34.07,
-   "pe": 75.6,
+   "pe": 79.1,
    "sector_pe": 30.6,
    "fcf": 442449984.0,
    "checks": {
@@ -1790,6 +1763,30 @@
    "win_chance": 59
   },
   {
+   "ticker": "DELL",
+   "name": "Dell Technologies",
+   "sector": "Information Technology",
+   "price": 297.06,
+   "high52": 587.59,
+   "drop_pct": 49.4,
+   "sma200": 350.23,
+   "pe": 17.3,
+   "sector_pe": 26.7,
+   "fcf": -462500000.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": false
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": false,
+   "win_chance": 64
+  },
+  {
    "ticker": "APP",
    "name": "AppLovin",
    "sector": "Communication Services",
@@ -1797,7 +1794,7 @@
    "high52": 733.6,
    "drop_pct": 48.3,
    "sma200": 403.52,
-   "pe": 25.7,
+   "pe": 25.5,
    "sector_pe": 16.0,
    "fcf": 3718514688.0,
    "checks": {
@@ -1822,7 +1819,7 @@
    "drop_pct": 46.9,
    "sma200": 461.13,
    "pe": 110.3,
-   "sector_pe": 25.5,
+   "sector_pe": 25.9,
    "fcf": 66092000.0,
    "checks": {
     "drop": true,
@@ -1870,7 +1867,7 @@
    "drop_pct": 46.7,
    "sma200": 1598.61,
    "pe": 23.7,
-   "sector_pe": 25.5,
+   "sector_pe": 25.9,
    "fcf": 2128619008.0,
    "checks": {
     "drop": true,
@@ -1917,7 +1914,7 @@
    "high52": 109.35,
    "drop_pct": 45.7,
    "sma200": 79.59,
-   "pe": 17.0,
+   "pe": 17.2,
    "sector_pe": 16.0,
    "fcf": 25475807232.0,
    "checks": {
@@ -1941,7 +1938,7 @@
    "high52": 161.14,
    "drop_pct": 45.0,
    "sma200": 111.72,
-   "pe": 34.8,
+   "pe": 34.5,
    "sector_pe": 26.7,
    "fcf": 190033248.0,
    "checks": {
@@ -1956,30 +1953,6 @@
    },
    "a_pick": false,
    "win_chance": 61
-  },
-  {
-   "ticker": "NKE",
-   "name": "Nike, Inc.",
-   "sector": "Consumer Discretionary",
-   "price": 36.66,
-   "high52": 66.04,
-   "drop_pct": 44.5,
-   "sma200": 43.17,
-   "pe": 17.6,
-   "sector_pe": 20.5,
-   "fcf": 1766875008.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": false,
-    "quality": true
-   },
-   "score": 3,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": false,
-   "win_chance": 57
   }
  ],
  "benchmarks": {
