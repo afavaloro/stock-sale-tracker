@@ -1,24 +1,24 @@
 {
  "summary": {
-  "as_of": "2026-11-26",
+  "as_of": "2026-11-27",
   "start_date": "2026-11-20",
   "fixed": {
    "start": 100000.0,
-   "value": 99963.74,
+   "value": 100504.41,
    "cash": 79989.33,
-   "return_pct": -0.04,
+   "return_pct": 0.5,
    "bench": {
     "STW.AX": {
-     "value": 102011.94,
-     "return_pct": 2.01
+     "value": 102816.72,
+     "return_pct": 2.82
     },
     "SFY.AX": {
-     "value": 101803.34,
-     "return_pct": 1.8
+     "value": 102500.99,
+     "return_pct": 2.5
     },
     "ISO.AX": {
-     "value": 102252.25,
-     "return_pct": 2.25
+     "value": 103378.38,
+     "return_pct": 3.38
     }
    },
    "positions": [
@@ -26,65 +26,65 @@
      "ticker": "ARB.AX",
      "date": "2026-11-24",
      "buy": 17.53,
-     "now": 16.86,
-     "value": 2407.11,
-     "pct": -3.82
+     "now": 17.19,
+     "value": 2454.23,
+     "pct": -1.94
     },
     {
      "ticker": "GGP.AX",
      "date": "2026-11-24",
      "buy": 9.18,
-     "now": 9.38,
-     "value": 2557.29,
-     "pct": 2.18
+     "now": 9.54,
+     "value": 2600.92,
+     "pct": 3.92
     },
     {
      "ticker": "RSG.AX",
      "date": "2026-11-24",
      "buy": 1.07,
-     "now": 1.09,
-     "value": 2549.55,
-     "pct": 1.87
+     "now": 1.12,
+     "value": 2619.72,
+     "pct": 4.67
     },
     {
      "ticker": "WGX.AX",
      "date": "2026-11-24",
      "buy": 5.16,
-     "now": 5.25,
-     "value": 2546.42,
-     "pct": 1.74
+     "now": 5.43,
+     "value": 2633.73,
+     "pct": 5.23
     },
     {
      "ticker": "EBO.AX",
      "date": "2026-11-23",
      "buy": 17.28,
-     "now": 17.93,
-     "value": 2593.62,
-     "pct": 3.76
+     "now": 18.08,
+     "value": 2615.32,
+     "pct": 4.63
     },
     {
      "ticker": "360.AX",
      "date": "2026-11-20",
      "buy": 20.6,
-     "now": 19.2,
-     "value": 2330.1,
-     "pct": -6.8
+     "now": 20.06,
+     "value": 2434.47,
+     "pct": -2.62
     },
     {
      "ticker": "HVN.AX",
      "date": "2026-11-20",
      "buy": 4.28,
-     "now": 4.01,
-     "value": 2342.29,
-     "pct": -6.31
+     "now": 4.14,
+     "value": 2418.22,
+     "pct": -3.27
     },
     {
      "ticker": "ALK.AX",
      "date": "2026-11-20",
      "buy": 1.52,
-     "now": 1.61,
-     "value": 2648.03,
-     "pct": 5.92
+     "now": 1.66,
+     "value": 2738.49,
+     "pct": 9.54
     }
    ],
    "buys": 8,
@@ -93,21 +93,21 @@
   },
   "rules": {
    "start": 100000.0,
-   "value": 102013.67,
+   "value": 104902.13,
    "cash": 0.0,
-   "return_pct": 2.01,
+   "return_pct": 4.9,
    "bench": {
     "STW.AX": {
-     "value": 102011.94,
-     "return_pct": 2.01
+     "value": 102816.72,
+     "return_pct": 2.82
     },
     "SFY.AX": {
-     "value": 101803.34,
-     "return_pct": 1.8
+     "value": 102500.99,
+     "return_pct": 2.5
     },
     "ISO.AX": {
-     "value": 102252.25,
-     "return_pct": 2.25
+     "value": 103378.38,
+     "return_pct": 3.38
     }
    },
    "positions": [
@@ -115,161 +115,161 @@
      "ticker": "GQG.AX",
      "date": "2026-11-20",
      "buy": 0.55,
-     "now": 0.57,
-     "value": 5181.82,
-     "pct": 3.64
+     "now": 0.58,
+     "value": 5318.18,
+     "pct": 6.36
     },
     {
      "ticker": "CYL.AX",
      "date": "2026-11-20",
      "buy": 3.68,
-     "now": 3.92,
-     "value": 5326.09,
-     "pct": 6.52
+     "now": 4.07,
+     "value": 5529.89,
+     "pct": 10.6
     },
     {
      "ticker": "AAI.AX",
      "date": "2026-11-20",
      "buy": 52.3,
-     "now": 54.04,
-     "value": 5166.35,
-     "pct": 3.33
+     "now": 55.04,
+     "value": 5261.95,
+     "pct": 5.24
     },
     {
      "ticker": "APE.AX",
      "date": "2026-11-20",
      "buy": 14.4,
-     "now": 13.82,
-     "value": 4798.61,
-     "pct": -4.03
+     "now": 14.16,
+     "value": 4916.67,
+     "pct": -1.67
     },
     {
      "ticker": "360.AX",
      "date": "2026-11-20",
      "buy": 20.6,
-     "now": 19.2,
-     "value": 4660.19,
-     "pct": -6.8
+     "now": 20.06,
+     "value": 4868.93,
+     "pct": -2.62
     },
     {
      "ticker": "ARB.AX",
      "date": "2026-11-20",
      "buy": 17.17,
-     "now": 16.86,
-     "value": 4909.73,
-     "pct": -1.81
+     "now": 17.19,
+     "value": 5005.82,
+     "pct": 0.12
     },
     {
      "ticker": "MIN.AX",
      "date": "2026-11-20",
      "buy": 38.69,
-     "now": 39.04,
-     "value": 5045.23,
-     "pct": 0.9
+     "now": 40.3,
+     "value": 5208.06,
+     "pct": 4.16
     },
     {
      "ticker": "GGP.AX",
      "date": "2026-11-20",
      "buy": 8.58,
-     "now": 9.38,
-     "value": 5466.2,
-     "pct": 9.32
+     "now": 9.54,
+     "value": 5559.44,
+     "pct": 11.19
     },
     {
      "ticker": "FMG.AX",
      "date": "2026-11-20",
      "buy": 13.44,
-     "now": 13.85,
-     "value": 5152.53,
-     "pct": 3.05
+     "now": 14.11,
+     "value": 5249.26,
+     "pct": 4.99
     },
     {
      "ticker": "REG.AX",
      "date": "2026-11-20",
      "buy": 4.62,
-     "now": 4.56,
-     "value": 4935.06,
-     "pct": -1.3
+     "now": 4.64,
+     "value": 5021.65,
+     "pct": 0.43
     },
     {
      "ticker": "WGX.AX",
      "date": "2026-11-20",
      "buy": 4.86,
-     "now": 5.25,
-     "value": 5401.23,
-     "pct": 8.02
+     "now": 5.43,
+     "value": 5586.42,
+     "pct": 11.73
     },
     {
      "ticker": "HVN.AX",
      "date": "2026-11-20",
      "buy": 4.28,
-     "now": 4.01,
-     "value": 4684.58,
-     "pct": -6.31
+     "now": 4.14,
+     "value": 4836.45,
+     "pct": -3.27
     },
     {
      "ticker": "RRL.AX",
      "date": "2026-11-20",
      "buy": 5.77,
-     "now": 5.97,
-     "value": 5173.31,
-     "pct": 3.47
+     "now": 6.19,
+     "value": 5363.95,
+     "pct": 7.28
     },
     {
      "ticker": "RSG.AX",
      "date": "2026-11-20",
      "buy": 1.01,
-     "now": 1.09,
-     "value": 5369.46,
-     "pct": 7.39
+     "now": 1.12,
+     "value": 5517.24,
+     "pct": 10.34
     },
     {
      "ticker": "GMD.AX",
      "date": "2026-11-20",
      "buy": 5.84,
-     "now": 6.4,
-     "value": 5479.45,
-     "pct": 9.59
+     "now": 6.82,
+     "value": 5839.04,
+     "pct": 16.78
     },
     {
      "ticker": "WHC.AX",
      "date": "2026-11-20",
      "buy": 6.68,
-     "now": 7.32,
-     "value": 5479.04,
-     "pct": 9.58
+     "now": 7.54,
+     "value": 5643.71,
+     "pct": 12.87
     },
     {
      "ticker": "A2M.AX",
      "date": "2026-11-20",
      "buy": 6.47,
-     "now": 6.11,
-     "value": 4721.79,
-     "pct": -5.56
+     "now": 5.97,
+     "value": 4613.6,
+     "pct": -7.73
     },
     {
      "ticker": "VNT.AX",
      "date": "2026-11-20",
      "buy": 4.6,
-     "now": 4.61,
-     "value": 5010.87,
-     "pct": 0.22
+     "now": 4.71,
+     "value": 5119.57,
+     "pct": 2.39
     },
     {
      "ticker": "FLT.AX",
      "date": "2026-11-20",
      "buy": 11.1,
-     "now": 10.56,
-     "value": 4756.76,
-     "pct": -4.86
+     "now": 10.63,
+     "value": 4788.29,
+     "pct": -4.23
     },
     {
      "ticker": "OBM.AX",
      "date": "2026-11-20",
      "buy": 1.18,
-     "now": 1.25,
-     "value": 5295.36,
-     "pct": 5.91
+     "now": 1.34,
+     "value": 5654.01,
+     "pct": 13.08
     }
    ],
    "buys": 20,
@@ -351,6 +351,21 @@
     "STW.AX": 102011.94,
     "SFY.AX": 101803.34,
     "ISO.AX": 102252.25
+   }
+  },
+  {
+   "date": "2026-11-27",
+   "fixed_value": 100504.41,
+   "fixed_bench": {
+    "STW.AX": 102816.72,
+    "SFY.AX": 102500.99,
+    "ISO.AX": 103378.38
+   },
+   "rules_value": 104902.13,
+   "rules_bench": {
+    "STW.AX": 102816.72,
+    "SFY.AX": 102500.99,
+    "ISO.AX": 103378.38
    }
   }
  ],
