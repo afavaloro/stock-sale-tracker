@@ -1,9 +1,9 @@
 {
- "as_of": "2026-11-25",
+ "as_of": "2026-11-27",
  "market": "us",
  "market_name": "S&P 500",
  "currency": "US$",
- "generated": "2026-11-27T04:21+00:00",
+ "generated": "2026-11-28T04:00+00:00",
  "universe_size": 499,
  "rules": {
   "min_drop_pct": 20.0,
@@ -30,12 +30,12 @@
   "max_hold_days": 730
  },
  "counts": {
-  "drop": 173,
-  "below_sma": 207,
-  "cheap": 164,
+  "drop": 159,
+  "below_sma": 188,
+  "cheap": 165,
   "quality": 395
  },
- "a_picks": 31,
+ "a_picks": 34,
  "ranking": {
   "by": "chance of profit",
   "base_rate_pct": 61.3,
@@ -81,12 +81,12 @@
    "ticker": "FICO",
    "name": "Fair Isaac",
    "sector": "Information Technology",
-   "price": 699.81,
+   "price": 708.57,
    "high52": 1844.98,
-   "drop_pct": 62.1,
-   "sma200": 1054.16,
-   "pe": 19.3,
-   "sector_pe": 26.7,
+   "drop_pct": 61.6,
+   "sma200": 1050.88,
+   "pe": 19.5,
+   "sector_pe": 27.8,
    "fcf": 843796608.0,
    "checks": {
     "drop": true,
@@ -100,88 +100,7 @@
     "recovery": false
    },
    "a_pick": false,
-   "win_chance": 69,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "COO",
-   "name": "Cooper Companies (The)",
-   "sector": "Health Care",
-   "price": 62.29,
-   "high52": 84.32,
-   "drop_pct": 26.1,
-   "sma200": 67.16,
-   "pe": 21.4,
-   "sector_pe": 33.9,
-   "fcf": 542649984.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
-   "win_chance": 66,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "LULU",
-   "name": "Lululemon Athletica",
-   "sector": "Consumer Discretionary",
-   "price": 107.44,
-   "high52": 215.88,
-   "drop_pct": 50.2,
-   "sma200": 126.94,
-   "pe": 8.8,
-   "sector_pe": 20.4,
-   "fcf": 1148515840.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "win_chance": 65,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "HPE",
-   "name": "Hewlett Packard Enterprise",
-   "sector": "Information Technology",
-   "price": 40.82,
-   "high52": 73.46,
-   "drop_pct": 44.4,
-   "sma200": 42.87,
-   "pe": 13.3,
-   "sector_pe": 26.7,
-   "fcf": 4289999872.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "win_chance": 65,
+   "win_chance": 68,
    "new_today": false,
    "last_signal": "2026-11-20",
    "a_bought_today": false
@@ -190,11 +109,11 @@
    "ticker": "VST",
    "name": "Vistra Corp.",
    "sector": "Utilities",
-   "price": 121.32,
+   "price": 122.65,
    "high52": 179.39,
-   "drop_pct": 32.4,
-   "sma200": 150.47,
-   "pe": 16.4,
+   "drop_pct": 31.6,
+   "sma200": 150.29,
+   "pe": 16.6,
    "sector_pe": 19.9,
    "fcf": 904124992.0,
    "checks": {
@@ -208,7 +127,88 @@
     "bounce": true
    },
    "a_pick": true,
-   "win_chance": 65,
+   "win_chance": 64,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "COO",
+   "name": "Cooper Companies (The)",
+   "sector": "Health Care",
+   "price": 62.28,
+   "high52": 84.32,
+   "drop_pct": 26.1,
+   "sma200": 67.05,
+   "pe": 21.4,
+   "sector_pe": 34.0,
+   "fcf": 542649984.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 64,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "LULU",
+   "name": "Lululemon Athletica",
+   "sector": "Consumer Discretionary",
+   "price": 108.01,
+   "high52": 215.88,
+   "drop_pct": 50.0,
+   "sma200": 126.6,
+   "pe": 8.9,
+   "sector_pe": 20.7,
+   "fcf": 1148515840.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 63,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "HPE",
+   "name": "Hewlett Packard Enterprise",
+   "sector": "Information Technology",
+   "price": 42.76,
+   "high52": 73.46,
+   "drop_pct": 41.8,
+   "sma200": 42.97,
+   "pe": 13.9,
+   "sector_pe": 27.8,
+   "fcf": 4289999872.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 63,
    "new_today": false,
    "last_signal": "2026-11-20",
    "a_bought_today": false
@@ -217,12 +217,12 @@
    "ticker": "EXPE",
    "name": "Expedia Group",
    "sector": "Consumer Discretionary",
-   "price": 241.27,
+   "price": 246.62,
    "high52": 337.97,
-   "drop_pct": 28.6,
-   "sma200": 257.87,
-   "pe": 14.1,
-   "sector_pe": 20.4,
+   "drop_pct": 27.0,
+   "sma200": 257.94,
+   "pe": 14.4,
+   "sector_pe": 20.7,
    "fcf": 2346500096.0,
    "checks": {
     "drop": true,
@@ -235,34 +235,7 @@
     "bounce": false
    },
    "a_pick": false,
-   "win_chance": 65,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "NXPI",
-   "name": "NXP Semiconductors",
-   "sector": "Information Technology",
-   "price": 242.96,
-   "high52": 330.06,
-   "drop_pct": 26.4,
-   "sma200": 247.35,
-   "pe": 19.1,
-   "sector_pe": 26.7,
-   "fcf": 4086625024.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "win_chance": 65,
+   "win_chance": 63,
    "new_today": false,
    "last_signal": "2026-11-20",
    "a_bought_today": false
@@ -271,122 +244,13 @@
    "ticker": "MU",
    "name": "Micron Technology",
    "sector": "Information Technology",
-   "price": 601.25,
+   "price": 646.95,
    "high52": 1213.18,
-   "drop_pct": 50.4,
-   "sma200": 776.3,
-   "pe": 8.1,
-   "sector_pe": 26.7,
+   "drop_pct": 46.7,
+   "sma200": 777.49,
+   "pe": 8.7,
+   "sector_pe": 27.8,
    "fcf": 29140250624.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "win_chance": 64,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "SBAC",
-   "name": "SBA Communications",
-   "sector": "Real Estate",
-   "price": 174.73,
-   "high52": 219.43,
-   "drop_pct": 20.4,
-   "sma200": 187.43,
-   "pe": 18.9,
-   "sector_pe": 30.6,
-   "fcf": 684667648.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "win_chance": 64,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "WDC",
-   "name": "Western Digital",
-   "sector": "Information Technology",
-   "price": 272.45,
-   "high52": 745.99,
-   "drop_pct": 63.5,
-   "sma200": 422.25,
-   "pe": 9.6,
-   "sector_pe": 26.7,
-   "fcf": 2729499904.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": false,
-    "recovery": false
-   },
-   "a_pick": false,
-   "win_chance": 63,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "GEV",
-   "name": "GE Vernova",
-   "sector": "Industrials",
-   "price": 715.0,
-   "high52": 1174.17,
-   "drop_pct": 39.1,
-   "sma200": 950.25,
-   "pe": 18.8,
-   "sector_pe": 25.9,
-   "fcf": 22098874368.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "win_chance": 63,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "HII",
-   "name": "Huntington Ingalls Industries",
-   "sector": "Industrials",
-   "price": 299.34,
-   "high52": 449.68,
-   "drop_pct": 33.4,
-   "sma200": 323.47,
-   "pe": 16.1,
-   "sector_pe": 25.9,
-   "fcf": 193375008.0,
    "checks": {
     "drop": true,
     "below_sma": true,
@@ -398,7 +262,34 @@
     "bounce": true
    },
    "a_pick": true,
-   "win_chance": 63,
+   "win_chance": 62,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "GEV",
+   "name": "GE Vernova",
+   "sector": "Industrials",
+   "price": 735.31,
+   "high52": 1174.17,
+   "drop_pct": 37.4,
+   "sma200": 949.82,
+   "pe": 19.3,
+   "sector_pe": 26.0,
+   "fcf": 22098874368.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 62,
    "new_today": false,
    "last_signal": "2026-11-20",
    "a_bought_today": false
@@ -407,12 +298,12 @@
    "ticker": "LEN",
    "name": "Lennar",
    "sector": "Consumer Discretionary",
-   "price": 86.79,
+   "price": 86.09,
    "high52": 130.21,
-   "drop_pct": 33.3,
-   "sma200": 87.81,
-   "pe": 16.4,
-   "sector_pe": 20.4,
+   "drop_pct": 33.9,
+   "sma200": 87.65,
+   "pe": 16.3,
+   "sector_pe": 20.7,
    "fcf": 1227246208.0,
    "checks": {
     "drop": true,
@@ -425,7 +316,34 @@
     "bounce": true
    },
    "a_pick": true,
-   "win_chance": 63,
+   "win_chance": 62,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "HII",
+   "name": "Huntington Ingalls Industries",
+   "sector": "Industrials",
+   "price": 304.48,
+   "high52": 447.56,
+   "drop_pct": 32.0,
+   "sma200": 321.54,
+   "pe": 16.4,
+   "sector_pe": 26.0,
+   "fcf": 193375008.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 62,
    "new_today": false,
    "last_signal": "2026-11-20",
    "a_bought_today": false
@@ -434,12 +352,12 @@
    "ticker": "TPR",
    "name": "Tapestry, Inc.",
    "sector": "Consumer Discretionary",
-   "price": 129.6,
+   "price": 128.02,
    "high52": 164.16,
-   "drop_pct": 21.1,
-   "sma200": 136.18,
-   "pe": 16.7,
-   "sector_pe": 20.4,
+   "drop_pct": 22.0,
+   "sma200": 136.06,
+   "pe": 16.5,
+   "sector_pe": 20.7,
    "fcf": 1368075008.0,
    "checks": {
     "drop": true,
@@ -452,7 +370,197 @@
     "bounce": true
    },
    "a_pick": true,
-   "win_chance": 63,
+   "win_chance": 62,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "WDC",
+   "name": "Western Digital",
+   "sector": "Information Technology",
+   "price": 292.11,
+   "high52": 745.99,
+   "drop_pct": 60.8,
+   "sma200": 422.34,
+   "pe": 10.3,
+   "sector_pe": 27.8,
+   "fcf": 2729499904.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true,
+    "recovery": false
+   },
+   "a_pick": false,
+   "win_chance": 61,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "ZTS",
+   "name": "Zoetis",
+   "sector": "Health Care",
+   "price": 82.45,
+   "high52": 128.76,
+   "drop_pct": 36.0,
+   "sma200": 88.46,
+   "pe": 14.0,
+   "sector_pe": 34.0,
+   "fcf": 2053124992.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "win_chance": 61,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "XYL",
+   "name": "Xylem Inc.",
+   "sector": "Industrials",
+   "price": 95.86,
+   "high52": 143.88,
+   "drop_pct": 33.4,
+   "sma200": 112.25,
+   "pe": 21.3,
+   "sector_pe": 26.0,
+   "fcf": 1210375040.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "win_chance": 61,
+   "new_today": false,
+   "last_signal": "2026-11-23",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "EME",
+   "name": "Emcor",
+   "sector": "Industrials",
+   "price": 634.97,
+   "high52": 942.76,
+   "drop_pct": 32.6,
+   "sma200": 773.46,
+   "pe": 18.4,
+   "sector_pe": 26.0,
+   "fcf": 1285164672.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 61,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "BKNG",
+   "name": "Booking Holdings",
+   "sector": "Consumer Discretionary",
+   "price": 150.39,
+   "high52": 218.11,
+   "drop_pct": 31.0,
+   "sma200": 172.67,
+   "pe": 16.3,
+   "sector_pe": 20.7,
+   "fcf": 7609124864.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "win_chance": 61,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "DECK",
+   "name": "Deckers Brands",
+   "sector": "Consumer Discretionary",
+   "price": 86.94,
+   "high52": 120.94,
+   "drop_pct": 28.1,
+   "sma200": 97.16,
+   "pe": 11.5,
+   "sector_pe": 20.7,
+   "fcf": 815705728.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 61,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "CVS",
+   "name": "CVS Health",
+   "sector": "Health Care",
+   "price": 82.61,
+   "high52": 109.14,
+   "drop_pct": 24.3,
+   "sma200": 88.44,
+   "pe": 9.6,
+   "sector_pe": 34.0,
+   "fcf": 11826124800.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "win_chance": 61,
    "new_today": false,
    "last_signal": "2026-11-20",
    "a_bought_today": false
@@ -461,11 +569,11 @@
    "ticker": "NRG",
    "name": "NRG Energy",
    "sector": "Utilities",
-   "price": 91.94,
+   "price": 93.83,
    "high52": 181.92,
-   "drop_pct": 49.5,
-   "sma200": 128.97,
-   "pe": 16.1,
+   "drop_pct": 48.4,
+   "sma200": 128.64,
+   "pe": 16.4,
    "sector_pe": 19.9,
    "fcf": 1384625024.0,
    "checks": {
@@ -479,169 +587,7 @@
     "bounce": true
    },
    "a_pick": true,
-   "win_chance": 62,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "ZTS",
-   "name": "Zoetis",
-   "sector": "Health Care",
-   "price": 82.6,
-   "high52": 128.76,
-   "drop_pct": 35.8,
-   "sma200": 88.68,
-   "pe": 14.0,
-   "sector_pe": 33.9,
-   "fcf": 2053124992.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
-   "win_chance": 62,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "EME",
-   "name": "Emcor",
-   "sector": "Industrials",
-   "price": 628.72,
-   "high52": 942.76,
-   "drop_pct": 33.3,
-   "sma200": 774.33,
-   "pe": 18.2,
-   "sector_pe": 25.9,
-   "fcf": 1285164672.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
-   "win_chance": 62,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "QCOM",
-   "name": "Qualcomm",
-   "sector": "Information Technology",
-   "price": 168.66,
-   "high52": 248.74,
-   "drop_pct": 32.2,
-   "sma200": 170.03,
-   "pe": 13.3,
-   "sector_pe": 26.7,
-   "fcf": 9107125248.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
-   "win_chance": 62,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "BKNG",
-   "name": "Booking Holdings",
-   "sector": "Consumer Discretionary",
-   "price": 149.5,
-   "high52": 218.11,
-   "drop_pct": 31.5,
-   "sma200": 172.78,
-   "pe": 16.2,
-   "sector_pe": 20.4,
-   "fcf": 7609124864.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "win_chance": 62,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "DECK",
-   "name": "Deckers Brands",
-   "sector": "Consumer Discretionary",
-   "price": 85.56,
-   "high52": 120.94,
-   "drop_pct": 29.3,
-   "sma200": 97.3,
-   "pe": 11.3,
-   "sector_pe": 20.4,
-   "fcf": 815705728.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
-   "win_chance": 62,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "CVS",
-   "name": "CVS Health",
-   "sector": "Health Care",
-   "price": 81.06,
-   "high52": 109.14,
-   "drop_pct": 25.7,
-   "sma200": 88.4,
-   "pe": 9.4,
-   "sector_pe": 33.9,
-   "fcf": 11826124800.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "win_chance": 62,
+   "win_chance": 60,
    "new_today": false,
    "last_signal": "2026-11-20",
    "a_bought_today": false
@@ -650,12 +596,12 @@
    "ticker": "LII",
    "name": "Lennox International",
    "sector": "Industrials",
-   "price": 349.97,
+   "price": 350.04,
    "high52": 570.79,
    "drop_pct": 38.7,
-   "sma200": 454.54,
+   "sma200": 453.53,
    "pe": 15.8,
-   "sector_pe": 25.9,
+   "sector_pe": 26.0,
    "fcf": 366750016.0,
    "checks": {
     "drop": true,
@@ -668,412 +614,7 @@
     "bounce": true
    },
    "a_pick": true,
-   "win_chance": 61,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "NVDA",
-   "name": "Nvidia",
-   "sector": "Information Technology",
-   "price": 149.3,
-   "high52": 239.24,
-   "drop_pct": 37.6,
-   "sma200": 202.62,
-   "pe": 16.0,
-   "sector_pe": 26.7,
-   "fcf": 99241377792.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
-   "win_chance": 61,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "XYL",
-   "name": "Xylem Inc.",
-   "sector": "Industrials",
-   "price": 96.42,
-   "high52": 143.88,
-   "drop_pct": 33.0,
-   "sma200": 112.39,
-   "pe": 21.4,
-   "sector_pe": 25.9,
-   "fcf": 1210375040.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
-   "win_chance": 61,
-   "new_today": false,
-   "last_signal": "2026-11-23",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "NOC",
-   "name": "Northrop Grumman",
-   "sector": "Industrials",
-   "price": 555.79,
-   "high52": 761.19,
-   "drop_pct": 27.0,
-   "sma200": 575.6,
-   "pe": 17.5,
-   "sector_pe": 25.9,
-   "fcf": 3143124992.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
-   "win_chance": 61,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "NEM",
-   "name": "Newmont",
-   "sector": "Materials",
-   "price": 101.44,
-   "high52": 134.51,
-   "drop_pct": 24.6,
-   "sma200": 111.07,
-   "pe": 11.8,
-   "sector_pe": 20.7,
-   "fcf": 9154124800.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
-   "win_chance": 61,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "STLD",
-   "name": "Steel Dynamics",
-   "sector": "Materials",
-   "price": 216.86,
-   "high52": 281.45,
-   "drop_pct": 22.9,
-   "sma200": 226.99,
-   "pe": 16.0,
-   "sector_pe": 20.7,
-   "fcf": 429926752.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
-   "win_chance": 61,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "FIS",
-   "name": "Fidelity National Information Services",
-   "sector": "Financials",
-   "price": 27.64,
-   "high52": 65.45,
-   "drop_pct": 57.8,
-   "sma200": 40.66,
-   "pe": 4.1,
-   "sector_pe": 14.5,
-   "fcf": 2316499968.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
    "win_chance": 60,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "DVA",
-   "name": "DaVita",
-   "sector": "Health Care",
-   "price": 162.77,
-   "high52": 240.96,
-   "drop_pct": 32.4,
-   "sma200": 182.15,
-   "pe": 12.3,
-   "sector_pe": 33.9,
-   "fcf": 905084352.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "win_chance": 60,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "LYB",
-   "name": "LyondellBasell",
-   "sector": "Materials",
-   "price": 56.96,
-   "high52": 80.69,
-   "drop_pct": 29.4,
-   "sma200": 63.85,
-   "pe": 13.8,
-   "sector_pe": 20.7,
-   "fcf": 1778625024.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "win_chance": 60,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "MKC",
-   "name": "McCormick & Company",
-   "sector": "Consumer Staples",
-   "price": 49.85,
-   "high52": 69.64,
-   "drop_pct": 28.4,
-   "sma200": 51.01,
-   "pe": 9.0,
-   "sector_pe": 23.8,
-   "fcf": 742000000.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
-   "win_chance": 60,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "NVR",
-   "name": "NVR, Inc.",
-   "sector": "Consumer Discretionary",
-   "price": 6016.97,
-   "high52": 8097.25,
-   "drop_pct": 25.7,
-   "sma200": 6375.75,
-   "pe": 16.6,
-   "sector_pe": 20.4,
-   "fcf": 706486656.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
-   "win_chance": 60,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "PCAR",
-   "name": "Paccar",
-   "sector": "Industrials",
-   "price": 107.95,
-   "high52": 137.39,
-   "drop_pct": 21.4,
-   "sma200": 117.7,
-   "pe": 20.6,
-   "sector_pe": 25.9,
-   "fcf": 1735624960.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
-   "win_chance": 60,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "UNH",
-   "name": "UnitedHealth Group",
-   "sector": "Health Care",
-   "price": 346.19,
-   "high52": 433.68,
-   "drop_pct": 20.2,
-   "sma200": 366.92,
-   "pe": 19.8,
-   "sector_pe": 33.9,
-   "fcf": 26501249024.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "win_chance": 60,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "ADBE",
-   "name": "Adobe Inc.",
-   "sector": "Information Technology",
-   "price": 232.83,
-   "high52": 357.53,
-   "drop_pct": 34.9,
-   "sma200": 245.81,
-   "pe": 13.0,
-   "sector_pe": 26.7,
-   "fcf": 9345125376.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
-   "win_chance": 59,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "BA",
-   "name": "Boeing",
-   "sector": "Industrials",
-   "price": 164.53,
-   "high52": 252.15,
-   "drop_pct": 34.7,
-   "sma200": 210.31,
-   "pe": 17.0,
-   "sector_pe": 25.9,
-   "fcf": 4723874816.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
-   "win_chance": 59,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "LDOS",
-   "name": "Leidos",
-   "sector": "Industrials",
-   "price": 130.62,
-   "high52": 196.51,
-   "drop_pct": 33.5,
-   "sma200": 135.23,
-   "pe": 11.7,
-   "sector_pe": 25.9,
-   "fcf": 1037500032.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
-   "win_chance": 59,
    "new_today": false,
    "last_signal": "2026-11-20",
    "a_bought_today": false
@@ -1082,12 +623,12 @@
    "ticker": "MGM",
    "name": "MGM Resorts",
    "sector": "Consumer Discretionary",
-   "price": 34.65,
+   "price": 35.29,
    "high52": 50.69,
-   "drop_pct": 31.6,
+   "drop_pct": 30.4,
    "sma200": 38.88,
-   "pe": 13.3,
-   "sector_pe": 20.4,
+   "pe": 13.6,
+   "sector_pe": 20.7,
    "fcf": 889266624.0,
    "checks": {
     "drop": true,
@@ -1100,22 +641,76 @@
     "bounce": true
    },
    "a_pick": true,
-   "win_chance": 59,
+   "win_chance": 60,
    "new_today": false,
    "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
-   "ticker": "EXE",
-   "name": "Expand Energy",
-   "sector": "Energy",
-   "price": 86.77,
-   "high52": 119.98,
-   "drop_pct": 27.7,
-   "sma200": 93.64,
-   "pe": 7.5,
-   "sector_pe": 13.4,
-   "fcf": 1366749952.0,
+   "ticker": "NOC",
+   "name": "Northrop Grumman",
+   "sector": "Industrials",
+   "price": 561.47,
+   "high52": 761.19,
+   "drop_pct": 26.2,
+   "sma200": 575.06,
+   "pe": 17.7,
+   "sector_pe": 26.0,
+   "fcf": 3143124992.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 60,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "NEM",
+   "name": "Newmont",
+   "sector": "Materials",
+   "price": 106.87,
+   "high52": 134.51,
+   "drop_pct": 20.5,
+   "sma200": 110.99,
+   "pe": 12.4,
+   "sector_pe": 21.3,
+   "fcf": 9154124800.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 60,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "TWLO",
+   "name": "Twilio",
+   "sector": "Information Technology",
+   "price": 185.61,
+   "high52": 301.27,
+   "drop_pct": 38.4,
+   "sma200": 196.16,
+   "pe": 23.3,
+   "sector_pe": 27.8,
+   "fcf": 1077864576.0,
    "checks": {
     "drop": true,
     "below_sma": true,
@@ -1133,15 +728,285 @@
    "a_bought_today": false
   },
   {
+   "ticker": "NVDA",
+   "name": "Nvidia",
+   "sector": "Information Technology",
+   "price": 150.49,
+   "high52": 239.24,
+   "drop_pct": 37.1,
+   "sma200": 202.43,
+   "pe": 16.2,
+   "sector_pe": 27.8,
+   "fcf": 99241377792.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 59,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "DVA",
+   "name": "DaVita",
+   "sector": "Health Care",
+   "price": 164.49,
+   "high52": 240.96,
+   "drop_pct": 31.7,
+   "sma200": 182.26,
+   "pe": 12.5,
+   "sector_pe": 34.0,
+   "fcf": 905084352.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 59,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "MKC",
+   "name": "McCormick & Company",
+   "sector": "Consumer Staples",
+   "price": 49.66,
+   "high52": 69.64,
+   "drop_pct": 28.7,
+   "sma200": 50.91,
+   "pe": 9.0,
+   "sector_pe": 24.0,
+   "fcf": 742000000.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 59,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "LYB",
+   "name": "LyondellBasell",
+   "sector": "Materials",
+   "price": 57.77,
+   "high52": 80.69,
+   "drop_pct": 28.4,
+   "sma200": 63.85,
+   "pe": 14.0,
+   "sector_pe": 21.3,
+   "fcf": 1778625024.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 59,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "NVR",
+   "name": "NVR, Inc.",
+   "sector": "Consumer Discretionary",
+   "price": 6034.41,
+   "high52": 8097.25,
+   "drop_pct": 25.5,
+   "sma200": 6365.44,
+   "pe": 16.7,
+   "sector_pe": 20.7,
+   "fcf": 706486656.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 59,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "STLD",
+   "name": "Steel Dynamics",
+   "sector": "Materials",
+   "price": 222.01,
+   "high52": 281.45,
+   "drop_pct": 21.1,
+   "sma200": 227.08,
+   "pe": 16.4,
+   "sector_pe": 21.3,
+   "fcf": 429926752.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 59,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "FIS",
+   "name": "Fidelity National Information Services",
+   "sector": "Financials",
+   "price": 28.21,
+   "high52": 65.45,
+   "drop_pct": 56.9,
+   "sma200": 40.57,
+   "pe": 4.2,
+   "sector_pe": 14.7,
+   "fcf": 2316499968.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 58,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "ADBE",
+   "name": "Adobe Inc.",
+   "sector": "Information Technology",
+   "price": 234.79,
+   "high52": 357.53,
+   "drop_pct": 34.3,
+   "sma200": 245.7,
+   "pe": 13.1,
+   "sector_pe": 27.8,
+   "fcf": 9345125376.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 58,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "BA",
+   "name": "Boeing",
+   "sector": "Industrials",
+   "price": 167.24,
+   "high52": 252.15,
+   "drop_pct": 33.7,
+   "sma200": 209.96,
+   "pe": 17.3,
+   "sector_pe": 26.0,
+   "fcf": 4723874816.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 58,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "LDOS",
+   "name": "Leidos",
+   "sector": "Industrials",
+   "price": 131.78,
+   "high52": 196.51,
+   "drop_pct": 32.9,
+   "sma200": 135.04,
+   "pe": 11.8,
+   "sector_pe": 26.0,
+   "fcf": 1037500032.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 58,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
    "ticker": "INTU",
    "name": "Intuit",
    "sector": "Information Technology",
-   "price": 271.72,
+   "price": 271.94,
    "high52": 667.14,
-   "drop_pct": 59.3,
-   "sma200": 342.26,
+   "drop_pct": 59.2,
+   "sma200": 341.65,
    "pe": 16.5,
-   "sector_pe": 26.7,
+   "sector_pe": 27.8,
    "fcf": 6919499776.0,
    "checks": {
     "drop": true,
@@ -1154,7 +1019,7 @@
     "bounce": false
    },
    "a_pick": false,
-   "win_chance": 58,
+   "win_chance": 57,
    "new_today": false,
    "last_signal": "2026-11-20",
    "a_bought_today": false
@@ -1163,12 +1028,12 @@
    "ticker": "FSLR",
    "name": "First Solar",
    "sector": "Information Technology",
-   "price": 147.88,
+   "price": 149.77,
    "high52": 318.25,
-   "drop_pct": 53.5,
-   "sma200": 209.98,
-   "pe": 8.6,
-   "sector_pe": 26.7,
+   "drop_pct": 52.9,
+   "sma200": 209.59,
+   "pe": 8.7,
+   "sector_pe": 27.8,
    "fcf": 687752768.0,
    "checks": {
     "drop": true,
@@ -1181,49 +1046,22 @@
     "bounce": true
    },
    "a_pick": true,
-   "win_chance": 58,
+   "win_chance": 57,
    "new_today": false,
    "last_signal": "2026-11-20",
    "a_bought_today": false
   },
   {
-   "ticker": "LVS",
-   "name": "Las Vegas Sands",
-   "sector": "Consumer Discretionary",
-   "price": 39.76,
-   "high52": 67.74,
-   "drop_pct": 41.3,
-   "sma200": 46.69,
-   "pe": 16.3,
-   "sector_pe": 20.4,
-   "fcf": 2107374976.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": true
-   },
-   "score": 4,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": true,
-   "win_chance": 58,
-   "new_today": false,
-   "last_signal": "2026-11-20",
-   "a_bought_today": false
-  },
-  {
-   "ticker": "PODD",
-   "name": "Insulet Corporation",
-   "sector": "Health Care",
-   "price": 142.68,
-   "high52": 328.85,
-   "drop_pct": 56.6,
-   "sma200": 168.31,
-   "pe": 23.3,
-   "sector_pe": 33.9,
-   "fcf": 113512496.0,
+   "ticker": "EXE",
+   "name": "Expand Energy",
+   "sector": "Energy",
+   "price": 87.45,
+   "high52": 119.98,
+   "drop_pct": 27.1,
+   "sma200": 93.57,
+   "pe": 7.5,
+   "sector_pe": 13.6,
+   "fcf": 1366749952.0,
    "checks": {
     "drop": true,
     "below_sma": true,
@@ -1241,15 +1079,42 @@
    "a_bought_today": false
   },
   {
+   "ticker": "PODD",
+   "name": "Insulet Corporation",
+   "sector": "Health Care",
+   "price": 138.9,
+   "high52": 327.19,
+   "drop_pct": 57.5,
+   "sma200": 167.75,
+   "pe": 22.7,
+   "sector_pe": 34.0,
+   "fcf": 113512496.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": false
+   },
+   "a_pick": false,
+   "win_chance": 56,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
    "ticker": "BSX",
    "name": "Boston Scientific",
    "sector": "Health Care",
-   "price": 45.12,
+   "price": 45.25,
    "high52": 101.58,
-   "drop_pct": 55.6,
-   "sma200": 52.6,
-   "pe": 19.0,
-   "sector_pe": 33.9,
+   "drop_pct": 55.5,
+   "sma200": 52.46,
+   "pe": 19.1,
+   "sector_pe": 34.0,
    "fcf": 2491875072.0,
    "checks": {
     "drop": true,
@@ -1262,7 +1127,34 @@
     "bounce": true
    },
    "a_pick": true,
-   "win_chance": 57,
+   "win_chance": 56,
+   "new_today": false,
+   "last_signal": "2026-11-20",
+   "a_bought_today": false
+  },
+  {
+   "ticker": "LVS",
+   "name": "Las Vegas Sands",
+   "sector": "Consumer Discretionary",
+   "price": 41.15,
+   "high52": 67.74,
+   "drop_pct": 39.3,
+   "sma200": 46.61,
+   "pe": 16.9,
+   "sector_pe": 20.7,
+   "fcf": 2107374976.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": true
+   },
+   "score": 4,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": true,
+   "win_chance": 56,
    "new_today": false,
    "last_signal": "2026-11-20",
    "a_bought_today": false
@@ -1271,12 +1163,12 @@
    "ticker": "CMI",
    "name": "Cummins",
    "sector": "Industrials",
-   "price": 420.72,
+   "price": 431.16,
    "high52": 721.11,
-   "drop_pct": 41.7,
-   "sma200": 585.71,
-   "pe": 17.6,
-   "sector_pe": 25.9,
+   "drop_pct": 40.2,
+   "sma200": 584.92,
+   "pe": 18.0,
+   "sector_pe": 26.0,
    "fcf": 2342249984.0,
    "checks": {
     "drop": true,
@@ -1286,10 +1178,10 @@
    },
    "score": 4,
    "a_checks": {
-    "bounce": false
+    "bounce": true
    },
-   "a_pick": false,
-   "win_chance": 57,
+   "a_pick": true,
+   "win_chance": 55,
    "new_today": false,
    "last_signal": "2026-11-20",
    "a_bought_today": false
@@ -1298,12 +1190,12 @@
    "ticker": "APTV",
    "name": "Aptiv",
    "sector": "Consumer Discretionary",
-   "price": 37.55,
+   "price": 38.09,
    "high52": 88.67,
-   "drop_pct": 57.7,
-   "sma200": 56.1,
-   "pe": 10.5,
-   "sector_pe": 20.4,
+   "drop_pct": 57.0,
+   "sma200": 55.87,
+   "pe": 10.6,
+   "sector_pe": 20.7,
    "fcf": 1552000000.0,
    "checks": {
     "drop": true,
@@ -1316,7 +1208,7 @@
     "bounce": true
    },
    "a_pick": true,
-   "win_chance": 56,
+   "win_chance": 54,
    "new_today": false,
    "last_signal": "2026-11-20",
    "a_bought_today": false
@@ -1325,12 +1217,12 @@
    "ticker": "CAT",
    "name": "Caterpillar Inc.",
    "sector": "Industrials",
-   "price": 543.69,
+   "price": 561.74,
    "high52": 1060.41,
-   "drop_pct": 48.7,
-   "sma200": 798.28,
-   "pe": 21.3,
-   "sector_pe": 25.9,
+   "drop_pct": 47.0,
+   "sma200": 797.23,
+   "pe": 22.0,
+   "sector_pe": 26.0,
    "fcf": 3973250048.0,
    "checks": {
     "drop": true,
@@ -1343,7 +1235,7 @@
     "bounce": true
    },
    "a_pick": true,
-   "win_chance": 56,
+   "win_chance": 54,
    "new_today": false,
    "last_signal": "2026-11-20",
    "a_bought_today": false
@@ -1354,12 +1246,12 @@
    "ticker": "RDDT",
    "name": "Reddit",
    "sector": "Communication Services",
-   "price": 91.51,
+   "price": 93.83,
    "high52": 258.93,
-   "drop_pct": 64.7,
-   "sma200": 151.01,
-   "pe": 18.7,
-   "sector_pe": 16.0,
+   "drop_pct": 63.8,
+   "sma200": 150.78,
+   "pe": 19.1,
+   "sector_pe": 16.4,
    "fcf": 811615232.0,
    "checks": {
     "drop": true,
@@ -1373,18 +1265,18 @@
     "recovery": false
    },
    "a_pick": false,
-   "win_chance": 60
+   "win_chance": 59
   },
   {
    "ticker": "ALB",
    "name": "Albemarle Corporation",
    "sector": "Materials",
-   "price": 81.5,
+   "price": 82.93,
    "high52": 214.35,
-   "drop_pct": 62.0,
-   "sma200": 141.74,
-   "pe": 19.6,
-   "sector_pe": 20.7,
+   "drop_pct": 61.3,
+   "sma200": 141.28,
+   "pe": 20.0,
+   "sector_pe": 21.3,
    "fcf": 1250136064.0,
    "checks": {
     "drop": true,
@@ -1398,18 +1290,18 @@
     "recovery": false
    },
    "a_pick": false,
-   "win_chance": 56
+   "win_chance": 55
   },
   {
    "ticker": "CIEN",
    "name": "Ciena",
    "sector": "Information Technology",
-   "price": 242.79,
+   "price": 256.58,
    "high52": 627.0,
-   "drop_pct": 61.3,
-   "sma200": 405.99,
-   "pe": 48.1,
-   "sector_pe": 26.7,
+   "drop_pct": 59.1,
+   "sma200": 405.78,
+   "pe": 50.8,
+   "sector_pe": 27.8,
    "fcf": 633368384.0,
    "checks": {
     "drop": true,
@@ -1419,22 +1311,21 @@
    },
    "score": 3,
    "a_checks": {
-    "bounce": true,
-    "recovery": false
+    "bounce": true
    },
    "a_pick": false,
-   "win_chance": 67
+   "win_chance": 65
   },
   {
    "ticker": "GLW",
    "name": "Corning Inc.",
    "sector": "Information Technology",
-   "price": 100.24,
+   "price": 105.08,
    "high52": 254.61,
-   "drop_pct": 60.6,
-   "sma200": 155.43,
-   "pe": 40.6,
-   "sector_pe": 26.7,
+   "drop_pct": 58.7,
+   "sma200": 155.3,
+   "pe": 42.5,
+   "sector_pe": 27.8,
    "fcf": 870124992.0,
    "checks": {
     "drop": true,
@@ -1444,46 +1335,21 @@
    },
    "score": 3,
    "a_checks": {
-    "bounce": true,
-    "recovery": false
-   },
-   "a_pick": false,
-   "win_chance": 62
-  },
-  {
-   "ticker": "MRVL",
-   "name": "Marvell Technology",
-   "sector": "Information Technology",
-   "price": 130.93,
-   "high52": 316.28,
-   "drop_pct": 58.6,
-   "sma200": 189.34,
-   "pe": 43.1,
-   "sector_pe": 26.7,
-   "fcf": 2408049920.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": false,
-    "quality": true
-   },
-   "score": 3,
-   "a_checks": {
     "bounce": true
    },
    "a_pick": false,
-   "win_chance": 62
+   "win_chance": 60
   },
   {
    "ticker": "FLEX",
    "name": "Flex Ltd.",
    "sector": "Information Technology",
-   "price": 67.23,
+   "price": 69.77,
    "high52": 162.07,
-   "drop_pct": 58.5,
-   "sma200": 104.04,
-   "pe": 24.2,
-   "sector_pe": 26.7,
+   "drop_pct": 57.0,
+   "sma200": 104.07,
+   "pe": 25.1,
+   "sector_pe": 27.8,
    "fcf": 620374976.0,
    "checks": {
     "drop": true,
@@ -1493,190 +1359,22 @@
    },
    "score": 3,
    "a_checks": {
-    "bounce": false
+    "bounce": true
    },
    "a_pick": false,
-   "win_chance": 65
+   "win_chance": 63
   },
   {
    "ticker": "ORCL",
    "name": "Oracle Corporation",
    "sector": "Information Technology",
-   "price": 103.88,
+   "price": 107.13,
    "high52": 246.38,
-   "drop_pct": 57.8,
-   "sma200": 151.56,
-   "pe": 16.3,
-   "sector_pe": 26.7,
+   "drop_pct": 56.5,
+   "sma200": 151.31,
+   "pe": 16.8,
+   "sector_pe": 27.8,
    "fcf": -45853626368.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": true,
-    "quality": false
-   },
-   "score": 3,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "win_chance": 62
-  },
-  {
-   "ticker": "LRCX",
-   "name": "Lam Research",
-   "sector": "Information Technology",
-   "price": 185.01,
-   "high52": 432.87,
-   "drop_pct": 57.3,
-   "sma200": 282.53,
-   "pe": 27.6,
-   "sector_pe": 26.7,
-   "fcf": 4548759552.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": false,
-    "quality": true
-   },
-   "score": 3,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "win_chance": 63
-  },
-  {
-   "ticker": "AMAT",
-   "name": "Applied Materials",
-   "sector": "Information Technology",
-   "price": 311.18,
-   "high52": 721.14,
-   "drop_pct": 56.8,
-   "sma200": 446.0,
-   "pe": 24.7,
-   "sector_pe": 26.7,
-   "fcf": 2520250112.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": false,
-    "quality": true
-   },
-   "score": 3,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "win_chance": 62
-  },
-  {
-   "ticker": "STX",
-   "name": "Seagate Technology",
-   "sector": "Information Technology",
-   "price": 472.33,
-   "high52": 1092.38,
-   "drop_pct": 56.8,
-   "sma200": 703.36,
-   "pe": 24.8,
-   "sector_pe": 26.7,
-   "fcf": 2296750080.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": false,
-    "quality": true
-   },
-   "score": 3,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "win_chance": 63
-  },
-  {
-   "ticker": "TER",
-   "name": "Teradyne",
-   "sector": "Information Technology",
-   "price": 212.15,
-   "high52": 483.35,
-   "drop_pct": 56.1,
-   "sma200": 347.68,
-   "pe": 24.4,
-   "sector_pe": 26.7,
-   "fcf": 600952640.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": false,
-    "quality": true
-   },
-   "score": 3,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "win_chance": 63
-  },
-  {
-   "ticker": "KLAC",
-   "name": "KLA Corporation",
-   "sector": "Information Technology",
-   "price": 134.2,
-   "high52": 300.91,
-   "drop_pct": 55.4,
-   "sma200": 181.3,
-   "pe": 29.2,
-   "sector_pe": 26.7,
-   "fcf": 2816840192.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": false,
-    "quality": true
-   },
-   "score": 3,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": false,
-   "win_chance": 62
-  },
-  {
-   "ticker": "VRT",
-   "name": "Vertiv",
-   "sector": "Industrials",
-   "price": 173.37,
-   "high52": 375.86,
-   "drop_pct": 53.9,
-   "sma200": 271.02,
-   "pe": 32.4,
-   "sector_pe": 25.9,
-   "fcf": 2962249984.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": false,
-    "quality": true
-   },
-   "score": 3,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "win_chance": 66
-  },
-  {
-   "ticker": "SMCI",
-   "name": "Supermicro",
-   "sector": "Information Technology",
-   "price": 23.31,
-   "high52": 50.17,
-   "drop_pct": 53.5,
-   "sma200": 32.22,
-   "pe": 4.9,
-   "sector_pe": 26.7,
-   "fcf": -8191506944.0,
    "checks": {
     "drop": true,
     "below_sma": true,
@@ -1691,16 +1389,16 @@
    "win_chance": 61
   },
   {
-   "ticker": "ON",
-   "name": "ON Semiconductor",
+   "ticker": "MRVL",
+   "name": "Marvell Technology",
    "sector": "Information Technology",
-   "price": 62.48,
-   "high52": 133.93,
-   "drop_pct": 53.3,
-   "sma200": 82.86,
-   "pe": 36.5,
-   "sector_pe": 26.7,
-   "fcf": 1614162560.0,
+   "price": 140.54,
+   "high52": 316.28,
+   "drop_pct": 55.6,
+   "sma200": 189.64,
+   "pe": 46.2,
+   "sector_pe": 27.8,
+   "fcf": 2408049920.0,
    "checks": {
     "drop": true,
     "below_sma": true,
@@ -1709,21 +1407,189 @@
    },
    "score": 3,
    "a_checks": {
-    "bounce": false
+    "bounce": true
    },
    "a_pick": false,
-   "win_chance": 63
+   "win_chance": 59
+  },
+  {
+   "ticker": "LRCX",
+   "name": "Lam Research",
+   "sector": "Information Technology",
+   "price": 192.69,
+   "high52": 432.87,
+   "drop_pct": 55.5,
+   "sma200": 282.33,
+   "pe": 28.7,
+   "sector_pe": 27.8,
+   "fcf": 4548759552.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": false,
+   "win_chance": 62
+  },
+  {
+   "ticker": "AMAT",
+   "name": "Applied Materials",
+   "sector": "Information Technology",
+   "price": 322.04,
+   "high52": 721.14,
+   "drop_pct": 55.3,
+   "sma200": 445.92,
+   "pe": 25.5,
+   "sector_pe": 27.8,
+   "fcf": 2520250112.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": false,
+   "win_chance": 60
+  },
+  {
+   "ticker": "TER",
+   "name": "Teradyne",
+   "sector": "Information Technology",
+   "price": 222.96,
+   "high52": 483.35,
+   "drop_pct": 53.9,
+   "sma200": 347.19,
+   "pe": 25.6,
+   "sector_pe": 27.8,
+   "fcf": 600952640.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": false,
+   "win_chance": 61
+  },
+  {
+   "ticker": "STX",
+   "name": "Seagate Technology",
+   "sector": "Information Technology",
+   "price": 509.66,
+   "high52": 1092.38,
+   "drop_pct": 53.3,
+   "sma200": 703.88,
+   "pe": 26.7,
+   "sector_pe": 27.8,
+   "fcf": 2296750080.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": false,
+   "win_chance": 61
+  },
+  {
+   "ticker": "KLAC",
+   "name": "KLA Corporation",
+   "sector": "Information Technology",
+   "price": 140.86,
+   "high52": 300.91,
+   "drop_pct": 53.2,
+   "sma200": 181.27,
+   "pe": 30.7,
+   "sector_pe": 27.8,
+   "fcf": 2816840192.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": false,
+   "win_chance": 60
+  },
+  {
+   "ticker": "SMCI",
+   "name": "Supermicro",
+   "sector": "Information Technology",
+   "price": 23.76,
+   "high52": 50.17,
+   "drop_pct": 52.6,
+   "sma200": 32.18,
+   "pe": 5.0,
+   "sector_pe": 27.8,
+   "fcf": -8191506944.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": true,
+    "quality": false
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": false,
+   "win_chance": 59
+  },
+  {
+   "ticker": "VRT",
+   "name": "Vertiv",
+   "sector": "Industrials",
+   "price": 178.71,
+   "high52": 375.86,
+   "drop_pct": 52.5,
+   "sma200": 270.67,
+   "pe": 33.4,
+   "sector_pe": 26.0,
+   "fcf": 2962249984.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": false,
+   "win_chance": 65
   },
   {
    "ticker": "TPL",
    "name": "Texas Pacific Land Corporation",
    "sector": "Energy",
-   "price": 261.37,
+   "price": 263.51,
    "high52": 538.1,
-   "drop_pct": 51.4,
-   "sma200": 394.94,
-   "pe": 30.7,
-   "sector_pe": 13.4,
+   "drop_pct": 51.0,
+   "sma200": 394.19,
+   "pe": 31.0,
+   "sector_pe": 13.6,
    "fcf": 81014624.0,
    "checks": {
     "drop": true,
@@ -1736,19 +1602,43 @@
     "bounce": false
    },
    "a_pick": false,
-   "win_chance": 58
+   "win_chance": 56
   },
   {
-   "ticker": "CSGP",
-   "name": "CoStar Group",
-   "sector": "Real Estate",
-   "price": 34.02,
-   "high52": 69.2,
-   "drop_pct": 50.8,
-   "sma200": 34.07,
-   "pe": 79.1,
-   "sector_pe": 30.6,
-   "fcf": 442449984.0,
+   "ticker": "ON",
+   "name": "ON Semiconductor",
+   "sector": "Information Technology",
+   "price": 66.24,
+   "high52": 133.93,
+   "drop_pct": 50.5,
+   "sma200": 82.84,
+   "pe": 38.7,
+   "sector_pe": 27.8,
+   "fcf": 1614162560.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": false,
+   "win_chance": 61
+  },
+  {
+   "ticker": "NOW",
+   "name": "ServiceNow",
+   "sector": "Information Technology",
+   "price": 92.8,
+   "high52": 173.5,
+   "drop_pct": 46.5,
+   "sma200": 113.03,
+   "pe": 66.8,
+   "sector_pe": 27.8,
+   "fcf": 5754250240.0,
    "checks": {
     "drop": true,
     "below_sma": true,
@@ -1766,12 +1656,12 @@
    "ticker": "DELL",
    "name": "Dell Technologies",
    "sector": "Information Technology",
-   "price": 297.06,
+   "price": 316.96,
    "high52": 587.59,
-   "drop_pct": 49.4,
-   "sma200": 350.23,
-   "pe": 17.3,
-   "sector_pe": 26.7,
+   "drop_pct": 46.1,
+   "sma200": 351.2,
+   "pe": 18.4,
+   "sector_pe": 27.8,
    "fcf": -462500000.0,
    "checks": {
     "drop": true,
@@ -1784,18 +1674,18 @@
     "bounce": true
    },
    "a_pick": false,
-   "win_chance": 64
+   "win_chance": 62
   },
   {
    "ticker": "APP",
    "name": "AppLovin",
    "sector": "Communication Services",
-   "price": 378.95,
+   "price": 399.21,
    "high52": 733.6,
-   "drop_pct": 48.3,
-   "sma200": 403.52,
-   "pe": 25.5,
-   "sector_pe": 16.0,
+   "drop_pct": 45.6,
+   "sma200": 403.24,
+   "pe": 26.9,
+   "sector_pe": 16.4,
    "fcf": 3718514688.0,
    "checks": {
     "drop": true,
@@ -1808,19 +1698,67 @@
     "bounce": true
    },
    "a_pick": false,
-   "win_chance": 53
+   "win_chance": 50
   },
   {
-   "ticker": "AXON",
-   "name": "Axon Enterprise",
+   "ticker": "FIX",
+   "name": "Comfort Systems USA",
    "sector": "Industrials",
-   "price": 343.05,
-   "high52": 645.72,
-   "drop_pct": 46.9,
-   "sma200": 461.13,
-   "pe": 110.3,
-   "sector_pe": 25.9,
-   "fcf": 66092000.0,
+   "price": 1128.64,
+   "high52": 2063.66,
+   "drop_pct": 45.3,
+   "sma200": 1597.57,
+   "pe": 24.4,
+   "sector_pe": 26.0,
+   "fcf": 2128619008.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": false,
+   "win_chance": 60
+  },
+  {
+   "ticker": "NFLX",
+   "name": "Netflix",
+   "sector": "Communication Services",
+   "price": 60.93,
+   "high52": 109.35,
+   "drop_pct": 44.3,
+   "sma200": 79.5,
+   "pe": 17.6,
+   "sector_pe": 16.4,
+   "fcf": 25475807232.0,
+   "checks": {
+    "drop": true,
+    "below_sma": true,
+    "cheap": false,
+    "quality": true
+   },
+   "score": 3,
+   "a_checks": {
+    "bounce": true
+   },
+   "a_pick": false,
+   "win_chance": 56
+  },
+  {
+   "ticker": "AKAM",
+   "name": "Akamai Technologies",
+   "sector": "Information Technology",
+   "price": 90.62,
+   "high52": 161.14,
+   "drop_pct": 43.8,
+   "sma200": 111.69,
+   "pe": 35.3,
+   "sector_pe": 27.8,
+   "fcf": 190033248.0,
    "checks": {
     "drop": true,
     "below_sma": true,
@@ -1835,40 +1773,16 @@
    "win_chance": 59
   },
   {
-   "ticker": "NOW",
-   "name": "ServiceNow",
-   "sector": "Information Technology",
-   "price": 92.16,
-   "high52": 173.5,
-   "drop_pct": 46.9,
-   "sma200": 113.07,
-   "pe": 66.3,
-   "sector_pe": 26.7,
-   "fcf": 5754250240.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": false,
-    "quality": true
-   },
-   "score": 3,
-   "a_checks": {
-    "bounce": true
-   },
-   "a_pick": false,
-   "win_chance": 61
-  },
-  {
-   "ticker": "FIX",
-   "name": "Comfort Systems USA",
+   "ticker": "AXON",
+   "name": "Axon Enterprise",
    "sector": "Industrials",
-   "price": 1099.58,
-   "high52": 2063.66,
-   "drop_pct": 46.7,
-   "sma200": 1598.61,
-   "pe": 23.7,
-   "sector_pe": 25.9,
-   "fcf": 2128619008.0,
+   "price": 363.48,
+   "high52": 645.72,
+   "drop_pct": 43.7,
+   "sma200": 460.78,
+   "pe": 116.9,
+   "sector_pe": 26.0,
+   "fcf": 66092000.0,
    "checks": {
     "drop": true,
     "below_sma": true,
@@ -1880,18 +1794,18 @@
     "bounce": true
    },
    "a_pick": false,
-   "win_chance": 62
+   "win_chance": 58
   },
   {
    "ticker": "DDOG",
    "name": "Datadog",
    "sector": "Information Technology",
-   "price": 158.25,
+   "price": 165.75,
    "high52": 293.26,
-   "drop_pct": 46.0,
-   "sma200": 203.19,
-   "pe": 219.8,
-   "sector_pe": 26.7,
+   "drop_pct": 43.5,
+   "sma200": 203.38,
+   "pe": 230.2,
+   "sector_pe": 27.8,
    "fcf": 1066487872.0,
    "checks": {
     "drop": true,
@@ -1901,46 +1815,22 @@
    },
    "score": 3,
    "a_checks": {
-    "bounce": false
+    "bounce": true
    },
    "a_pick": false,
-   "win_chance": 61
+   "win_chance": 59
   },
   {
-   "ticker": "NFLX",
-   "name": "Netflix",
-   "sector": "Communication Services",
-   "price": 59.41,
-   "high52": 109.35,
-   "drop_pct": 45.7,
-   "sma200": 79.59,
-   "pe": 17.2,
-   "sector_pe": 16.0,
-   "fcf": 25475807232.0,
-   "checks": {
-    "drop": true,
-    "below_sma": true,
-    "cheap": false,
-    "quality": true
-   },
-   "score": 3,
-   "a_checks": {
-    "bounce": false
-   },
-   "a_pick": false,
-   "win_chance": 57
-  },
-  {
-   "ticker": "AKAM",
-   "name": "Akamai Technologies",
-   "sector": "Information Technology",
-   "price": 88.66,
-   "high52": 161.14,
-   "drop_pct": 45.0,
-   "sma200": 111.72,
-   "pe": 34.5,
-   "sector_pe": 26.7,
-   "fcf": 190033248.0,
+   "ticker": "NKE",
+   "name": "Nike, Inc.",
+   "sector": "Consumer Discretionary",
+   "price": 37.32,
+   "high52": 66.04,
+   "drop_pct": 43.5,
+   "sma200": 43.05,
+   "pe": 17.9,
+   "sector_pe": 20.7,
+   "fcf": 1766875008.0,
    "checks": {
     "drop": true,
     "below_sma": true,
@@ -1952,24 +1842,24 @@
     "bounce": true
    },
    "a_pick": false,
-   "win_chance": 61
+   "win_chance": 56
   }
  ],
  "benchmarks": {
   "SPY": {
    "name": "S&P 500",
-   "price": 716.7,
-   "drop_pct": 8.0
+   "price": 728.32,
+   "drop_pct": 6.5
   },
   "QQQ": {
    "name": "Nasdaq-100",
-   "price": 633.93,
-   "drop_pct": 16.6
+   "price": 650.99,
+   "drop_pct": 14.3
   },
   "DIA": {
    "name": "Dow Jones",
-   "price": 501.27,
-   "drop_pct": 7.2
+   "price": 507.6,
+   "drop_pct": 6.1
   }
  }
 }
